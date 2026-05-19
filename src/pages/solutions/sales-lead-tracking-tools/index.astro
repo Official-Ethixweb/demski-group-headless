@@ -1077,12 +1077,20 @@ const cases = [
       }
 
       .hero-content { flex: none; }
-      .hero-badges  { display: none; }
 
-      .hero h1  { font-size: clamp(22px, 6vw, 30px); max-width: 100%; }
-      .hero p   { font-size: 14px; max-width: 100%; margin-left: 0; }
-      .hero-btn { margin-left: 0; }
-      .hero-badges { position: static; display: none; }
+      .hero h1  { font-size: clamp(30px, 8vw, 38px); max-width: 100%; line-height: 1.15; }
+      .hero p   { font-size: 16px; max-width: 100%; margin-left: 0; line-height: 1.6; }
+      .hero-btn { margin-left: 0; font-size: 16px; padding: 14px 24px; }
+      .hero-badges {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .hero-badges img { width: 110px; }
 
       .acc-btn {
         grid-template-columns: 48px 1fr 20px;
@@ -1125,6 +1133,108 @@ const cases = [
       .contact-right-img { height: 180px; border-radius: 14px 14px 19px 19px; }
 
       .chat-bubble { display: none; }
+    }
+
+    /* ── Responsive: ≤ 600px — full mobile ── */
+    @media (max-width: 600px) {
+      /* Layout shell */
+      .sales-section { padding: 32px 16px; }
+
+      /* Hero */
+      .hero {
+        margin-left: 12px;
+        margin-right: 12px;
+        padding: 36px 20px 36px;
+        border-radius: 14px;
+        min-height: auto;
+      }
+      .hero h1 { font-size: clamp(28px, 7.5vw, 36px); line-height: 1.15; }
+      .hero p   { font-size: 15px; margin-left: 0; line-height: 1.6; }
+      .hero-btn { font-size: 15px; padding: 13px 22px; margin-left: 0; white-space: normal; }
+      .hero-badges { position: static; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+      .hero-badges img { width: 100px; }
+
+      /* Intro */
+      .intro-grid { gap: 24px; }
+      .intro-grid .section-title { font-size: clamp(24px, 7vw, 32px); margin-left: 0; }
+      .copy { font-size: 14px; }
+
+      /* Accordion section */
+      .media-accordion { padding-top: 24px; padding-bottom: 24px; gap: 24px; }
+      .accordion-copy .section-title { font-size: clamp(20px, 6vw, 28px); margin-bottom: 20px; }
+      .acc-btn { grid-template-columns: 42px 1fr 18px; gap: 10px; min-height: 54px; }
+      .acc-icon-box { width: 42px !important; min-width: 42px !important; height: 36px !important; font-size: 14px; }
+      .acc-title { font-size: 13px; }
+      .acc-body { padding-left: 52px; font-size: 13px; }
+
+      /* Services */
+      .services-grid-section { gap: 20px; padding-top: 24px; padding-bottom: 24px; }
+      .services-grid-section .section-title { font-size: 28px; }
+      .service-grid { grid-template-columns: 1fr; gap: 24px; padding-left: 0; }
+      .service-card h3 { font-size: 18px; }
+      .service-card p  { font-size: 14px; }
+
+      /* Why choose — fix position:absolute why-card */
+      .why-section-wrap { padding: 0 12px; margin: 24px 0; }
+      .why-section { position: relative; border-radius: 14px; }
+      .why-copy { padding: 28px 18px 24px !important; padding-right: 18px !important; }
+      .why-copy .section-title { font-size: clamp(22px, 6vw, 30px); }
+      .why-copy > p, .why-copy li { font-size: 14px; }
+      .why-card {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 0 14px 14px !important;
+      }
+      .why-card-img-frame { padding: 16px 16px 12px; }
+      .why-card-img-frame img { height: 200px; }
+      .why-card-body { padding: 16px 16px 24px; }
+      .why-card h3 { font-size: 18px; margin-bottom: 20px; }
+      .button-light { font-size: 16px; width: auto; padding: 13px 28px; min-height: auto; background-color: #ffffff; color: #021428; border-radius: 10px; }
+      .testimonial blockquote { font-size: 14px; }
+      .testimonial h3 { font-size: 18px; }
+
+      /* Case studies */
+      .case-section { padding-top: 32px; padding-bottom: 32px; }
+      .case-section .section-title { font-size: clamp(20px, 6vw, 28px); }
+      .case-intro { font-size: 13px; }
+      .case-grid { grid-template-columns: 1fr; gap: 12px; }
+      .case-card.featured { grid-column: span 1; grid-row: span 1; min-height: 200px; }
+      .case-card { min-height: 120px; padding: 28px 16px 14px; }
+
+      /* Contact section */
+      .contact-section { margin-top: 30px; }
+      .contact-inner { grid-template-columns: 1fr; min-height: auto; }
+      .contact-form-col { padding: 32px 18px; }
+      .contact-form-col .section-title { font-size: clamp(20px, 6vw, 28px); margin-bottom: 24px; }
+      .form-row { grid-template-columns: 1fr; gap: 20px; }
+      .form-submit { width: 100%; text-align: center; padding: 14px 20px; }
+      .contact-right-col {
+        margin: 0;
+        padding: 24px 18px 0;
+        border-radius: 0;
+      }
+      .contact-right-img { height: 160px; }
+
+      /* Footer */
+      .sales-solution-page .footer-inner { grid-template-columns: 1fr !important; }
+    }
+
+    /* ── Responsive: ≤ 430px — small phone ── */
+    @media (max-width: 430px) {
+      .hero { padding: 28px 16px; }
+      .hero h1 { font-size: 20px; }
+      .hero p   { font-size: 12px; }
+      .hero-btn { font-size: 13px; padding: 10px 14px; }
+      .intro-grid .section-title { font-size: 22px; }
+      .accordion-copy .section-title { font-size: 20px; }
+      .services-grid-section .section-title { font-size: 22px; }
+      .why-copy .section-title { font-size: 20px; }
+      .case-section .section-title { font-size: 20px; }
+      .contact-form-col .section-title { font-size: 20px; }
     }
   </style>
 

@@ -45,13 +45,13 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 100px 60px;
+  padding: 50px 60px 100px 30px;
   width: 100%;
 }
 .svc-eyebrow {
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #666;
@@ -63,6 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #0A0000;
   line-height: 1.05;
+  margin-top: 0;
   margin-bottom: 24px;
   max-width: 750px;
 }
@@ -71,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #444;
   line-height: 1.75;
   margin-bottom: 36px;
-  max-width: 420px;
+  max-width: 700px;
 }
 .btn-orange {
   display: inline-flex;
@@ -80,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #F09300;
   color: #fff !important;
   font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   padding: 16px 36px;
   border-radius: 10px;
@@ -109,33 +110,33 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── SECTION 2: BRANDS ─── */
 .brands-wrap {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: -160px auto 0;
   position: relative;
   z-index: 10;
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 40px rgba(0,0,0,.18);
-  padding: 40px 50px;
+  border-radius: 28px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.38);
+  padding: 30px 50px;
   display: flex;
   gap: 0;
 }
 .brands-label {
   font-size: 26px;
   color: #282828;
-  min-width: 380px;
+  min-width: 430px;
   line-height: 1.7;
   padding-right: 40px;
-  margin-left: 211px;
-  border-right: 1px solid #ccc;
+  margin-left: 111px;
+  border-right: 3px solid #111;
   flex-shrink: 0;
-  text-align: left;
+  text-align: center;
   align-content: center;
 }
 .brands-label a { color: #0154b1; text-decoration: none; font-weight: 600; }
 .brands-label a:hover { text-decoration: underline; }
-.brands-text { display: block; transform: translateX(-40px); }
-.brands-logo-img { flex: 1; padding-left: 36px; }
+.brands-text { display: block; }
+.brands-logo-img { flex: 1; padding-left: 51px; }
 .brands-logo-img img {
   width: 100%; height: auto;
   max-height: 170px; object-fit: contain; display: block;
@@ -143,11 +144,26 @@ h1, h2, h3, h4, h5, h6 {
 /* ══ SERVICES GRID ══ */
 .svc-services {
   background: #fff;
-  padding: 90px 60px;
+  padding: 90px 65px 120px;
+  position: relative;
+  overflow-x: clip;
+}
+.svc-services::after {
+  content: '';
+  position: absolute;
+  bottom: -360px;
+  left: -50%;
+  width: 200%;
+  height: 580px;
+  background: #fff;
+  clip-path: ellipse(50% 50% at 50% 0%);
+  z-index: 2;
 }
 .svc-services-inner {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
+  position: relative;
+  z-index: 3;
 }
 .svc-section-title {
   font-family: 'Outfit', sans-serif;
@@ -189,7 +205,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .svc-card-desc {
   font-size: 18px;
-  color: #444;
+  color: #000;
   line-height: 1.7;
   flex: 1;
   margin-bottom: 24px;
@@ -206,17 +222,40 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
   font-weight: 600;
   color: #282828;
-  text-decoration: none;
+  text-decoration: none !important;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
   align-self: flex-end;
   border-top: 1px solid #f0f0f0;
   width: 100%;
   padding-top: 16px;
   justify-content: flex-end;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-.svc-card-link:hover { color: #0154b1; }
+.svc-card-link:hover {
+  color: #0154b1;
+  transform: translateY(-8px);
+}
+.svc-link-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-bottom: 1px solid #282828;
+  padding-bottom: 3px;
+  transition: border-color 0.3s ease;
+}
+.svc-card-link:hover .svc-link-inner {
+  border-color: #282828;
+}
+.svc-arrow {
+  display: inline-block;
+  padding-left: 8px;
+  transition: transform 0.3s ease;
+}
+.svc-card-link:hover .svc-arrow {
+  transform: translateX(5px);
+}
 
 /* Wide card (E-commerce) */
 .svc-card.wide {
@@ -238,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ══ TECH STACK ══ */
-.svc-tech { background: #f0f0f0; padding: 100px 60px; overflow: hidden; }
+.svc-tech { background: #f0f0f0; padding: 100px 60px; overflow: hidden; position: relative; z-index: 1; }
 .svc-tech-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -247,10 +286,13 @@ h1, h2, h3, h4, h5, h6 {
   gap: 80px;
   align-items: center;
 }
+.svc-tech-left {
+  margin-left: -10px;
+}
 .svc-tech-left h2 {
   font-family: 'Outfit', sans-serif !important;
   font-size: 50px; font-weight: 600;
-  color: #0A0000; line-height: 1.2;
+  color: #282828; line-height: 1.2;
   margin-bottom: 32px;
 }
 /* The .btn-outline rule — add font-size override for tech section */
@@ -278,6 +320,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)); /* minmax prevents blowout */
   gap: 48px 32px;
+  margin-top: 20px;
   align-items: center;
   justify-items: center;
 }
@@ -288,13 +331,13 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
 }
 .tech-logo-item img {
-  max-height: 44px;
+  max-height: 64px;
   width: 100%;          /* fill cell */
-  max-width: 110px;
+  max-width: 130px;
   object-fit: contain;
   display: block;
-  filter: grayscale(100%);
-  opacity: 0.75;
+  filter: grayscale(100%) brightness(0.15);
+  opacity: 1;
   transition: opacity 0.25s, filter 0.25s;
 }
 .tech-logo-item img:hover { filter: grayscale(0%); opacity: 1; }
@@ -412,15 +455,15 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── SECTION 8: EXCELLENCE ─── */
 .excellence-section {
-  background: #0c0c0c;
-  padding: 80px 174px 150px;
+  background: #000000;
+  padding: 80px 94px 150px;
   overflow: visible;
   margin-top: 0px;
 }
 .excellence-card {
   max-width: 1300px;
   margin: 0 auto 0;
-  background: #0c0c0c;
+  background: #000000;
   border-radius: 25px;
   overflow: visible;
   padding: 80px 70px 60px;
@@ -483,6 +526,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   gap: 0;
   padding-left: 60px;
+  transform: translateY(-80px);
 }
 .badge-rotator {
   position: relative;
@@ -601,7 +645,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 10px;
 }
 .svc-pos-content p {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   color: #1a1a1a;
   line-height: 1.5;
@@ -632,10 +676,10 @@ h1, h2, h3, h4, h5, h6 {
 /* ══ METHODOLOGIES ══ */
 .svc-methods {
   background: #fff;
-  padding: 80px 60px;
+  padding: 80px 40px;
 }
 .svc-methods-inner {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -677,12 +721,13 @@ h1, h2, h3, h4, h5, h6 {
 .svc-methods-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 26px;
+  padding: 0 10px 0 110px;
 }
 
 /* ── Flip card wrapper ── */
 .method-card {
-  min-height: 420px;
+  min-height: 470px;
   perspective: 1000px;   /* 3D depth */
   text-decoration: none !important;
   display: block;
@@ -798,194 +843,102 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ══ CONTACT + TESTIMONIAL ══ */
-.svc-contact {
-  background: #0d1b2e;
-  padding: 80px 60px;
-}
+.svc-contact { background-color: #001629; }
 .svc-contact-inner {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 480px;
-  gap: 60px;
-  align-items: stretch;   /* was: start */
+  grid-template-columns: 62% 38%;
+  max-width: 1850px;
+  margin: 0 auto;
+  min-height: 600px;
+  align-items: stretch;
 }
-
-/* Left: form */
+.svc-contact-left { padding: 72px 140px 72px 140px; }
 .svc-contact-left h2 {
   font-family: 'Outfit', sans-serif !important;
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 40px;
+  color: #ffffff;
+  font-size: clamp(28px, 3.2vw, 46px);
+  margin-bottom: 46px;
   line-height: 1.2;
+  font-weight: 600;
 }
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 30px;
 }
 .contact-form .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0 40px;
-}
-.contact-form .field {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 32px;
-}
-.contact-form label {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-  margin-bottom: 8px;
+  gap: 42px;
 }
 .contact-form input,
 .contact-form textarea {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  border-radius: 0;
-  padding: 8px 0;
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
-  color: #fff;
-  outline: none;
-  transition: border-color 0.25s;
   width: 100%;
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(255,255,255,0.35);
+  padding: 12px 0;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+  border-radius: 0;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  background: transparent;
+  color: #ffffff;
+  transition: border-bottom-color 0.2s;
 }
 .contact-form input:focus,
-.contact-form textarea:focus {
-  border-bottom-color: rgba(255,255,255,0.8);
-}
-.contact-form textarea {
-  min-height: 80px;
-  resize: none;
-}
+.contact-form textarea:focus { border-bottom-color: rgba(255,255,255,0.9); }
+.contact-form input::placeholder,
+.contact-form textarea::placeholder { color: rgba(255,255,255,0.65); }
+.contact-form textarea { resize: none; min-height: 40px; }
 .btn-contact {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  color: #0d1b2e;
-  font-family: 'Outfit', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 14px 40px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.25s;
   align-self: flex-start;
-  margin-top: 8px;
-  text-decoration: none;
+  padding: 15px 44px;
+  background: #ffffff;
+  color: #001629;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s;
 }
-.btn-contact:hover { background: #e8e8e8; }
-
-/* Right: testimonial card */
-.svc-testimonial-col { position: relative; }
-
-.testimonial-card-wrap {
-  background: #f0f2f5;
-  border-radius: 20px;
-  overflow: hidden;
+.btn-contact:hover { background: #f0f0f0; }
+.svc-contact-right {
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  margin: 28px 28px 28px 0;
+  padding: 40px 40px 0;
   display: flex;
   flex-direction: column;
-  height: 100%;           /* ADD THIS */
+  box-shadow: 0 4px 32px rgba(0,0,0,0.14);
 }
-.testimonial-card-body {
-  padding: 36px 36px 24px;
-  flex: 1;                /* ADD THIS — pushes image to bottom */
-  display: flex;
-  flex-direction: column;
-}
-.testimonial-what-label {
-  font-family: 'Outfit', sans-serif;
+.svc-contact-right-label {
   font-size: 16px;
   font-weight: 600;
-  color: #0d1b2e;
-  margin-bottom: 16px;
+  color: #1a1a1a;
+  margin: 0 0 22px;
 }
-.testimonial-quote-icon {
-  font-size: 36px;
-  color: #0d1b2e;
-  line-height: 1;
-  margin-bottom: 16px;
-  font-family: Georgia, serif;
-  letter-spacing: -4px;
-}
-/* Slides */
-.testimonial-slide { display: none; }
-.testimonial-slide.active { display: block; }
-.testimonial-slide-text {
-  font-size: 14.5px;
-  color: #333;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-.testimonial-slide-author {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 2px;
-}
-.testimonial-slide-role {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  color: #aaa;
-}
-.testimonial-slide-footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 12px;
-}
-.testimonial-read-link {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #0d1b2e;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.testimonial-read-link:hover { text-decoration: underline; }
-.testimonial-pagination {
-  margin-top: auto;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  color: #888;
-  text-align: center;
-  padding: 16px 0;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  margin-left: -36px;
-  margin-right: -36px;
-  padding-left: 36px;
-  padding-right: 36px;
-}
-.testimonial-bottom-img {
-  height: 280px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.testimonial-bottom-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.tc-carousel { position: relative; flex: 1; }
+.tc-slide { display: none; flex-direction: column; padding: 0; background: transparent; border-radius: 0; box-shadow: none; }
+.tc-slide.active { display: flex; }
+.tc-quote-icon { color: #005cb9; font-size: 26px; margin-bottom: 18px; line-height: 1; }
+.tc-text { color: #333; font-size: 16px; line-height: 1.72; margin: 0 0 20px; flex: 1; }
+.tc-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-top: 14px; border-top: 1px solid #e8e8e8; }
+.tc-author { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+.tc-author span { display: block; font-weight: 400; font-size: 13px; color: #888; }
+.tc-link { color: #1a1a1a; text-decoration: none; font-size: 13px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+.tc-fraction-bar { text-align: center; font-size: 20px; color: #000; padding: 14px 0 8px; position: relative; z-index: 2; transform: translateY(-100px); }
+.contact-right-img { width: 100%; height: 220px; object-fit: cover; object-position: center top; display: block; margin-top: 0; margin-bottom: 0; border-radius: 16px 16px 22px 22px; transform: translateY(-50px); }
 
 @media (max-width: 900px) {
   .svc-contact-inner { grid-template-columns: 1fr; }
-  .svc-contact-left h2 { font-size: 32px; }
+  .svc-contact-left h2 { font-size: 32px; white-space: normal; }
+  .svc-contact-left { padding: 48px 32px; }
+  .svc-contact-right { margin: 0 24px 24px; }
 }
 @media (max-width: 600px) {
-  .svc-contact { padding: 60px 24px; }
   .contact-form .form-row { grid-template-columns: 1fr; gap: 0; }
 }
 
@@ -1028,7 +981,7 @@ h1, h2, h3, h4, h5, h6 {
   <div class="svc-hero-inner">
     <div class="svc-eyebrow">Software Services</div>
     <h1>Empowering Businesses<br/>with Custom Software</h1>
-    <p class="svc-hero-desc">Talk to our experts today about your project. We love a challenge.</p>
+    <p class="svc-hero-desc">Talk to our experts today about your project. We love a<br/>challenge.</p>
     <a href="/contact-us/" class="btn-orange">Schedule a Consultation</a>
   </div>
 </section>
@@ -1039,7 +992,7 @@ h1, h2, h3, h4, h5, h6 {
   <div class="brands-wrap">
     <div class="brands-label">
       <span class="brands-text">
-        Companies that trust<br/>our <a href="/our-clients/">experienced team</a>.
+        Companies that trust<br/>our<br/><a href="/our-clients/">experienced team</a>.
       </span>
     </div>
     <div class="brands-logo-img">
@@ -1055,91 +1008,91 @@ h1, h2, h3, h4, h5, h6 {
 <!-- ══ SERVICES GRID ══ -->
 <section class="svc-services">
   <div class="svc-services-inner">
-    <h2 class="svc-section-title">Our Software Development Services</h2>
+    <h2 class="svc-section-title">Our Software<br/>Development Services</h2>
     <div class="svc-grid">
 
       <a class="svc-card" href="/services/custom-development/">
         <div class="svc-card-icon"><i class="fa-solid fa-code"></i></div>
         <div class="svc-card-name">Custom Software Development</div>
         <p class="svc-card-desc">We craft tailored software solutions that align with your unique business needs, driving efficiency and innovation.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/machine-learning/">
         <div class="svc-card-icon"><i class="fa-solid fa-brain"></i></div>
         <div class="svc-card-name">Machine Learning</div>
-        <p class="svc-card-desc">Harness the power of machine learning to unlock insights, automate processes, and elevate decision-making.</p>
-        <span class="svc-card-link">Read more →</span>
+        <p class="svc-card-desc" style="margin-top: 2.4em;">Harness the power of machine learning to unlock insights, automate processes, and elevate decision-making.</p>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/web/">
         <div class="svc-card-icon"><i class="fa-solid fa-globe"></i></div>
         <div class="svc-card-name">Web Development</div>
-        <p class="svc-card-desc">Our web development services deliver responsive, high-performance websites that captivate and engage users.</p>
-        <span class="svc-card-link">Read more →</span>
+        <p class="svc-card-desc" style="margin-top: 2.4em;">Our web development services deliver responsive, high-performance websites that captivate and engage users.</p>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/app-development/">
         <div class="svc-card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
         <div class="svc-card-name">Mobile App Development</div>
         <p class="svc-card-desc">We design and develop intuitive mobile apps that provide seamless user experiences on both iOS and Android platforms.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/cross-platform/">
         <div class="svc-card-icon"><i class="fa-solid fa-layer-group"></i></div>
         <div class="svc-card-name">Cross Platform Development</div>
         <p class="svc-card-desc">Reach wider audiences with our cross-platform development services, ensuring consistent performance across all devices.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/maintenance/">
         <div class="svc-card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <div class="svc-card-name">Software Maintenance</div>
-        <p class="svc-card-desc">Keep your software running smoothly with our reliable maintenance services that ensure ongoing stability and performance.</p>
-        <span class="svc-card-link">Read more →</span>
+        <p class="svc-card-desc" style="margin-top: 2.4em;">Keep your software running smoothly with our reliable maintenance services that ensure ongoing stability and performance.</p>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/enterprise-software/">
         <div class="svc-card-icon"><i class="fa-solid fa-building"></i></div>
         <div class="svc-card-name">Enterprise Software</div>
         <p class="svc-card-desc">We build robust enterprise software solutions that streamline operations and support your organization's growth.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/pos-integration/">
         <div class="svc-card-icon"><i class="fa-solid fa-cash-register"></i></div>
         <div class="svc-card-name">POS Integrations</div>
         <p class="svc-card-desc">Integrate your POS systems effortlessly with our custom solutions, enhancing your business operations and customer experience.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/ui-ux-design/">
         <div class="svc-card-icon"><i class="fa-solid fa-pen-ruler"></i></div>
         <div class="svc-card-name">UI/UX Design</div>
         <p class="svc-card-desc">Our UI/UX design services focus on creating user-friendly interfaces that enhance usability and delight your customers.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/qa/">
         <div class="svc-card-icon"><i class="fa-solid fa-check-double"></i></div>
         <div class="svc-card-name">Quality Assurance</div>
         <p class="svc-card-desc">Ensure the highest standards with our comprehensive quality assurance services, delivering flawless software solutions.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/gov/">
         <div class="svc-card-icon"><i class="fa-solid fa-landmark"></i></div>
         <div class="svc-card-name">Government Software</div>
         <p class="svc-card-desc">We develop secure, compliant government software solutions tailored to meet the unique needs of public sector organizations.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <a class="svc-card" href="/services/staff-augmentation/">
         <div class="svc-card-icon"><i class="fa-solid fa-users-gear"></i></div>
         <div class="svc-card-name">Staff Augmentation</div>
         <p class="svc-card-desc">Scale your team with our expert staff augmentation services, providing the talent you need to meet project demands.</p>
-        <span class="svc-card-link">Read more →</span>
+        <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
       </a>
 
       <!-- Wide card -->
@@ -1148,7 +1101,7 @@ h1, h2, h3, h4, h5, h6 {
         <div class="svc-card-body">
           <div class="svc-card-name">E-commerce</div>
           <p class="svc-card-desc">Drive online sales with our e-commerce development services, creating optimized, user-centric shopping experiences.</p>
-          <span class="svc-card-link">Read more →</span>
+          <span class="svc-card-link"><span class="svc-link-inner">Read more <span class="svc-arrow">→</span></span></span>
         </div>
       </a>
 
@@ -1160,7 +1113,7 @@ h1, h2, h3, h4, h5, h6 {
 <section class="svc-tech">
   <div class="svc-tech-inner">
     <div class="svc-tech-left">
-      <h2>Versatile Tech Stack:<br/>Tailored Solutions for Every<br/>Business Need</h2>
+      <h2>Versatile Tech Stack:<br/><span style="white-space: nowrap;">Tailored Solutions for Every</span><br/>Business Need</h2>
       <a href="/technologies/" class="btn-outline">See all technologies →</a>
     </div>
     <div class="tech-logo-grid">
@@ -1168,7 +1121,7 @@ h1, h2, h3, h4, h5, h6 {
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/Layer-2.png" alt="Swift" /></div>
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/nodejs.png" alt="Node.js" /></div>
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/07/PHP.png" alt="PHP" /></div>
-      <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/net.png" alt=".NET Core" /></div>
+      <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/net.png" alt=".NET Core" style="filter: grayscale(100%) !important;" /></div>
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/07/kotlin.png" alt="Kotlin" /></div>
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/go.png" alt="Go" /></div>
       <div class="tech-logo-item"><img src="https://demskigroup.com/wp-content/uploads/2024/05/java.png" alt="Java" /></div>
@@ -1219,16 +1172,16 @@ h1, h2, h3, h4, h5, h6 {
       <div class="excellence-right">
         <div class="badge-rotator" id="badge-rotator">
           <div class="badge-slide active">
-            <img src="/clutchcowhite.webp" alt="Clutch Top Software Developers 2022" width="220" height="220" loading="lazy" />
+            <img src="/clutchcowhite.webp" alt="Clutch Top Software Developers 2022" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
           </div>
           <div class="badge-slide">
-            <img src="/clutch2.webp" alt="Clutch Top App Development 2023" width="220" height="220" loading="lazy" />
+            <img src="/clutch2.webp" alt="Clutch Top App Development 2023" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
           </div>
           <div class="badge-slide">
-            <img src="/clutch3.webp" alt="Clutch Top Software Developers 2023" width="220" height="220" loading="lazy" />
+            <img src="/clutch3.webp" alt="Clutch Top Software Developers 2023" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
           </div>
           <div class="badge-slide">
-            <img src="/cisppwhite.webp" alt="CISSP Certified" width="200" height="200" loading="lazy" />
+            <img src="/cisppwhite.webp" alt="CISSP Certified" width="200" height="200" loading="lazy" style="filter: none;" />
           </div>
         </div>
       </div>
@@ -1269,7 +1222,7 @@ h1, h2, h3, h4, h5, h6 {
       />
     </div>
     <div class="svc-pos-content">
-      <p>Experience seamless integration and robust functionality with our POS integration.</p>
+      <p><span style="display:block;white-space:nowrap;">Experience seamless integration</span><span style="display:block;white-space:nowrap;">and robust functionality with our</span><span style="display:block;white-space:nowrap;">POS integration.</span></p>
       <a href="/contact-us/" class="pos-sub">Request a quote today!</a>
     </div>
     <div class="svc-pos-btn">
@@ -1283,7 +1236,7 @@ h1, h2, h3, h4, h5, h6 {
   <div class="svc-methods-inner">
 
     <div class="svc-methods-left">
-      <h2>Proven Strategies for Success</h2>
+      <h2>Proven<br/><span style="white-space:nowrap;">Strategies for</span><br/>Success</h2>
       <a href="/methodologies/" class="btn-outline-methods">All methodologies →</a>
     </div>
 
@@ -1348,85 +1301,56 @@ h1, h2, h3, h4, h5, h6 {
     <!-- LEFT: Form -->
     <div class="svc-contact-left">
       <h2>Let's Talk About Your Business Goals</h2>
-      <form class="contact-form" onsubmit="handleContactSubmit(event)">
+      <form class="contact-form" action="/contact-us/" method="get" novalidate>
         <div class="form-row">
-          <div class="field">
-            <label>Name</label>
-            <input type="text" placeholder="Your name" required />
-          </div>
-          <div class="field">
-            <label>Email</label>
-            <input type="email" placeholder="your@email.com" required />
-          </div>
+          <input type="text" name="name" placeholder="Name" />
+          <input type="email" name="email" placeholder="Email" required />
         </div>
-        <div class="field">
-          <label>Phone</label>
-          <input type="tel" placeholder="+1 (000) 000-0000" />
-        </div>
-        <div class="field">
-          <label>Company</label>
-          <input type="text" placeholder="Your company" />
-        </div>
-        <div class="field">
-          <label>Website</label>
-          <input type="text" placeholder="https://" />
-        </div>
-        <div class="field">
-          <label>Describe your project</label>
-          <textarea placeholder="Tell us about your project..."></textarea>
-        </div>
+        <input type="tel" name="phone" placeholder="Phone" />
+        <input type="text" name="company" placeholder="Company" />
+        <input type="text" name="website" placeholder="Website" />
+        <textarea name="message" placeholder="Describe your project"></textarea>
         <button type="submit" class="btn-contact">Contact Us</button>
       </form>
     </div>
 
     <!-- RIGHT: Testimonial card -->
-    <div class="svc-testimonial-col">
-      <div class="testimonial-card-wrap">
-        <div class="testimonial-card-body">
-          <div class="testimonial-what-label">What our customers say</div>
-          <div class="testimonial-quote-icon">❝❝</div>
-
-          <!-- Slide 1 -->
-          <div class="testimonial-slide active" data-link="/our-clients/impact-team-tennis/">
-            <p class="testimonial-slide-text">The Demski Group is great to work with! They inherited a mess with our platform and have been able to fix the bugs and make the platform more user friendly. They are also very professional and timely as well as a pleasure to work with!</p>
-            <div class="testimonial-slide-author">Delaine Mast</div>
-            <div class="testimonial-slide-role">CEO</div>
-            <div class="testimonial-slide-footer">
-              <a href="/our-clients/impact-team-tennis/" class="testimonial-read-link">Read case study →</a>
-            </div>
+    <div class="svc-contact-right">
+      <p class="svc-contact-right-label">What our customers say</p>
+      <div class="tc-carousel" id="svcTcCarousel">
+        <div class="tc-slide active" data-tc-slide>
+          <div class="tc-quote-icon"><i class="fa-solid fa-quote-left" aria-hidden="true"></i></div>
+          <p class="tc-text">The Demski Group is great to work with! They inherited a mess with our platform and have been able to fix the bugs and make the platform more user friendly. They are also very professional and timely as well as a pleasure to work with! We have worked with Andrew Demski for all of our IT needs.</p>
+          <div class="tc-footer">
+            <div class="tc-author">Delaine Mast<span>CEO</span></div>
+            <a class="tc-link" href="/our-clients/impact-team-tennis/">Read case study →</a>
           </div>
-
-          <!-- Slide 2 -->
-          <div class="testimonial-slide" data-link="/our-clients/biopac/">
-            <p class="testimonial-slide-text">We spoke to a few different companies as we set out to find someone to create a website/database application. We chose The Demski Group in part because we found them very easy to talk to. That first impression stuck as we have a great relationship with them now.</p>
-            <div class="testimonial-slide-author">Mickey Rowe</div>
-            <div class="testimonial-slide-role">Manager, BIOPAC Systems</div>
-            <div class="testimonial-slide-footer">
-              <a href="/our-clients/biopac/" class="testimonial-read-link">Read case study →</a>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="testimonial-slide" data-link="/our-clients/">
-            <p class="testimonial-slide-text">Working with The Demski Group has been a seamless experience from start to finish. Their team is knowledgeable, responsive, and truly cares about delivering results that matter to our business.</p>
-            <div class="testimonial-slide-author">Client</div>
-            <div class="testimonial-slide-role">The Demski Group</div>
-            <div class="testimonial-slide-footer">
-              <a href="/our-clients/" class="testimonial-read-link">Read case study →</a>
-            </div>
-          </div>
-
-          <div class="testimonial-pagination" id="testi-pagination">1 / 3</div>
         </div>
-
-        <div class="testimonial-bottom-img">
-          <img
-            src="https://demskigroup.com/wp-content/uploads/2024/06/programmers-developing-software-in-team-2023-11-27-05-25-31-utc-1024x683.jpg"
-            alt="Team working"
-            loading="lazy"
-          />
+        <div class="tc-slide" data-tc-slide>
+          <div class="tc-quote-icon"><i class="fa-solid fa-quote-left" aria-hidden="true"></i></div>
+          <p class="tc-text">We spoke to a few different companies as we set out to find someone to create a website/database application to augment our desktop software. We chose The Demski Group in part because we found them very easy to talk to in our interview. That first impression stuck as we have a great relationship with them now. We are currently planning to farm out another project and are not even considering looking for anyone else to take it on.</p>
+          <div class="tc-footer">
+            <div class="tc-author">Mickey Rowe<span>Manager</span></div>
+            <a class="tc-link" href="/our-clients/biopac/">Read case study →</a>
+          </div>
+        </div>
+        <div class="tc-slide" data-tc-slide>
+          <div class="tc-quote-icon"><i class="fa-solid fa-quote-left" aria-hidden="true"></i></div>
+          <p class="tc-text">Code quality was very good and done in a fast, efficient manner. We are pleased with the excellent job from The Demski Group. The team was able to provide high-quality services throughout the project. They produced the deliverables in a timely manner and within budget.</p>
+          <div class="tc-footer">
+            <div class="tc-author">Thariq Kara<span>CEO</span></div>
+            <a class="tc-link" href="/our-clients/nu-borders/">Read case study →</a>
+          </div>
         </div>
       </div>
+      <div class="tc-fraction-bar"><span id="svcTcFraction">2 / 3</span></div>
+      <img
+        class="contact-right-img"
+        src="/solutions/sales-lead-tracking-tools/two-young-intercultural-colleagues-discussing-code-2025-03-16-06-53-49-utc-1024x683.jpg"
+        alt="Developers discussing code"
+        width="1024" height="683"
+        loading="lazy"
+      />
     </div>
 
   </div>
@@ -1540,10 +1464,20 @@ h1, h2, h3, h4, h5, h6 {
   if (grid) grid.innerHTML = rest.slice(0, 8).map(c => clientCard(c)).join('');
 })();
 
-function handleContactSubmit(e) {
-  e.preventDefault();
-  window.location.href = '/contact-us/';
-}
+/* Testimonial carousel */
+(function () {
+  var slides = Array.from(document.querySelectorAll('#svcTcCarousel [data-tc-slide]'));
+  var fracEl = document.getElementById('svcTcFraction');
+  if (!slides.length) return;
+  var cur = 0;
+  function showSlide(n) {
+    slides[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    if (fracEl) fracEl.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+  setInterval(function () { showSlide(cur + 1); }, 4000);
+})();
 </script>
 
 </Layout>

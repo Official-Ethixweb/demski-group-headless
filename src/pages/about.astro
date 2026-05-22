@@ -102,7 +102,7 @@ html { overflow-x: hidden; }
   font-weight: 400;
   color: #fff;
   padding: 34px 45px;
-  border-right: 1px solid rgba(255,255,255,0.25);
+  border-right: 3px solid rgba(255,255,255,0.9);
   flex-shrink: 0;
   min-width: 336px;
   display: flex;
@@ -425,7 +425,7 @@ html { overflow-x: hidden; }
   width: 100%;
   height: 611px;
   object-fit: cover;
-  object-position: center right;
+  object-position: 40% center;
   border-radius: 25px 0 0 25px;
   display: block;
 }
@@ -483,11 +483,11 @@ html { overflow-x: hidden; }
 }
 /* left column cards — shift left */
 .reviews-grid .rc:nth-child(even) {
-  margin: 1% 7.5% 1% -7px;
+  margin: 1% 7.5% 1% 3px;
 }
 /* right column cards — shift right */
 .reviews-grid .rc:nth-child(odd):not(:first-child) {
-  margin: 1% 7.5% 1% calc(32.5% - 45px);
+  margin: 1% 7.5% 1% calc(32.5% - 35px);
 }
 .rc {
   border-radius: 25px;
@@ -511,7 +511,7 @@ html { overflow-x: hidden; }
 .rc-text {
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  color: #282828;
+  color: #000;
   line-height: 1.75;
   flex: 1;
 }
@@ -520,13 +520,13 @@ html { overflow-x: hidden; }
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #282828;
+  color: rgba(40,40,40,0.51);
 }
-.rc.dark .rc-name { color: rgba(255,255,255,0.82); }
+.rc.dark .rc-name { color: rgba(255,255,255,0.51); }
 .rc-role {
   font-family: 'Outfit', sans-serif;
   font-size: 16px;
-  color: rgba(40,40,40,0.56);
+  color: rgba(40,40,40,0.51);
   margin-top: 2px;
 }
 .rc.dark .rc-role { color: rgba(255,255,255,0.51); }
@@ -614,27 +614,29 @@ html { overflow-x: hidden; }
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
   color: #000;
-  line-height: 1.75;
+  line-height: 1.575;
   margin-bottom: 28px;
 }
 .expertise-right {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   margin-left: 25px;
+  width: 110%;
 }
-.svc-row-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; }
-.svc-row-2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.svc-row-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 15px; }
+.svc-row-2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; width: calc(100% + 38px); }
+.svc-row-2 .svc-tile { min-height: 160px; }
 .svc-tile {
   border-radius: 25px;
   overflow: hidden;
   position: relative;
-  min-height: 170px;
+  min-height: 150px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
   padding: 18px 18px;
   text-decoration: none;
   background-size: cover;
@@ -652,12 +654,9 @@ html { overflow-x: hidden; }
 }
 .svc-tile:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
 .svc-tile:hover::before { background: rgba(15,18,26,0.5); }
-.svc-tile.featured { min-height: 280px; }
+.svc-tile.featured { min-height: 220px; }
 .svc-icon {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   font-size: 32px;
   color: rgba(255,255,255,0.85);
   z-index: 1;
@@ -677,8 +676,11 @@ html { overflow-x: hidden; }
   line-height: 1.35;
   position: relative;
   z-index: 1;
+  text-align: center;
+  margin-top: 12px;
 }
-.svc-tile.featured .svc-name { font-size: 24px; }
+.svc-row-1 .svc-name { font-size: 21px; }
+.svc-tile.featured .svc-name { font-size: 29px; }
 
 /* ══ COMMITMENT ══ */
 .commitment-inner {
@@ -708,10 +710,11 @@ html { overflow-x: hidden; }
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
   flex-wrap: nowrap;
 }
-.badges-row img { height: 120px; width: auto; max-width: 160px; object-fit: contain; }
+.badges-row img { height: 168px; width: auto; max-width: 220px; object-fit: contain; flex-shrink: 0; }
+.badges-row img:nth-child(2) { height: 127px; max-width: 166px; }
 
 /* ══ BLOG ══ */
 .about-blog-section { background: #fff; padding: 80px 30px; }
@@ -877,7 +880,7 @@ html { overflow-x: hidden; }
   width: 300px;
   transition: background 0.3s;
 }
-.btn-cta-orange:hover { background: #d98200; }
+.btn-cta-orange:hover { background: #fff; color: #000; }
 
 /* ══ RESPONSIVE ══ */
 @media (max-width: 1200px) {
@@ -1123,7 +1126,7 @@ html { overflow-x: hidden; }
     <!-- 2 Amy McCord – light -->
     <div class="rc">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">The Demski Group was an absolute pleasure to work with and I will continue to hire them for my other Shopify dev projects. They scoped and quoted the project fairly, stayed within the hours they estimated, was extremely prompt in completing the tasks, extremely communicative, and quick to hop on a call. HIGHLY RECOMMEND, they're a wonderful hire!</p>
+      <p class="rc-text">The Demski Group was an absolute pleasure to work with and I will continue to hire them for my other Shopify dev projects. They scoped and quoted the project fairly, stayed within the hours they estimated, was extremely prompt in completing the tasks, extremely communicative, and quick to hop on a call. HIGHLY RECOMMEND, they're a wonderful hire! I really appreciate The Demski Group's willingness to shift quickly on projects and deadlines. The Demski Group continues to evolve the app to increase user engagement and retention. The team is available on multiple communication channels, which allows them to weigh in on various aspects of the product. They're also willing to pivot depending on the startup's needs.</p>
       <div><div class="rc-name">Amy McCord</div><div class="rc-role">Founder</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2024/07/Flowermoxie-300x159.png" alt="FlowerMoxie" class="rc-logo" />
@@ -1134,7 +1137,7 @@ html { overflow-x: hidden; }
     <!-- 3 David Tobin – light -->
     <div class="rc">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">Fantastic experience working with this team. They communicate regularly, understand that things can change and adapt as we sorted through the issues that came up with the project. All very important qualities when working with someone. The other elements I expect to be good, but being able to go the extra mile and be present was wonderful. Will work with them again as we continue to grow.</p>
+      <p class="rc-text">Fantastic experience working with this team. They communicate regularly, understand that things can change and adapt as we sorted through the issues that came up with the project. All very important qualities when working with someone. The other elements I expect to be good, but being able to go the extra mile and be present was wonderful. Will work with them again as we continue to grow. Fantastic experience working with this team. They communicate regularly, understand that things can change and adapt as we sorted through the issues that came up with the project. All very important qualities when working with someone. The other elements I expect to be good, but being able to go the extra mile and be present was wonderful. Will work with them again as we continue to grow.</p>
       <div><div class="rc-name">David Tobin</div><div class="rc-role">Founder</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2024/06/audiojackhighres-300x159.png" alt="AudioJack" class="rc-logo" />
@@ -1233,7 +1236,7 @@ html { overflow-x: hidden; }
     <!-- 12 Luke Reks – DARK -->
     <div class="rc dark">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">We've worked with The Demski Group on some huge website development projects, and they've been amazing every time. Even with tight deadlines, they always deliver great work without cutting corners. What we really appreciate is how honest and transparent they are. They don't make promises they can't keep.</p>
+      <p class="rc-text">We've worked with The Demski Group on some huge website development projects, and they've been amazing every time. Even with tight deadlines, they always deliver great work without cutting corners. What we really appreciate is how honest and transparent they are. They don't make promises they can't keep or set unrealistic expectations, which makes working with them stress-free. Plus, their team is super responsive and always there to answer questions or help out when we need it. If you're looking for a team that's reliable, skilled, and easy to work with, we can't recommend The Demski Group enough. They've been a fantastic partner for us in the Home Services industry!</p>
       <div><div class="rc-name">Luke Reks</div><div class="rc-role">Marketing Manager</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2025/03/mrquickwhite-300x159.png" alt="Mister Quik" class="rc-logo" />
@@ -1244,7 +1247,7 @@ html { overflow-x: hidden; }
     <!-- 13 Stephanie Loike – light -->
     <div class="rc">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">It was such a pleasure working with The Demski Group. Not only were they flexible in scheduling meetings and moving deadlines but even with little information provided they knew exactly what the target outcome should be and absolutely outperformed. All of our requirements were fulfilled and they even provided us with useful documentation for future maintenance.</p>
+      <p class="rc-text">It was such a pleasure working with The Demski Group. Not only were they flexible in scheduling meetings and moving deadlines but even with little information provided they knew exactly what the target outcome should be and absolutely outperformed. All of our requirements were fulfilled and they even provided us with useful documentation for future maintenance. We cannot recommend them enough and we will hire The Demski Group definitely again for any future development needs for our company.</p>
       <div><div class="rc-name">Stephanie Loike</div><div class="rc-role">CTO</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2024/07/martinsorbo-300x159.png" alt="Martin &amp; Sorbo" class="rc-logo" />
@@ -1266,7 +1269,7 @@ html { overflow-x: hidden; }
     <!-- 15 VP Software Engineering – light -->
     <div class="rc">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">Our teams have partnered on over 20 projects, which have all been a tremendous success. The Demski Group confidentially meets any improvements or changes requested. They are able to display industry standard-excellence services. Timely and responsive, they have communicated their goals and expectations effectively.</p>
+      <p class="rc-text">Our teams have partnered on over 20 projects, which have all been a tremendous success. The Demski Group confidentially meets any improvements or changes requested. They are able to display industry standard-excellence services. Timely and responsive, they have communicated their goals and expectations well</p>
       <div><div class="rc-name">&nbsp;</div><div class="rc-role">VP of Software Engineering</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2024/07/DevelopmentCompany-300x159.png" alt="Development Company" class="rc-logo" />
@@ -1277,7 +1280,7 @@ html { overflow-x: hidden; }
     <!-- 16 Tausi – light -->
     <div class="rc">
       <div class="rc-icon">❝</div>
-      <p class="rc-text">The Demski Group was professional and outstanding at their work. The Demski Group delivered a professional website that received positive feedback from users across many industries. They communicated effectively via Zoom and were always accessible. Customers can expect an honest team that can provide efficient results.</p>
+      <p class="rc-text">The Demski Group was professional and outstanding at their work. The Demski Group delivered a professional website that received positive feedback from users across many industries. They communicated effectively via Zoom and were always accessible. Customers can expect an honest team that can provide outstanding outputs.</p>
       <div><div class="rc-name">Janice Shokrian</div><div class="rc-role">Founder &amp; CEO</div></div>
       <div class="rc-footer">
         <img src="https://demskigroup.com/wp-content/uploads/2024/06/Tausi-1.png" alt="Tausi" class="rc-logo" />
@@ -1339,8 +1342,7 @@ html { overflow-x: hidden; }
           <span class="svc-name">Custom Software<br/>Development</span>
         </a>
         <a href="/services/qa-testing/" class="svc-tile"
-          style="background-image:url('https://demskigroup.com/wp-content/uploads/2025/03/Data-3-300x200.jpg')">
-          <div class="svc-icon"><i class="fa-solid fa-check-circle"></i></div>
+          style="background-image:url('https://demskigroup.com/wp-content/uploads/2025/03/Data-3-300x200.jpg'); width: calc(100% + 40px); margin-right: -40px;">
           <span class="svc-name">QA and Testing</span>
         </a>
       </div>
@@ -1352,7 +1354,6 @@ html { overflow-x: hidden; }
         </a>
         <a href="/services/maintenance/" class="svc-tile"
           style="background-image:url('https://demskigroup.com/wp-content/uploads/2025/02/stuff-300x200.png')">
-          <div class="svc-icon"><i class="fa-solid fa-headset"></i></div>
           <span class="svc-name">Maintenance<br/>and Support</span>
         </a>
         <a href="/services/mobile/" class="svc-tile"
@@ -1421,7 +1422,7 @@ html { overflow-x: hidden; }
 <section class="about-cta">
   <div class="about-cta-bg"></div>
   <div class="about-cta-inner">
-    <h2>Transform Your Vision into Reality:<br/>Partner with Our Expert Team Today!</h2>
+    <h2>Transform Your Vision into Reality: Partner with Our Expert Team Today!</h2>
     <div class="cta-btns">
       <a href="/contact-us/" class="btn-cta-orange">Contact Us</a>
       <a href="tel:+14068681034" class="btn-cta-orange">

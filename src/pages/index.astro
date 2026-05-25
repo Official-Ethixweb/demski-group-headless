@@ -491,10 +491,11 @@ html, body { overflow-x: hidden; }
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: none;
+  transition: box-shadow 0.25s ease;
 }
 .testimonial-card-new:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 0 0 0.5px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
 }
 .tcard-top {
   display: flex;
@@ -1239,11 +1240,10 @@ html, body { overflow-x: hidden; }
   align-items: flex-start;
 }
 .final-cta-image img {
-  width: 112%;
-  height: 352px;
+  width: 926px;
+  height: 375px;
   object-fit: cover;
   object-position: left center;
-  transform: translateX(12%);
   display: block;
   border-radius: 19px 0 0 19px;
   margin-top: -105px;
@@ -1601,21 +1601,19 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
 
 /* ─── DESKTOP ONLY FIXES: CARD SHADOWS & SEE ALL ARROW ─── */
 @media (min-width: 901px) {
-  /* Increase padding inside the slider and compensate with negative margin to prevent shadow clipping on top and bottom */
+  /* Top padding for shadow room; no bottom negative margin to avoid shadow bleed */
   .cards-slider {
-    padding: 30px 0 45px 0;
-    margin: -30px 0 -45px 0;
+    padding: 30px 0 8px 0;
+    margin-top: -30px;
   }
 
-  /* Make shadows soft, premium, natural and floating */
   .post-card {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 5px 15px rgba(0, 0, 0, 0.03);
-    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+    box-shadow: none;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
   }
 
-  /* Hover state: static position and softer wider shadow */
   .post-card:hover {
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
     z-index: 2;
   }
 
@@ -1645,18 +1643,12 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
 
   .testimonial-card-new {
     border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow:
-      0 1px 4px  rgba(0, 0, 0, 0.03),
-      0 6px 20px rgba(0, 0, 0, 0.07),
-      0 18px 52px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.35s ease, transform 0.35s ease;
+    box-shadow: none;
+    transition: box-shadow 0.25s ease;
   }
 
   .testimonial-card-new:hover {
-    box-shadow:
-      0 1px 4px  rgba(0, 0, 0, 0.03),
-      0 6px 20px rgba(0, 0, 0, 0.07),
-      0 18px 52px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
     transform: none;
   }
 }
@@ -2566,7 +2558,7 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
       <img
         src="https://demskigroup.com/wp-content/uploads/2024/06/cropped-shot-of-a-group-of-creatives-having-a-meet-2023-11-27-04-53-10-utc-1.jpg"
         alt="Team meeting"
-        width="800" height="352"
+        width="926" height="375"
         loading="lazy"
       />
     </div>

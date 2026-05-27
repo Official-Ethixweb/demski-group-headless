@@ -191,7 +191,7 @@ if (!cases.length) {
       padding-left: 113px;
       padding-right: 80px;
       background:
-  linear-gradient(to right, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.22) 100%),
+  linear-gradient(to right, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.10) 100%),
   url('https://demskigrdev.wpenginepowered.com/wp-content/uploads/2025/07/team-discussing-automotive-design-project-in-moder-2025-10-19-03-58-54-utc-scaled.jpg') center 39% / cover no-repeat;
       color: #fff;
       display: flex;
@@ -297,7 +297,7 @@ if (!cases.length) {
       line-height: 1.26;
       letter-spacing: 0;
     }
-    .intro-grid .section-title { max-width: 440px; font-size: 50px !important; font-weight: 600; margin-left: 5%; }
+    .intro-grid .section-title { max-width: 440px; font-size: clamp(28px, 3.5vw, 50px); font-weight: 600; margin-left: 5%; }
     .copy {
       color: #000;
       font-size: 16px;
@@ -920,7 +920,7 @@ if (!cases.length) {
       .tech-consulting-page .logo img { height: 36px; }
       .tech-section { padding: 40px 20px; }
       .hero {
-        min-height: auto;
+        min-height: 460px;
         margin-left: 16px;
         margin-right: 16px;
         padding-top: 44px;
@@ -931,10 +931,10 @@ if (!cases.length) {
         border-radius: 16px;
         align-items: flex-start;
       }
-      .hero-content { flex: none; }
+      .hero-content { flex: none; max-width: 100%; }
       .hero h1 { font-size: clamp(30px, 8vw, 38px); max-width: 100%; line-height: 1.15; }
       .hero p { font-size: 16px; max-width: 100%; margin-left: 0; line-height: 1.6; }
-      .hero-btn { margin-left: 0; font-size: 16px; padding: 14px 24px; }
+      .hero-btn { margin-left: 0; font-size: 16px; padding: 14px 24px; white-space: nowrap; }
       .hero-badges { position: static; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
       .hero-badges img { width: 110px; }
       .acc-btn { grid-template-columns: 48px 1fr 20px; gap: 12px; }
@@ -957,10 +957,11 @@ if (!cases.length) {
     /* ── Responsive: ≤600px ── */
     @media (max-width: 600px) {
       .tech-section { padding: 32px 16px; }
-      .hero { margin-left: 12px; margin-right: 12px; padding: 36px 20px 36px; border-radius: 14px; min-height: auto; }
+      .hero { margin-left: 12px; margin-right: 12px; padding: 36px 20px 36px; border-radius: 14px; min-height: 420px; }
+      .hero-content { max-width: 100%; }
       .hero h1 { font-size: clamp(28px, 7.5vw, 36px); line-height: 1.15; }
       .hero p { font-size: 15px; margin-left: 0; line-height: 1.6; }
-      .hero-btn { font-size: 15px; padding: 13px 22px; margin-left: 0; white-space: normal; }
+      .hero-btn { font-size: 15px; padding: 13px 22px; margin-left: 0; white-space: nowrap; }
       .hero-badges { position: static; display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
       .hero-badges img { width: 100px; }
       .intro-grid { gap: 24px; }
@@ -1021,9 +1022,10 @@ if (!cases.length) {
     @media (max-width: 430px) {
       .tech-section { padding: 28px 16px; }
       .hero { padding: 32px 18px; margin-left: 10px; margin-right: 10px; }
+      .hero-content { max-width: 100%; }
       .hero h1 { font-size: clamp(26px, 7vw, 32px); line-height: 1.15; }
       .hero p { font-size: 14px; line-height: 1.55; }
-      .hero-btn { font-size: 14px; padding: 12px 20px; }
+      .hero-btn { font-size: 14px; padding: 12px 20px; white-space: nowrap; }
       .hero-badges img { width: 90px; }
       .intro-grid .section-title { font-size: clamp(22px, 6vw, 28px); }
       .accordion-copy .section-title { font-size: clamp(20px, 5.5vw, 26px); }

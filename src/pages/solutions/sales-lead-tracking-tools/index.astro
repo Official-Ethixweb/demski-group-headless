@@ -144,6 +144,7 @@ const cases = [
       transform: rotate(45deg);
       flex-shrink: 0;
     }
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     /* ── Hero ── */
     .hero {
@@ -1286,7 +1287,7 @@ const cases = [
     <section class="sales-section media-accordion">
       <!-- img (second in DOM) renders LEFT via CSS order:-1 -->
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">What Our Sales &amp; Lead Tracking Tools Deliver</h2>
         <div class="acc-list" data-acc>
           {deliverables.map(([icon, title, text], i) => (
@@ -1329,7 +1330,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="sales-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">Strategic Benefits for Your Business</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -1359,7 +1360,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right: 410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>We don't just implement tools — we architect solutions. Whether you're upgrading from spreadsheets or pushing past the limitations of your CRM, we build custom software that mirrors your business logic, workflows, and goals.</p>
           <p><strong>What sets us apart:</strong></p>
@@ -1401,7 +1402,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="sales-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience in many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

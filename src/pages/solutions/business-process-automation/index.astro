@@ -85,6 +85,7 @@ const cases = [
     /* ── Eyebrow ── */
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--blue); font-size: 14px; line-height: 1.2; font-weight: 500; margin: 0 0 20px; }
     .eyebrow::before { content: ''; width: 11px; height: 11px; border: 1.5px solid currentColor; border-radius: 3px; transform: rotate(45deg); flex-shrink: 0; }
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     /* ── Hero ── */
     .hero {
@@ -394,7 +395,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="bpa-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">Why Automate Your Business Processes?</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -437,7 +438,7 @@ const cases = [
     <!-- ══ CORE SERVICES ACCORDION ══ -->
     <section class="bpa-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Our Process</div>
+        <div class="eyebrow acc-eyebrow">Our Process</div>
         <h2 class="section-title">Our BPA Services</h2>
         <div class="acc-list" data-acc>
           {coreServices.map(([icon, title, text], i) => (
@@ -467,7 +468,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right: 410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>We've spent over a decade helping small and mid-sized businesses cut operational waste and build systems that actually work. We don't sell you a platform — we build the right solution for your specific processes.</p>
           <p>Our BPA engagements are always grounded in your real workflows — not generic templates. We design around how your business actually operates, then automate it intelligently.</p>
@@ -510,7 +511,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="bpa-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience in many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

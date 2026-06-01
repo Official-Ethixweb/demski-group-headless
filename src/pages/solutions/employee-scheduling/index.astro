@@ -73,6 +73,7 @@ const cases = [
 
     .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--blue);font-size:14px;line-height:1.2;font-weight:500;margin:0 0 20px}
     .eyebrow::before{content:'';width:11px;height:11px;border:1.5px solid currentColor;border-radius:3px;transform:rotate(45deg);flex-shrink:0}
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     .hero{
       position:relative;max-width:100%;min-height:540px;
@@ -298,7 +299,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="es-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">How Custom Scheduling Software Benefits Your Business</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -341,7 +342,7 @@ const cases = [
     <!-- ══ OUR PROCESS ACCORDION ══ -->
     <section class="es-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Our Process</div>
+        <div class="eyebrow acc-eyebrow">Our Process</div>
         <h2 class="section-title">How We Build Your Scheduling System</h2>
         <div class="acc-list" data-acc>
           {coreServices.map(([icon, title, text], i) => (
@@ -371,7 +372,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right:410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>Workforce scheduling is not a simple problem. Every business has a unique combination of roles, locations, compliance requirements, and team dynamics. We take the time to understand yours completely before we design a system — so what we build actually fits how your operations work.</p>
           <p>We've built workforce management tools for healthcare, retail, logistics, hospitality, manufacturing, and more. Each system is purpose-built, fully integrated, and designed to be adopted from day one.</p>
@@ -414,7 +415,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="es-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience across many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

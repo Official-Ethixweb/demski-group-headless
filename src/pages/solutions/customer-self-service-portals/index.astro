@@ -73,6 +73,7 @@ const cases = [
 
     .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--blue);font-size:14px;line-height:1.2;font-weight:500;margin:0 0 20px}
     .eyebrow::before{content:'';width:11px;height:11px;border:1.5px solid currentColor;border-radius:3px;transform:rotate(45deg);flex-shrink:0}
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     /* ── Hero ── */
     .hero{
@@ -306,7 +307,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="cssp-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">Why Build a Customer Self-Service Portal?</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -349,7 +350,7 @@ const cases = [
     <!-- ══ OUR PROCESS ACCORDION ══ -->
     <section class="cssp-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Our Process</div>
+        <div class="eyebrow acc-eyebrow">Our Process</div>
         <h2 class="section-title">How We Build Your Self-Service Portal</h2>
         <div class="acc-list" data-acc>
           {coreServices.map(([icon, title, text], i) => (
@@ -379,7 +380,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right:410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>We don't build generic customer portals. We build systems that fit the specific way your customers interact with your business — mapped to your workflows, connected to your existing tools, and designed to be adopted on day one.</p>
           <p>We've built customer-facing platforms for biotechnology, healthcare, retail, real estate, logistics, and more. Every portal we deliver reduces support burden while improving the customer experience measurably.</p>
@@ -422,7 +423,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="cssp-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience across many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

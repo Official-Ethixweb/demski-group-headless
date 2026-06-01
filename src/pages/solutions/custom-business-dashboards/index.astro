@@ -74,6 +74,7 @@ const cases = [
 
     .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--blue); font-size: 14px; line-height: 1.2; font-weight: 500; margin: 0 0 20px; }
     .eyebrow::before { content: ''; width: 11px; height: 11px; border: 1.5px solid currentColor; border-radius: 3px; transform: rotate(45deg); flex-shrink: 0; }
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     /* Hero */
     .hero {
@@ -305,7 +306,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="cbd-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">How Custom Dashboards Benefit Your Business</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -348,7 +349,7 @@ const cases = [
     <!-- ══ OUR PROCESS ACCORDION ══ -->
     <section class="cbd-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Our Process</div>
+        <div class="eyebrow acc-eyebrow">Our Process</div>
         <h2 class="section-title">How We Build Your Dashboard</h2>
         <div class="acc-list" data-acc>
           {coreServices.map(([icon, title, text], i) => (
@@ -378,7 +379,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right: 410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>Most dashboard tools give you templates. We give you answers. Our team digs into your data infrastructure, your reporting gaps, and your decision-making process before writing a single line of code.</p>
           <p>We've built dashboards for biotechnology, retail, real estate, logistics, manufacturing, and more — each one purpose-built for the business it serves. No bloated off-the-shelf platforms. Just clean, fast, reliable dashboards that your team will actually use.</p>
@@ -421,7 +422,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="cbd-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience in many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

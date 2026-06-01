@@ -73,6 +73,7 @@ const cases = [
 
     .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--blue);font-size:14px;line-height:1.2;font-weight:500;margin:0 0 20px}
     .eyebrow::before{content:'';width:11px;height:11px;border:1.5px solid currentColor;border-radius:3px;transform:rotate(45deg);flex-shrink:0}
+    .acc-eyebrow { font-size: 18px; font-family: 'Outfit', sans-serif; color: #0154B1; }
 
     .hero{
       position:relative;max-width:100%;min-height:540px;
@@ -298,7 +299,7 @@ const cases = [
     <!-- ══ STRATEGIC BENEFITS ACCORDION ══ -->
     <section class="ims-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Service Benefits</div>
+        <div class="eyebrow acc-eyebrow">Service Benefits</div>
         <h2 class="section-title">How a Custom Inventory System Transforms Operations</h2>
         <div class="acc-list" data-acc>
           {strategicBenefits.map(([icon, title, text], i) => (
@@ -341,7 +342,7 @@ const cases = [
     <!-- ══ OUR PROCESS ACCORDION ══ -->
     <section class="ims-section media-accordion">
       <div class="accordion-copy">
-        <div class="eyebrow">Our Process</div>
+        <div class="eyebrow acc-eyebrow">Our Process</div>
         <h2 class="section-title">How We Build Your Inventory System</h2>
         <div class="acc-list" data-acc>
           {coreServices.map(([icon, title, text], i) => (
@@ -371,7 +372,7 @@ const cases = [
     <div class="why-section-wrap">
       <section class="why-section">
         <div class="why-copy" style="padding-right:410px;">
-          <div class="eyebrow">Choose Us</div>
+          <div class="eyebrow acc-eyebrow">Choose Us</div>
           <h2 class="section-title">Why Choose the Demski Group?</h2>
           <p>Inventory management isn't just a software problem — it's an operations problem. We don't build systems in isolation. We learn how your receiving, picking, packing, and replenishment workflows actually function before designing a solution, so what we deliver matches how your team works on the floor.</p>
           <p>We've built inventory and fulfillment systems across retail, manufacturing, logistics, healthcare, and eCommerce. Every system is tailored, every integration is tested, and every go-live is supported.</p>
@@ -414,7 +415,7 @@ const cases = [
 
     <!-- ══ CASE STUDIES ══ -->
     <section class="ims-section case-section">
-      <div class="eyebrow">Case Studies</div>
+      <div class="eyebrow acc-eyebrow">Case Studies</div>
       <h2 class="section-title">Over 600 Projects Delivered Successfully</h2>
       <p class="case-intro">With over 12 years of software development experience across many industries, we have a lot to talk about. Here are just a few of our success stories.</p>
       <div class="case-grid">

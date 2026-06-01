@@ -112,9 +112,12 @@ const cases = [
     .hero .eyebrow::before { border-color: rgba(255,255,255,0.70); }
     .hero h1 { max-width: 610px; margin: 0 0 22px; font-size: clamp(40px, 4.2vw, 60px); font-weight: 700; line-height: 1.18; letter-spacing: -0.5px; color: #fff; }
     .hero p { max-width: 500px; margin: 0 0 30px; font-size: 16px; font-weight: 400; line-height: 1.6; color: rgba(255,255,255,0.88); }
-    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f0f0f0; color: #1a1a1a; padding: 14px 26px; border-radius: 10px; font-size: 17px; font-weight: 500; text-decoration: none; transition: transform 0.18s ease, background 0.18s ease; white-space: nowrap; }
-    .hero-btn:hover { transform: translateY(-2px); background: #e0e0e0; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 12px; background: #f0f0f0; color: #1a1a1a; padding: 14px 26px; border-radius: 10px; font-size: 20px; font-weight: 500; text-decoration: none; transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease; white-space: nowrap; }
+    .hero-btn:hover { transform: translateY(-2px); background: #0154b1; color: #fff; }
     .hero-btn i { font-size: 14px; }
+    .btn-icon-box { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: transparent; border-radius: 7px; border: none; box-shadow: none; flex-shrink: 0; transition: background 0.2s ease; }
+    .btn-icon-box i { font-size: 13px; color: inherit; transition: color 0.2s ease; }
+    .hero-btn:hover .btn-icon-box i { color: #fff; }
     .hero-badges { position: absolute; top: 135px; right: 137px; display: flex; flex-direction: column; align-items: flex-end; gap: 66px; }
     .hero-badges img { width: 142px; height: auto; object-fit: contain; display: block; }
 
@@ -362,7 +365,7 @@ const cases = [
         <h1>Streamline Every Process. Scale Every Operation.</h1>
         <p>Business Process Automation eliminates the manual, repetitive work slowing your team down — replacing it with intelligent, reliable systems that run faster, cost less, and scale with your business.</p>
         <a class="hero-btn" href="/contact-us/">
-          <i class="fa-solid fa-square-arrow-up-right"></i> Schedule a Consultation
+          Schedule a Consultation <span class="btn-icon-box"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
         </a>
       </div>
       <div class="hero-badges" aria-label="Review badges">

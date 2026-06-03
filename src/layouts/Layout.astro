@@ -332,7 +332,14 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
           </div>
           <a href="/our-clients">Our Clients</a>
           <a href="/about">About Us</a>
-          <a href="/blog" style="color:#222;font-weight:500">Resources ▾</a>
+          <div class="nav-dropdown">
+            <button class="nav-trigger" type="button" style="color:#0154b1;">Resources ▾</button>
+            <div class="nav-dropdown-menu">
+              <a href="/blog/">Blog</a>
+              <a href="/results/">Results</a>
+              <a href="/software-cost-calculator/">Software Cost Calculator</a>
+            </div>
+          </div>
           <a href="/contact-us/" class="btn-cta">Schedule a Consultation</a>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -369,7 +376,14 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
         </div>
         <a href="/our-clients">Our Clients</a>
         <a href="/about">About Us</a>
-        <a href="/blog">Resources</a>
+        <div class="mobile-dropdown">
+          <button class="mobile-dropdown-btn" onclick="this.parentElement.classList.toggle('open')">Resources <span class="mobile-drop-arrow"></span></button>
+          <div class="mobile-dropdown-items">
+            <a href="/blog/">Blog</a>
+            <a href="/results/">Results</a>
+            <a href="/software-cost-calculator/">Software Cost Calculator</a>
+          </div>
+        </div>
         <a href="/contact-us/" style="color:#f09300;font-weight:700">Schedule a Consultation</a>
       </div>
 

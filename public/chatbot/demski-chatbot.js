@@ -11,7 +11,7 @@
   var CFG = {
     agentName:       'Erin',
     agentRole:       'Customer Success · The Demski Group',
-    agentAvatar:     'https://wordpress-astro-lovat.vercel.app/72e79b86-c143-495c-b6bb-c10553e75cd3.png',
+    agentAvatar:     'https://ethixweb.com/wp-content/uploads/2026/03/avatar-woman-smiling-lady-portrait-250nw-2692286767.webp',
     calendlyUrl:     'https://calendly.com/shreya-ethixweb/30min',
     scheduleLabel:   'Schedule a Free Consultation',
     emailjsPublicKey:'nedYqWwwPWVZZVX0_',
@@ -76,7 +76,7 @@
       /* Chat window */
       '@keyframes dbl-pop-in{from{opacity:0;transform:translateY(20px) scale(0.96);}to{opacity:1;transform:none;}}',
       '#demski-lead-bot{position:fixed;bottom:108px;right:28px;z-index:2147483646;animation:dbl-pop-in 0.35s cubic-bezier(0.34,1.56,0.64,1) both;display:none;}',
-      '#demski-lead-bot .dbl-card{width:370px;border-radius:22px;overflow:hidden;background:rgba(255,255,255,0.15);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:0 32px 80px rgba(0,0,0,0.16),0 6px 20px rgba(1,84,177,0.08);display:flex;flex-direction:column;max-height:calc(100vh - 160px);font-family:"Outfit",sans-serif;border:1px solid rgba(255,255,255,0.3);}',
+      '#demski-lead-bot .dbl-card{width:370px;border-radius:22px;overflow:hidden;background:linear-gradient(160deg,rgba(255,255,255,0.82) 0%,rgba(235,244,255,0.88) 100%);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);box-shadow:0 32px 80px rgba(0,0,0,0.16),0 6px 20px rgba(1,84,177,0.10),inset 0 1px 0 rgba(255,255,255,0.9);display:flex;flex-direction:column;max-height:calc(100vh - 160px);font-family:"Outfit",sans-serif;border:1px solid rgba(255,255,255,0.6);}',
       /* Header */
       '#demski-lead-bot .dbl-header{background:linear-gradient(135deg,'+CFG.primaryColor+' 0%,#1a7fe8 100%);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}',
       '#demski-lead-bot .dbl-top-section{display:none;background:linear-gradient(135deg,'+CFG.primaryColor+' 0%,#1a7fe8 100%);flex-shrink:0;}',
@@ -100,7 +100,7 @@
       '#demski-lead-bot .dbl-welcome-fine{font-size:10.5px;color:#bbb;text-align:center;margin-top:4px;line-height:1.5;}',
       /* Messages */
       '@keyframes dbl-msg-in{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}',
-      '#demski-lead-bot .dbl-body{flex:1;overflow-y:auto;overflow-x:hidden!important;display:flex;flex-direction:column!important;gap:8px!important;padding:16px 14px 10px!important;min-height:120px!important;max-height:400px!important;background:rgba(255,255,255,0.18)!important;scrollbar-width:thin;}',
+      '#demski-lead-bot .dbl-body{flex:1;overflow-y:auto;overflow-x:hidden!important;display:flex;flex-direction:column!important;gap:8px!important;padding:16px 14px 10px!important;min-height:120px!important;max-height:400px!important;background:rgba(214,230,255,0.25)!important;scrollbar-width:thin;}',
       '#demski-lead-bot .dbl-body.dbl-hidden{display:none!important;}',
       '#demski-lead-bot .dbl-body::-webkit-scrollbar{width:4px;}',
       '#demski-lead-bot .dbl-body::-webkit-scrollbar-thumb{background:#dde1e9;border-radius:4px;}',
@@ -113,11 +113,11 @@
       '@keyframes dbl-blink{0%,80%,100%{opacity:0.3;transform:scale(0.75);}40%{opacity:1;transform:scale(1);}}',
       /* Buttons */
       '#demski-lead-bot .dbl-qbtns,#demski-lead-bot .dbl-bbtns{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:7px!important;align-items:stretch!important;width:90%!important;margin-left:auto!important;margin-right:0!important;animation:dbl-msg-in 0.3s ease both;}',
-      '#demski-lead-bot .dbl-grid{display:grid!important;grid-template-columns:1fr 1fr!important;grid-auto-rows:1fr!important;align-items:stretch!important;}',
-      '#demski-lead-bot .dbl-qbtns button,#demski-lead-bot .dbl-bbtns button{background:rgba(255,255,255,0.88)!important;color:'+CFG.primaryColor+'!important;border:1.5px solid #d4e4f7!important;padding:7px 12px!important;border-radius:8px!important;cursor:pointer!important;font-size:13px!important;font-family:"Outfit",sans-serif!important;font-weight:500!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important;height:100%!important;transition:all 0.18s!important;line-height:1.4!important;}',
+      '#demski-lead-bot .dbl-grid{display:grid!important;grid-template-columns:1fr 1fr!important;grid-auto-rows:minmax(44px,1fr)!important;align-items:stretch!important;}',
+      '#demski-lead-bot .dbl-qbtns button,#demski-lead-bot .dbl-bbtns button{background:rgba(255,255,255,0.88)!important;color:'+CFG.primaryColor+'!important;border:1.5px solid #d4e4f7!important;padding:7px 12px!important;border-radius:8px!important;cursor:pointer!important;font-size:13px!important;font-family:"Outfit",sans-serif!important;font-weight:500!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;width:100%!important;height:100%!important;min-height:44px!important;transition:all 0.18s!important;line-height:1.3!important;box-sizing:border-box!important;}',
       '#demski-lead-bot .dbl-qbtns button:hover,#demski-lead-bot .dbl-bbtns button:hover{background:'+CFG.primaryColor+'!important;color:#fff!important;border-color:'+CFG.primaryColor+'!important;transform:translateY(-1px)!important;}',
-      '#demski-lead-bot .dbl-back{background:transparent!important;color:#888!important;border:1.5px solid #ddd!important;padding:8px 18px!important;border-radius:22px!important;cursor:pointer!important;font-size:12px!important;font-family:"Outfit",sans-serif!important;font-weight:500!important;display:inline-flex!important;align-items:center!important;gap:8px!important;margin-top:2px!important;align-self:flex-start!important;transition:all 0.15s!important;line-height:1!important;}',
-      '#demski-lead-bot .dbl-back:hover{background:rgba(0,0,0,0.06)!important;color:#444!important;}',
+      '#demski-lead-bot .dbl-back{background:rgba(255,255,255,0.88)!important;color:'+CFG.primaryColor+'!important;border:1.5px solid #d4e4f7!important;padding:7px 12px!important;border-radius:8px!important;cursor:pointer!important;font-size:13px!important;font-family:"Outfit",sans-serif!important;font-weight:500!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;transition:all 0.18s!important;line-height:1.3!important;width:100%!important;height:100%!important;min-height:44px!important;box-shadow:0 1px 4px rgba(0,0,0,0.05)!important;box-sizing:border-box!important;}',
+      '#demski-lead-bot .dbl-back:hover{background:'+CFG.primaryColor+'!important;color:#fff!important;border-color:'+CFG.primaryColor+'!important;box-shadow:0 4px 14px rgba(1,84,177,0.22)!important;transform:translateY(-1px)!important;}',
       /* CTA buttons */
       '#demski-lead-bot .dbl-cta-btns{display:flex;flex-direction:column;gap:8px;animation:dbl-msg-in 0.3s ease both;}',
       '#demski-lead-bot .dbl-cta-primary{background:linear-gradient(135deg,'+CFG.accentColor+',#f5a623);color:#fff;border:none;padding:12px 16px;border-radius:14px;cursor:pointer;font-size:13.5px;font-weight:600;font-family:"Outfit",sans-serif;width:100%;transition:all 0.2s;}',
@@ -133,7 +133,7 @@
       '#demski-lead-bot .dbl-schedule{display:none;text-align:center;background:linear-gradient(135deg,'+CFG.accentColor+',#f5a623);color:#fff;font-weight:700;font-size:13.5px;font-family:"Outfit",sans-serif;text-decoration:none;padding:13px;letter-spacing:0.2px;transition:filter 0.2s;flex-shrink:0;}',
       '#demski-lead-bot .dbl-schedule:hover{filter:brightness(0.92);}',
       /* Mobile */
-      '@media(max-width:480px){#demski-lead-bot{bottom:0;right:0;left:0;width:100%;animation:none;}#demski-lead-bot .dbl-card{width:100%;border-radius:24px 24px 0 0;max-height:88vh;}#demski-lead-bot .dbl-body{max-height:42vh!important;}#demski-bot-launcher{bottom:16px;right:16px;width:60px;height:60px;}#demski-bot-launcher img{width:54px;height:54px;}#demski-greeting-bubble{right:8px;bottom:100px;max-width:calc(100vw - 80px);}}',
+      '@media(max-width:480px){#demski-lead-bot{bottom:0;right:0;left:0;width:100%;animation:none;}#demski-lead-bot .dbl-card{width:100%;border-radius:24px 24px 0 0;max-height:88vh;overflow:hidden;}#demski-lead-bot .dbl-body{max-height:42vh!important;}#demski-lead-bot .dbl-qbtns button,#demski-lead-bot .dbl-bbtns button{font-size:12px!important;padding:9px 10px!important;}#demski-lead-bot .dbl-input-bar input{font-size:13px;box-sizing:border-box;}#demski-bot-launcher{bottom:16px;right:16px;width:60px;height:60px;}#demski-bot-launcher img{width:54px;height:54px;}#demski-greeting-bubble{right:8px;bottom:100px;max-width:calc(100vw - 80px);}}',
     ].join('');
     document.head.appendChild(s);
   }
@@ -208,7 +208,10 @@
   function initLogic() {
     var msgs      = document.getElementById('dbl-messages');
     var inputEl   = document.getElementById('dbl-input');
-    var step = 0, expanded = false, idleTimer = null, idlePromptShown = false, awaitingIdleResponse = false;
+    var step = 0, expanded = false, idleTimer = null, awaitingIdleResponse = false;
+    var idleInterval = 60000;
+    var IDLE_BUBBLE_ID = 'dbl-idle-bubble';
+    var IDLE_BTNS_ID   = 'dbl-idle';
 
     var AVATAR_STYLE = 'width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;border-radius:50%!important;object-fit:cover!important;flex-shrink:0!important;display:block!important;border:2px solid #fff!important;align-self:flex-end;';
     var BOT_WRAP    = 'display:flex!important;align-items:flex-end!important;gap:8px!important;max-width:88%!important;';
@@ -269,21 +272,41 @@
       b.onclick = onClick; return b;
     }
 
-    function resetIdleTimer() {
-      clearTimeout(idleTimer); idlePromptShown = false;
-      if (step < 7) {
-        idleTimer = setTimeout(function(){
-          if (!idlePromptShown) {
-            idlePromptShown = true; awaitingIdleResponse = true;
-            var w = document.getElementById('demski-lead-bot');
-            if (w && w.style.display === 'none') {
-              document.getElementById('dbl-badge').classList.add('dbl-badge-visible');
-            } else {
-              addBotMsg('Hi, are you still there?'); showIdleButtons();
-            }
-          }
-        }, 60000);
+    function removeIdleReminder() {
+      var b = document.getElementById(IDLE_BUBBLE_ID); if (b) b.remove();
+      var d = document.getElementById(IDLE_BTNS_ID);   if (d) d.remove();
+    }
+
+    function showIdleReminder() {
+      if (step >= 7) return;
+      awaitingIdleResponse = true;
+      var w = document.getElementById('demski-lead-bot');
+      if (w && w.style.display === 'none') {
+        document.getElementById('dbl-badge').classList.add('dbl-badge-visible');
+      } else {
+        removeIdleReminder();
+        var wrap = document.createElement('div');
+        wrap.id = IDLE_BUBBLE_ID;
+        wrap.setAttribute('style', BOT_WRAP);
+        wrap.innerHTML = '<img src="'+CFG.agentAvatar+'" style="'+AVATAR_STYLE+'" alt="" onerror="this.style.display=\'none\'" /><div style="'+BOT_MSG+'">Hi, are you still there? 👋</div>';
+        msgs.appendChild(wrap); scroll();
+        showIdleButtons();
       }
+      idleInterval = Math.min(idleInterval * 2, 960000);
+      scheduleIdleTimer();
+    }
+
+    function scheduleIdleTimer() {
+      clearTimeout(idleTimer);
+      if (step < 7) idleTimer = setTimeout(showIdleReminder, idleInterval);
+    }
+
+    function resetIdleTimer() {
+      clearTimeout(idleTimer);
+      idleInterval = 60000;
+      removeIdleReminder();
+      awaitingIdleResponse = false;
+      scheduleIdleTimer();
     }
 
     function expandUI() {
@@ -314,7 +337,7 @@
     window.demskiBotStartChat = function() {
       document.getElementById('dbl-welcome').style.display = 'none';
       msgs.classList.remove('dbl-hidden');
-      document.getElementById('dbl-input-bar').style.display = 'flex';
+      document.getElementById('dbl-input-bar').style.display = 'none';
       document.getElementById('dbl-schedule').style.display = 'block';
       resetIdleTimer();
     };
@@ -331,7 +354,7 @@
         badge.classList.remove('dbl-badge-visible');
         setTimeout(function(){
           window.demskiBotStartChat();
-          if (hadBadge) { addBotMsg('Hi, are you still there?'); showIdleButtons(); }
+          if (hadBadge) { showIdleReminder(); }
         }, 400);
       }
     }
@@ -342,19 +365,20 @@
       if(step===1){ botReply('No problem! What type of solution are you looking for?', function(){ showIntentOptions(leadData.intent); }); return; }
       if(step===2){ showTimelineStep(); return; }
       if(step===3){ showBudgetStep(); return; }
-      if(step===4){ botReply("What's your name?"); return; }
-      if(step===5){ botReply("What's the best phone number to reach you?"); return; }
-      if(step===6){ botReply("What's the best email to reach you?"); return; }
+      if(step===4){ document.getElementById('dbl-input-bar').style.display='flex'; botReply("What's your name?"); return; }
+      if(step===5){ document.getElementById('dbl-input-bar').style.display='flex'; botReply("What's the best phone number to reach you?"); return; }
+      if(step===6){ document.getElementById('dbl-input-bar').style.display='flex'; botReply("What's the best email to reach you?"); return; }
       if(step===7){ botReply('Our team already has your details and will be in touch shortly!'); return; }
       botReply('No problem! Take your time.');
     }
 
     function showIdleButtons() {
-      var div = document.createElement('div'); div.className='dbl-qbtns dbl-grid'; div.id='dbl-idle';
+      var old = document.getElementById(IDLE_BTNS_ID); if (old) old.remove();
+      var div = document.createElement('div'); div.className='dbl-qbtns dbl-grid'; div.id=IDLE_BTNS_ID;
       var yes = document.createElement('button'); yes.textContent='Yes, still here!';
-      yes.onclick = function(){ document.getElementById('dbl-idle')?.remove(); addUserMsg('Yes, still here!'); resumeStep(); };
+      yes.onclick = function(){ removeIdleReminder(); addUserMsg('Yes, still here!'); resumeStep(); };
       var no = document.createElement('button'); no.textContent="No, I'm done";
-      no.onclick = function(){ document.getElementById('dbl-idle')?.remove(); addUserMsg("No, I'm done"); awaitingIdleResponse=false; botReply('No problem! Feel free to come back anytime.'); clearTimeout(idleTimer); };
+      no.onclick = function(){ removeIdleReminder(); addUserMsg("No, I'm done"); awaitingIdleResponse=false; clearTimeout(idleTimer); botReply('No problem! Feel free to come back anytime.'); };
       div.appendChild(yes); div.appendChild(no); msgs.appendChild(div); scroll();
     }
 
@@ -431,6 +455,8 @@
       var d=document.getElementById('dbl-budget'); if(d) d.remove();
       addUserMsg(val); leadData.budget=val;
       step=4; resetIdleTimer();
+      document.getElementById('dbl-input-bar').style.display = 'flex';
+      document.getElementById('dbl-input').focus();
       botReply('Thanks, this helps a lot! Let me grab your details so a team member can reach out.<br><br>What\'s your name?');
     }
 
@@ -468,7 +494,7 @@
 
     window.demskiBotHandleInput = function() {
       var val=inputEl.value.trim(); if(!val) return;
-      if(awaitingIdleResponse){ document.getElementById('dbl-idle')?.remove(); addUserMsg(val); inputEl.value=''; resumeStep(); return; }
+      if(awaitingIdleResponse){ removeIdleReminder(); addUserMsg(val); inputEl.value=''; resumeStep(); return; }
       addUserMsg(val); inputEl.value=''; resetIdleTimer();
       if(step===0){ botReply('Please use the buttons above to get started!'); return; }
       if(step===1){ document.getElementById('dbl-intent')?.remove(); botReply('No problem! What type of solution are you looking for?', function(){ showIntentOptions(leadData.intent); }); return; }

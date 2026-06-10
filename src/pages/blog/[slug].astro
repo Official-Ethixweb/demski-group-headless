@@ -175,7 +175,7 @@ const tags = tagRes.ok ? await tagRes.json() : [];
             <h3>Technologies</h3>
             <div class="sb-tag-cloud">
               {tags.map((t: any) => (
-                <a href={`/technology/${t.slug}/`} class="sb-tag">{t.name}</a>
+                <a href={`/tag/${t.slug}/`} class="sb-tag">{t.name}</a>
               ))}
             </div>
           </div>

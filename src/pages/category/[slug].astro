@@ -226,7 +226,7 @@ const recentPosts = await recentRes.json();
           <h3>Technologies</h3>
           <div class="sb-tag-cloud">
             {tags.map((tag: any) => (
-              <a href={`/technology/${tag.slug}/`} class="sb-tag">{tag.name}</a>
+              <a href={`/tag/${tag.slug}/`} class="sb-tag">{tag.name}</a>
             ))}
           </div>
         </div>

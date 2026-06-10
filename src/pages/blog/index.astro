@@ -177,7 +177,7 @@ const tags = await tagRes.json();
           {(() => {
             const excluded = ['.NET','Adobe','Airtable','Analytics','Apache','API','Apple','Azure','C++','Clutch','CSS','EJS','Elementor','Ext JS'];
             return tags.filter((t: any) => !excluded.includes(t.name)).map((tag: any) => (
-              <a href={`/technology/${tag.slug}/`} class="tech-link">{tag.name}</a>
+              <a href={`/tag/${tag.slug}/`} class="tech-link">{tag.name}</a>
             ));
           })()}
         </div>

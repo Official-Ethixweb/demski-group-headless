@@ -409,7 +409,7 @@ const technologies = [
                   <h2 class="wp-block-heading">Technologies</h2>
                   <p class="wp-block-tag-cloud">
                     {technologies.map(tag => (
-                      <a href={`/technology/${tag.toLowerCase().replace(/\s+/g,'-').replace(/\./g,'')}/`} class="tag-cloud-link">{tag}</a>
+                      <a href={`/tag/${tag.toLowerCase().replace(/\s+/g,'-').replace(/\./g,'')}/`} class="tag-cloud-link">{tag}</a>
                     ))}
                   </p>
                 </div>

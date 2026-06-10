@@ -1638,32 +1638,6 @@ h1, h2, h3, h4, h5, h6 {
 </section>
 
 <script is:inline>
-  // Testimonial auto-slider
-  (function () {
-    const slides = document.querySelectorAll('.testimonial-slide');
-    const pagination = document.getElementById('testi-pagination');
-    if (!slides.length) return;
-    let current = 0;
-    const total = slides.length;
-
-    function goTo(n) {
-      slides[current].classList.remove('active');
-      current = (n + total) % total;
-      slides[current].classList.add('active');
-      if (pagination) pagination.textContent = `${current + 1} / ${total}`;
-    }
-
-    setInterval(() => goTo(current + 1), 4000);
-  })();
-
-  function handleContactSubmit(e) {
-    e.preventDefault();
-    window.location.href = '/contact-us/';
-  }
-</script>
-
-
-<script is:inline>
 /* Testimonial carousel */
 (function () {
   var slides = Array.from(document.querySelectorAll('#svcTcCarousel [data-tc-slide]'));

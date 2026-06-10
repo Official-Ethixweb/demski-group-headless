@@ -1,0 +1,652 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const platforms = [
+  { id: 'mobile', label: 'Mobile App', icon: 'fa-mobile-screen-button' },
+  { id: 'web', label: 'Web', icon: 'fa-globe' },
+  { id: 'other', label: 'Other', icon: 'fa-shapes' },
+  { id: 'not-sure', label: 'Not Sure', icon: 'fa-question' },
+];
+
+const projectTypes = [
+  { id: 'game-dev', label: 'Game Development', icon: 'fa-gamepad' },
+  { id: 'ai', label: 'Artificial Intelligence', icon: 'fa-brain' },
+  { id: 'data-analytics', label: 'Data Analytics', icon: 'fa-chart-line' },
+  { id: 'blockchain', label: 'Blockchain Development', icon: 'fa-cubes' },
+  { id: 'ar-vr', label: 'Augmented or Virtual Reality', icon: 'fa-vr-cardboard' },
+  { id: 'enterprise', label: 'Enterprise / Government', icon: 'fa-building' },
+  { id: 'iot', label: 'Internet of Things', icon: 'fa-cloud' },
+  { id: 'not-sure-2', label: 'Not Sure Yet', icon: 'fa-question' },
+];
+
+const techStack = [
+  { id: 'aws', label: 'Amazon Web Service', icon: 'fa-aws', brand: true },
+  { id: 'android', label: 'Android', icon: 'fa-android', brand: true },
+  { id: 'angular', label: 'Angular', icon: 'fa-angular', brand: true },
+  { id: 'apache', label: 'Apache', icon: 'fa-feather' },
+  { id: 'aws-lambda', label: 'AWS Lambda', icon: 'fa-aws', brand: true },
+  { id: 'azure', label: 'Azure', icon: 'fa-microsoft', brand: true },
+  { id: 'cardano', label: 'Cardano', icon: 'fa-circle-nodes' },
+  { id: 'cassandra', label: 'Cassandra', icon: 'fa-database' },
+  { id: 'django', label: 'Django', icon: 'fa-leaf' },
+  { id: 'ethereum', label: 'Ethereum', icon: 'fa-ethereum', brand: true },
+  { id: 'expressjs', label: 'ExpressJs', icon: 'fa-node-js', brand: true },
+  { id: 'firebase', label: 'Firebase', icon: 'fa-fire' },
+  { id: 'go', label: 'Go / Golang', icon: 'fa-code' },
+  { id: 'google-cloud', label: 'Google Cloud', icon: 'fa-cloud' },
+  { id: 'graphql', label: 'GraphQL', icon: 'fa-diagram-project' },
+  { id: 'ios', label: 'iOS', icon: 'fa-apple', brand: true },
+  { id: 'linux', label: 'Linux', icon: 'fa-linux', brand: true },
+  { id: 'mongodb', label: 'MongoDB', icon: 'fa-leaf' },
+  { id: 'mysql', label: 'MySQL', icon: 'fa-database' },
+  { id: 'node', label: 'Node', icon: 'fa-node-js', brand: true },
+  { id: 'nosql', label: 'NoSQL', icon: 'fa-table-cells' },
+  { id: 'not-sure-3', label: 'Not Sure Yet', icon: 'fa-question' },
+  { id: 'php', label: 'Php', icon: 'fa-php', brand: true },
+  { id: 'postgresql', label: 'PostgreSQL', icon: 'fa-database' },
+  { id: 'python', label: 'Python', icon: 'fa-python', brand: true },
+  { id: 'react', label: 'React', icon: 'fa-react', brand: true },
+  { id: 'rails', label: 'Ruby On Rails', icon: 'fa-gem' },
+  { id: 'solidity', label: 'Solidity', icon: 'fa-cube' },
+  { id: 'sql', label: 'SQL', icon: 'fa-table-cells' },
+  { id: 'vue', label: 'Vue', icon: 'fa-vuejs', brand: true },
+];
+
+const priorities = [
+  { id: 'budget', label: 'Budget Friendly', icon: 'fa-piggy-bank' },
+  { id: 'dev-time', label: 'Development Time', icon: 'fa-clock' },
+  { id: 'scalability', label: 'Future Scalability', icon: 'fa-arrow-up-right-dots' },
+  { id: 'ux', label: 'User Experience / Product Design', icon: 'fa-pen-ruler' },
+  { id: 'communication', label: 'Communication', icon: 'fa-comments' },
+];
+---
+
+<Layout title="Get Your Free Software Cost Estimate - The Demski Group" pageClass="calc-form-page">
+<style is:global>
+  body.calc-form-page .site-header-wrap,
+  body.calc-form-page footer,
+  body.calc-form-page #bot-launcher,
+  body.calc-form-page #lead-bot {
+    display: none !important;
+  }
+  body.calc-form-page {
+    background: #1b1c1d !important;
+    overflow: hidden;
+    height: 100vh;
+  }
+</style>
+<style slot="head">
+
+  .cf-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #f3e9c8;
+    width: 14.28%;
+    z-index: 20;
+    transition: width 0.3s ease;
+  }
+
+  .cf-counter {
+    position: fixed;
+    top: 28px;
+    right: 40px;
+    color: rgba(255,255,255,0.55);
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    z-index: 20;
+  }
+  .cf-counter .current { color: #fff; font-size: 32px; }
+
+  .cf-dots {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 20;
+  }
+  .cf-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s;
+  }
+  .cf-dot.active { background: #f3e9c8; }
+
+  .cf-viewport {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cf-step {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 60px 140px;
+    overflow-y: auto;
+    text-align: center;
+  }
+  .cf-step.active { display: flex; }
+  .cf-step.scrollable {
+    justify-content: flex-start;
+  }
+
+  .cf-step h2 {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 3.5vw, 42px);
+    font-weight: 700;
+    margin: 0 0 40px;
+    max-width: 900px;
+    text-align: center;
+  }
+  .cf-info-icon {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.5em;
+    vertical-align: super;
+    margin-left: 6px;
+  }
+
+  /* Single-select list style (steps 1 & 5) */
+  .cf-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+    width: 100%;
+  }
+  .cf-list-option {
+    background: #fff;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 22px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1b1c1d;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.1s;
+  }
+  .cf-list-option:hover { transform: translateY(-2px); }
+  .cf-list-option.selected { border-color: #f3e9c8; background: #fdf8ec; }
+
+  /* Card grid style (steps 2, 3, 4, 6) */
+  .cf-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    width: 100%;
+  }
+  .cf-card {
+    background: rgba(255,255,255,0.03);
+    border: 1.5px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    min-height: 180px;
+    cursor: pointer;
+    text-align: center;
+    transition: border-color 0.15s, background 0.15s, transform 0.1s;
+  }
+  .cf-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.5); }
+  .cf-card.selected { border-color: #f3e9c8; background: rgba(243,233,200,0.08); }
+  .cf-card i {
+    font-size: 48px;
+    color: rgba(255,255,255,0.85);
+  }
+  .cf-card span {
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Final contact form */
+  .cf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 520px;
+    width: 100%;
+  }
+  .cf-form label {
+    color: rgba(255,255,255,0.6);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .cf-form input,
+  .cf-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1.5px solid rgba(255,255,255,0.35);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    padding: 8px 0;
+    outline: none;
+    resize: none;
+  }
+  .cf-form input:focus,
+  .cf-form textarea:focus { border-color: #f3e9c8; }
+  .cf-form textarea { min-height: 80px; }
+  .cf-form-row { margin-bottom: 6px; }
+  .cf-form input.invalid { border-color: #ff5c5c; }
+  .cf-error {
+    color: #ff5c5c;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: 520px;
+    margin-top: 16px;
+  }
+  .cf-success {
+    color: #4da3ff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    max-width: 900px;
+  }
+
+  /* Continue button + footer hint */
+  .cf-footer {
+    position: fixed;
+    bottom: 50px;
+    right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    z-index: 20;
+  }
+  .cf-continue {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.6);
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 14px 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .cf-continue.enabled {
+    border-color: #f3e9c8;
+    color: #1b1c1d;
+    background: #f3e9c8;
+  }
+  .cf-continue.enabled:hover { background: #fff; }
+  .cf-hint {
+    color: rgba(255,255,255,0.35);
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+  }
+
+  .cf-back {
+    position: fixed;
+    top: 28px;
+    left: 40px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cf-back:hover { color: #fff; }
+
+  @media (max-width: 700px) {
+    .cf-step { padding: 90px 24px 130px; }
+    .cf-counter { right: 24px; }
+    .cf-dots { display: none; }
+    .cf-footer { right: 24px; bottom: 30px; }
+    .cf-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; }
+    .cf-card { min-height: 130px; padding: 18px 12px; gap: 14px; }
+    .cf-card i { font-size: 32px; }
+    .cf-card span { font-size: 14px; }
+  }
+</style>
+
+<a class="cf-back" href="/software-cost-calculator/">
+  <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+  Back
+</a>
+
+<div class="cf-progress" id="cfProgress"></div>
+<div class="cf-counter" id="cfCounter"><span class="current">1</span> / 7</div>
+<div class="cf-dots" id="cfDots">
+  {Array.from({ length: 7 }).map((_, i) => (
+    <button type="button" class="cf-dot" data-step={i} aria-label={`Go to step ${i + 1}`}></button>
+  ))}
+</div>
+
+<div class="cf-viewport">
+
+  <!-- STEP 1 -->
+  <div class="cf-step active" data-step="0">
+    <h2>When are you looking to start?</h2>
+    <div class="cf-list" data-group="start" data-mode="single">
+      <div class="cf-list-option" data-value="ASAP">ASAP</div>
+      <div class="cf-list-option" data-value="In next month">In next month</div>
+      <div class="cf-list-option" data-value="1 to 2 months">1 to 2 months</div>
+      <div class="cf-list-option" data-value="2 to 3 months">2 to 3 months</div>
+      <div class="cf-list-option" data-value="Not sure yet">Not sure yet</div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="cf-step" data-step="1">
+    <h2>Which platforms are you interested in? <i class="fa-regular fa-circle-question cf-info-icon" aria-hidden="true"></i></h2>
+    <div class="cf-grid" data-group="platforms" data-mode="multi">
+      {platforms.map(p => (
+        <div class="cf-card" data-value={p.label}>
+          <i class={`fa-solid ${p.icon}`} aria-hidden="true"></i>
+          <span>{p.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="cf-step" data-step="2">
+    <h2>Select all that apply, then press next. <i class="fa-regular fa-circle-question cf-info-icon" aria-hidden="true"></i></h2>
+    <div class="cf-grid" data-group="project-types" data-mode="multi">
+      {projectTypes.map(p => (
+        <div class="cf-card" data-value={p.label}>
+          <i class={`fa-solid ${p.icon}`} aria-hidden="true"></i>
+          <span>{p.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="cf-step" data-step="3">
+    <h2>Select all that apply, then press next. <i class="fa-regular fa-circle-question cf-info-icon" aria-hidden="true"></i></h2>
+    <div class="cf-grid" data-group="tech-stack" data-mode="multi">
+      {techStack.map(t => (
+        <div class="cf-card" data-value={t.label}>
+          <i class={`fa-${t.brand ? 'brands' : 'solid'} ${t.icon}`} aria-hidden="true"></i>
+          <span>{t.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="cf-step" data-step="4">
+    <h2>Do you require a user interface design?</h2>
+    <div class="cf-list" data-group="ui-design" data-mode="single">
+      <div class="cf-list-option" data-value="Yes">Yes</div>
+      <div class="cf-list-option" data-value="No, I already have mockups">No, I already have mockups</div>
+      <div class="cf-list-option" data-value="Not applicable">Not applicable</div>
+      <div class="cf-list-option" data-value="Not sure yet">Not sure yet</div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="cf-step" data-step="5">
+    <h2>Rank your priorities. <i class="fa-regular fa-circle-question cf-info-icon" aria-hidden="true"></i></h2>
+    <div class="cf-grid" data-group="priorities" data-mode="multi">
+      {priorities.map(p => (
+        <div class="cf-card" data-value={p.label}>
+          <i class={`fa-solid ${p.icon}`} aria-hidden="true"></i>
+          <span>{p.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- STEP 7: CONTACT FORM -->
+  <div class="cf-step" data-step="6">
+    <h2 id="cfStep7Heading">Our system will now calculate your project costs.<br />How can we get in touch to provide your estimate?</h2>
+    <form class="cf-form" id="cfContactForm" novalidate>
+      <div class="cf-form-row">
+        <label for="cfName">Name</label>
+        <input type="text" id="cfName" name="name" placeholder="name" required />
+      </div>
+      <div class="cf-form-row">
+        <label for="cfCompany">Company</label>
+        <input type="text" id="cfCompany" name="company" placeholder="company" />
+      </div>
+      <div class="cf-form-row">
+        <label for="cfEmail">Email</label>
+        <input type="email" id="cfEmail" name="email" placeholder="email" required />
+      </div>
+      <div class="cf-form-row">
+        <label for="cfPhone">Phone</label>
+        <input type="tel" id="cfPhone" name="phone" placeholder="phone" />
+      </div>
+      <div class="cf-form-row">
+        <label for="cfDesc">Briefly Describe Your Project</label>
+        <textarea id="cfDesc" name="description" placeholder="Tell us about your project..."></textarea>
+      </div>
+    </form>
+    <div class="cf-error" id="cfError" style="display:none;">Please fill out your name and email before submitting.</div>
+    <div class="cf-success" id="cfSuccess" style="display:none;">Thanks! Our team will review your answers and email your custom estimate shortly.</div>
+  </div>
+
+</div>
+
+<div class="cf-footer">
+  <button type="button" class="cf-continue" id="cfContinue">Continue</button>
+  <span class="cf-hint" id="cfHint">or press ENTER</span>
+</div>
+
+<script is:inline define:vars={{ serviceId: 'service_f4tf0yn', leadTemplate: 'template_c6hi8ir' }}>
+(function () {
+  var steps = Array.from(document.querySelectorAll('.cf-step'));
+  var dots = Array.from(document.querySelectorAll('.cf-dot'));
+  var total = steps.length;
+  var current = 0;
+  var answers = {};
+
+  var progress = document.getElementById('cfProgress');
+  var counter = document.getElementById('cfCounter');
+  var continueBtn = document.getElementById('cfContinue');
+  var hint = document.getElementById('cfHint');
+
+  function getGroupValue(step) {
+    var container = step.querySelector('[data-group]');
+    if (!container) return null;
+    var group = container.getAttribute('data-group');
+    return answers[group] || (container.getAttribute('data-mode') === 'multi' ? [] : null);
+  }
+
+  function isStepValid(index) {
+    var step = steps[index];
+    var container = step.querySelector('[data-group]');
+    if (container) {
+      var val = getGroupValue(step);
+      if (container.getAttribute('data-mode') === 'multi') return val && val.length > 0;
+      return !!val;
+    }
+    if (step.querySelector('#cfContactForm')) {
+      var name = document.getElementById('cfName').value.trim();
+      var email = document.getElementById('cfEmail').value.trim();
+      return !!name && !!email;
+    }
+    return true;
+  }
+
+  function updateContinue() {
+    var valid = isStepValid(current);
+    continueBtn.classList.toggle('enabled', valid);
+    if (current === total - 1) {
+      continueBtn.textContent = 'Send';
+      hint.style.display = 'none';
+    } else {
+      continueBtn.textContent = 'Continue';
+      hint.style.display = '';
+    }
+  }
+
+  function showStep(index) {
+    steps.forEach(function (s, i) { s.classList.toggle('active', i === index); });
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === index); });
+    progress.style.width = (((index + 1) / total) * 100) + '%';
+    counter.innerHTML = '<span class="current">' + (index + 1) + '</span> / ' + total;
+    current = index;
+    var active = steps[index];
+    active.classList.remove('scrollable');
+    active.scrollTop = 0;
+    if (active.scrollHeight > active.clientHeight) {
+      active.classList.add('scrollable');
+    }
+    updateContinue();
+  }
+
+  function goNext() {
+    if (!isStepValid(current)) {
+      if (current === total - 1) showContactErrors();
+      return;
+    }
+    if (current === total - 1) {
+      submitForm();
+      return;
+    }
+    if (current < total - 1) showStep(current + 1);
+  }
+
+  function showContactErrors() {
+    var nameInput = document.getElementById('cfName');
+    var emailInput = document.getElementById('cfEmail');
+    var errorBox = document.getElementById('cfError');
+    nameInput.classList.toggle('invalid', !nameInput.value.trim());
+    emailInput.classList.toggle('invalid', !emailInput.value.trim());
+    errorBox.style.display = 'block';
+  }
+
+  function goTo(index) {
+    if (index <= current || isStepValid(current)) showStep(index);
+  }
+
+  // Single-select lists
+  document.querySelectorAll('[data-mode="single"]').forEach(function (container) {
+    var group = container.getAttribute('data-group');
+    container.querySelectorAll('.cf-list-option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        container.querySelectorAll('.cf-list-option').forEach(function (o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        answers[group] = opt.getAttribute('data-value');
+        updateContinue();
+        setTimeout(goNext, 250);
+      });
+    });
+  });
+
+  // Multi-select grids
+  document.querySelectorAll('[data-mode="multi"]').forEach(function (container) {
+    var group = container.getAttribute('data-group');
+    answers[group] = answers[group] || [];
+    container.querySelectorAll('.cf-card').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var value = card.getAttribute('data-value');
+        var list = answers[group];
+        var idx = list.indexOf(value);
+        if (idx === -1) {
+          list.push(value);
+          card.classList.add('selected');
+        } else {
+          list.splice(idx, 1);
+          card.classList.remove('selected');
+        }
+        updateContinue();
+      });
+    });
+  });
+
+  // Contact form field validation
+  ['cfName', 'cfEmail'].forEach(function (id) {
+    var field = document.getElementById(id);
+    field.addEventListener('input', function () {
+      updateContinue();
+      field.classList.remove('invalid');
+      if (document.getElementById('cfName').value.trim() && document.getElementById('cfEmail').value.trim()) {
+        document.getElementById('cfError').style.display = 'none';
+      }
+    });
+  });
+
+  function submitForm() {
+    var data = {
+      name: document.getElementById('cfName').value.trim(),
+      company: document.getElementById('cfCompany').value.trim(),
+      email: document.getElementById('cfEmail').value.trim(),
+      phone: document.getElementById('cfPhone').value.trim(),
+      description: document.getElementById('cfDesc').value.trim(),
+      answers: answers,
+    };
+    var summary = Object.keys(answers).map(function (k) {
+      var v = answers[k];
+      return k + ': ' + (Array.isArray(v) ? v.join(', ') : v);
+    }).join('\n');
+
+    if (typeof emailjs !== 'undefined') {
+      emailjs.send(serviceId, leadTemplate, {
+        user_name: data.name,
+        user_company: data.company,
+        user_email: data.email,
+        user_phone: data.phone,
+        project_description: data.description,
+        quiz_answers: summary,
+      }).then(function (r) { console.log('Lead sent', r.status); }).catch(function (e) { console.log('Lead failed', e); });
+    }
+
+    document.getElementById('cfContactForm').style.display = 'none';
+    document.getElementById('cfStep7Heading').style.display = 'none';
+    document.getElementById('cfSuccess').style.display = 'block';
+    continueBtn.style.display = 'none';
+    hint.style.display = 'none';
+    steps[current].classList.remove('scrollable');
+    steps[current].scrollTop = 0;
+  }
+
+  continueBtn.addEventListener('click', goNext);
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () { goTo(i); });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var active = document.activeElement;
+      if (active && active.tagName === 'TEXTAREA') return;
+      e.preventDefault();
+      goNext();
+    }
+  });
+
+  window.addEventListener('resize', function () { showStep(current); });
+
+  showStep(0);
+})();
+</script>
+</Layout>

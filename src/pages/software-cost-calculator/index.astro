@@ -272,10 +272,10 @@ const faqs = [
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -110px;
+      bottom: -113px;
       height: 220px;
       background: #fff;
-      clip-path: ellipse(60% 100% at 50% 0%);
+      clip-path: ellipse(100% 100% at 50% 0%);
       z-index: -1;
     }
     .calc-section-curve {
@@ -424,8 +424,8 @@ const faqs = [
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -120px;
-      height: 120px;
+      bottom: -125px;
+      height: 125px;
       background: #eef0f2;
       z-index: -2;
     }
@@ -627,7 +627,7 @@ const faqs = [
       width: 8px; height: 8px; min-width: 8px;
       border: 1.5px solid #005cb9;
       border-radius: 50%;
-      margin-top: 4px;
+      margin-top: 11px;
     }
 
     /* ══ FAQ ══ */
@@ -727,8 +727,6 @@ const faqs = [
       width: 30px;
       height: 30px;
       min-width: 30px;
-      border: 1.5px solid currentColor;
-      border-radius: 50%;
       color: inherit;
     }
 
@@ -1014,7 +1012,7 @@ const faqs = [
             wrap.style.boxShadow = '0 2px 12px rgba(0,0,0,0.12)';
             if (headerEl) headerEl.style.cssText = 'background:#ffffff!important;box-shadow:none!important;';
             if (topBar) topBar.style.cssText = 'display:block!important;';
-            wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { el.style.color = '#222222'; });
+            wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { if (!el.closest('.nav-dropdown-menu')) el.style.color = '#222222'; });
             var logo = wrap.querySelector('.logo img');
             if (logo) logo.style.filter = 'none';
           } else {
@@ -1023,7 +1021,7 @@ const faqs = [
             wrap.style.boxShadow = 'none';
             if (headerEl) headerEl.style.cssText = 'background:transparent!important;box-shadow:none!important;';
             if (topBar) topBar.style.cssText = 'display:none!important;';
-            wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { el.style.color = '#ffffff'; });
+            wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { if (!el.closest('.nav-dropdown-menu')) el.style.color = '#ffffff'; });
             var logo = wrap.querySelector('.logo img');
             if (logo) logo.style.filter = 'brightness(0) invert(1)';
           }

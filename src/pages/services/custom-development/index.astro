@@ -25,8 +25,10 @@ import Layout from '../../../layouts/Layout.astro';
 ═══════════════════════════════════════════ -->
 <section class="cd-logos">
   <div class="cd-logos__inner">
-    <p>Companies that trust our experienced team</p>
-    <img src="https://demskigroup.com/wp-content/uploads/2024/06/logoswhite-1024x366.png" alt="companies we work with" />
+    <div class="brands-label">Companies that trust our<br/>experienced team.</div>
+    <div class="brands-logos">
+      <img src="https://demskigroup.com/wp-content/uploads/2024/06/logoswhite-1024x366.png" alt="companies we work with" width="1024" height="366" loading="lazy" decoding="async" />
+    </div>
   </div>
 </section>
 
@@ -135,11 +137,11 @@ import Layout from '../../../layouts/Layout.astro';
     <h2>Key Things to Know</h2>
     <div class="cd-tabs__wrap">
       <div class="cd-tabs__nav">
-        <button class="tab-btn active" data-tab="1">Tailored Solutions</button>
-        <button class="tab-btn" data-tab="2">Agile Development</button>
-        <button class="tab-btn" data-tab="3">Cross-Industry Expertise</button>
-        <button class="tab-btn" data-tab="4">State-of-the-Art Technologies</button>
-        <button class="tab-btn" data-tab="5">End-to-End Services</button>
+        <button class="tab-btn active" data-tab="1">Tailored Solutions<i class="fas fa-chevron-right tab-arrow"></i></button>
+        <button class="tab-btn" data-tab="2">Agile Development<i class="fas fa-chevron-right tab-arrow"></i></button>
+        <button class="tab-btn" data-tab="3">Cross-Industry Expertise<i class="fas fa-chevron-right tab-arrow"></i></button>
+        <button class="tab-btn" data-tab="4">State-of-the-Art Technologies<i class="fas fa-chevron-right tab-arrow"></i></button>
+        <button class="tab-btn" data-tab="5">End-to-End Services<i class="fas fa-chevron-right tab-arrow"></i></button>
       </div>
       <div class="cd-tabs__content">
         <div class="tab-panel active" data-panel="1">
@@ -215,8 +217,8 @@ import Layout from '../../../layouts/Layout.astro';
             <p class="why-desc">We are dedicated to innovation, continuously exploring new technologies and methodologies to provide the best solutions.</p>
           </div>
         </div>
-        <a href="/about-us/" class="btn-outline-arrow">
-          <i class="fas fa-arrow-right"></i> Who We Are
+        <a href="/about/" class="btn-outline-arrow">
+          <i class="fas fa-arrow-left"></i> Who We Are
         </a>
       </div>
     </div>
@@ -226,62 +228,132 @@ import Layout from '../../../layouts/Layout.astro';
 <!-- ═══════════════════════════════════════════
      8. PROCESS TIMELINE
 ═══════════════════════════════════════════ -->
-<section class="cd-process">
-  <div class="cd-process__inner">
-    <div class="cd-process__header">
+<section class="hp-process-section" id="cd-process-section">
+  <div class="hp-process-inner">
+    <div class="hp-process-heading">
       <h2>From Vision to Victory: Our Proven Process</h2>
       <p>Discover how we turn your ideas into reality with our streamlined, client-focused development process. From initial consultation to final deployment, our expert team ensures every step is meticulously planned and executed to deliver outstanding results.</p>
-      <a href="/contact-us/" class="btn-orange">Get Started Today</a>
     </div>
-    <div class="cd-process__timeline">
-      <div class="timeline-item">
-        <div class="tl-label">Step 1</div>
-        <div class="tl-line"></div>
-        <div class="tl-icon"><i class="fas fa-phone"></i></div>
-        <div class="tl-content">
-          <span class="tl-title">Have a Conversation</span>
-          <p>We want to hear your ideas, learn your company's workflow, and offer our software expertise to find a solution to your frustrations while facilitating your growth.</p>
+    <div class="hp-process-body">
+      <div class="hp-process-steps" id="cd-process-steps">
+        <div class="hp-process-line-track">
+          <div class="hp-process-line-fill" id="cd-process-line-fill"></div>
+        </div>
+
+        <div class="hp-process-step" data-step="0">
+          <div class="hp-step-dot-wrap">
+            <div class="hp-step-dot"><i class="fa-solid fa-phone"></i></div>
+          </div>
+          <div class="hp-step-content">
+            <div class="hp-step-label">Step 1</div>
+            <div class="hp-step-card">
+              <h4>Have a Conversation</h4>
+              <p>We want to hear your ideas, learn your company's workflow, and offer our software expertise to find a solution to your frustrations while facilitating your growth.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hp-process-step" data-step="1">
+          <div class="hp-step-dot-wrap">
+            <div class="hp-step-dot"><i class="fa-solid fa-file-lines"></i></div>
+          </div>
+          <div class="hp-step-content">
+            <div class="hp-step-label">Step 2</div>
+            <div class="hp-step-card">
+              <h4>Propose Solution</h4>
+              <p>Post conversation, we will send you a custom proposal with recommended technologies, a rough timeline, and a cost estimate to define the project specifications.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hp-process-step" data-step="2">
+          <div class="hp-step-dot-wrap">
+            <div class="hp-step-dot"><i class="fa-solid fa-pen-ruler"></i></div>
+          </div>
+          <div class="hp-step-content">
+            <div class="hp-step-label">Step 3</div>
+            <div class="hp-step-card">
+              <h4>Design</h4>
+              <p>Create low-fidelity (lo-fi) designs to outline basic structure and functionality, develop high-fidelity (hi-fi) designs for detailed visual representation, and build interactive prototypes for user testing and feedback.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hp-process-step" data-step="3">
+          <div class="hp-step-dot-wrap">
+            <div class="hp-step-dot"><i class="fa-solid fa-code"></i></div>
+          </div>
+          <div class="hp-step-content">
+            <div class="hp-step-label">Step 4</div>
+            <div class="hp-step-card">
+              <h4>Develop, Test, and Deploy</h4>
+              <p>Utilizing agile methodologies, involving iterative development cycles, continuous integration and testing, regular feedback sessions, and seamless deployment practices to ensure the software is robust, scalable, and aligned with your expectations.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hp-process-step" data-step="4">
+          <div class="hp-step-dot-wrap">
+            <div class="hp-step-dot"><i class="fa-solid fa-rocket"></i></div>
+          </div>
+          <div class="hp-step-content">
+            <div class="hp-step-label">Step 5</div>
+            <div class="hp-step-card">
+              <h4>Post-Launch</h4>
+              <p>We stand by you and our work. After project completion, we warranty our work to make sure you are satisfied and will remain available for future maintenance &amp; optimizations.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="tl-label">Step 2</div>
-        <div class="tl-line"></div>
-        <div class="tl-icon"><i class="fas fa-file-alt"></i></div>
-        <div class="tl-content">
-          <span class="tl-title">Propose Solution</span>
-          <p>Post conversation, we will send you a custom proposal with recommended technologies, a rough timeline, and a cost estimate to define the project specifications.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-label">Step 3</div>
-        <div class="tl-line"></div>
-        <div class="tl-icon"><i class="fas fa-images"></i></div>
-        <div class="tl-content">
-          <span class="tl-title">Design</span>
-          <p>Create low-fidelity (lo-fi) designs to outline basic structure and functionality, develop high-fidelity (hi-fi) designs for detailed visual representation, and build interactive prototypes for user testing and feedback.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-label">Step 4</div>
-        <div class="tl-line"></div>
-        <div class="tl-icon"><i class="fas fa-code"></i></div>
-        <div class="tl-content">
-          <span class="tl-title">Develop, Test, and Deploy</span>
-          <p>Utilizing agile methodologies, involving iterative development cycles, continuous integration and testing, regular feedback sessions, and seamless deployment practices to ensure the software is robust, scalable, and aligned with your expectations.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-label">Step 5</div>
-        <div class="tl-line last"></div>
-        <div class="tl-icon"><i class="fas fa-rocket"></i></div>
-        <div class="tl-content">
-          <span class="tl-title">Post-Launch</span>
-          <p>We stand by you and our work. After project completion, we warranty our work to make sure you are satisfied and will remain available for future maintenance &amp; optimizations.</p>
+
+      <div class="hp-process-right">
+        <div class="hp-process-right-actions">
+          <span class="hp-btn-back-arrow" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em">
+              <path d="M23 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </span>
+          <a href="/contact-us/" class="btn-orange">Get Started Today</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+(function () {
+  const stepsContainer = document.getElementById('cd-process-steps');
+  const lineFill = document.getElementById('cd-process-line-fill');
+  const steps = Array.from(document.querySelectorAll('#cd-process-steps .hp-process-step'));
+  if (!stepsContainer || !lineFill || !steps.length) return;
+
+  function update() {
+    const containerRect = stepsContainer.getBoundingClientRect();
+    const containerTop = containerRect.top;
+    const containerHeight = containerRect.height;
+    const windowH = window.innerHeight;
+
+    const scrolled = Math.max(0, Math.min(1,
+      (windowH * 0.6 - containerTop) / containerHeight
+    ));
+
+    lineFill.style.height = (scrolled * 100) + '%';
+
+    steps.forEach((step) => {
+      const rect = step.getBoundingClientRect();
+      const mid = rect.top + rect.height / 2;
+      if (mid < windowH * 0.65) {
+        step.classList.add('active');
+      } else {
+        step.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 
 <!-- ═══════════════════════════════════════════
      9. FAQ
@@ -337,68 +409,98 @@ import Layout from '../../../layouts/Layout.astro';
 <!-- ═══════════════════════════════════════════
      10. CONTACT + TESTIMONIALS
 ═══════════════════════════════════════════ -->
-<section class="cd-contact">
-  <div class="cd-contact__inner">
-    <div class="cd-contact__form">
+<section class="svc-contact">
+  <div class="svc-contact-inner">
+
+    <!-- LEFT: Form -->
+    <div class="svc-contact-left">
       <h2>Let's Talk About Your Business Goals</h2>
-      <form name="contact-custom-dev" method="post" action="/contact-us/">
+      <form class="contact-form" action="/contact-us/" method="get" novalidate>
         <div class="form-row">
           <input type="text" name="name" placeholder="Name" />
           <input type="email" name="email" placeholder="Email" required />
         </div>
-        <input type="tel" name="phone" placeholder="Phone" required />
-        <input type="text" name="company" placeholder="Company" required />
-        <input type="text" name="website" placeholder="Website" required />
-        <textarea name="message" rows="6" placeholder="Describe your project"></textarea>
-        <button type="submit" class="btn-orange">Contact Us</button>
+        <input type="tel" name="phone" placeholder="Phone" />
+        <input type="text" name="company" placeholder="Company" />
+        <input type="text" name="website" placeholder="Website" />
+        <textarea name="message" placeholder="Describe your project"></textarea>
+        <button type="submit" class="btn-contact">Contact Us</button>
       </form>
     </div>
-    <div class="cd-contact__testimonials">
-      <p class="testimonial-label">What our customers say</p>
-      <div class="testimonial-slider">
-        <div class="testimonial-card active">
-          <div class="t-quote"><i class="fas fa-quote-left"></i></div>
-          <p>The Demski Group is great to work with! They inherited a mess with our platform and have been able to fix the bugs and make the platform more user friendly. They are also very professional and timely as well as a pleasure to work with! We have worked with Andrew Demski for all of our IT needs.</p>
-          <div class="t-footer">
-            <div class="t-author">
-              <p class="t-name">Delaine Mast</p>
-              <p class="t-role">CEO</p>
+
+    <!-- RIGHT: Testimonial card -->
+    <div class="svc-contact-right">
+      <p class="svc-contact-right-label">What our customers say</p>
+      <div class="tc-carousel" id="customDevTcCarousel">
+        <div class="tc-slide active" data-tc-slide>
+          <div class="tc-top">
+            <div class="tc-logo"></div>
+          </div>
+          <p class="tc-text">The Demski Group is great to work with! They inherited a mess with our platform and have been able to fix the bugs and make the platform more user friendly. They are also very professional and timely as well as a pleasure to work with! We have worked with Andrew Demski for all of our IT needs.</p>
+          <div class="tc-footer">
+            <div>
+              <div class="tc-author">Delaine Mast</div>
+              <div class="tc-role">CEO</div>
             </div>
-            <a href="/our-clients/impact-team-tennis/" class="t-link">→ Read case study</a>
+            <a class="tc-link" href="/our-clients/impact-team-tennis/">Read case study <span class="svc-arrow"></span></a>
           </div>
         </div>
-        <div class="testimonial-card">
-          <div class="t-quote"><i class="fas fa-quote-left"></i></div>
-          <p>We spoke to a few different companies as we set out to find someone to create a website/database application to augment our desktop software. We chose The Demski Group in part because we found them very easy to talk to in our interview. That first impression stuck as we have a great relationship with them now.</p>
-          <div class="t-footer">
-            <div class="t-author">
-              <p class="t-name">Mickey Rowe</p>
-              <p class="t-role">Manager</p>
+        <div class="tc-slide" data-tc-slide>
+          <div class="tc-top">
+            <div class="tc-logo"></div>
+          </div>
+          <p class="tc-text">We spoke to a few different companies as we set out to find someone to create a website/database application to augment our desktop software. We chose The Demski Group in part because we found them very easy to talk to in our interview. That first impression stuck as we have a great relationship with them now.</p>
+          <div class="tc-footer">
+            <div>
+              <div class="tc-author">Mickey Rowe</div>
+              <div class="tc-role">Manager</div>
             </div>
-            <a href="/our-clients/biopac/" class="t-link">→ Read case study</a>
+            <a class="tc-link" href="/our-clients/biopac/">Read case study <span class="svc-arrow"></span></a>
           </div>
         </div>
-        <div class="testimonial-card">
-          <div class="t-quote"><i class="fas fa-quote-left"></i></div>
-          <p>Code quality was very good and done in a fast, efficient manner. We are pleased with the excellent job from The Demski Group. The team was able to provide high-quality services throughout the project. They produced the deliverables in a timely manner and within budget.</p>
-          <div class="t-footer">
-            <div class="t-author">
-              <p class="t-name">Thariq Kara</p>
-              <p class="t-role">CEO</p>
-            </div>
-            <a href="/our-clients/nu-borders/" class="t-link">→ Read case study</a>
+        <div class="tc-slide" data-tc-slide>
+          <div class="tc-top">
+            <div class="tc-logo"></div>
           </div>
-        </div>
-        <div class="t-nav">
-          <button class="t-prev">‹</button>
-          <span class="t-count"><span id="tCurrent">1</span> / 3</span>
-          <button class="t-next">›</button>
+          <p class="tc-text">Code quality was very good and done in a fast, efficient manner. We are pleased with the excellent job from The Demski Group. The team was able to provide high-quality services throughout the project. They produced the deliverables in a timely manner and within budget.</p>
+          <div class="tc-footer">
+            <div>
+              <div class="tc-author">Thariq Kara</div>
+              <div class="tc-role">CEO</div>
+            </div>
+            <a class="tc-link" href="/our-clients/nu-borders/">Read case study <span class="svc-arrow"></span></a>
+          </div>
         </div>
       </div>
-      <img class="testimonial-photo" src="https://demskigroup.com/wp-content/uploads/2025/05/two-young-intercultural-colleagues-discussing-code-2025-03-16-06-53-49-utc-1024x683.jpg" alt="colleagues discussing code" />
+      <div class="tc-fraction-bar"><span id="customDevTcFraction">1 / 3</span></div>
+      <img
+        class="contact-right-img"
+        src="/solutions/sales-lead-tracking-tools/two-young-intercultural-colleagues-discussing-code-2025-03-16-06-53-49-utc-1024x683.jpg"
+        alt="Developers discussing code"
+        width="1024" height="683"
+        loading="lazy"
+      />
     </div>
+
   </div>
 </section>
+
+<script is:inline>
+/* Testimonial carousel */
+(function () {
+  var slides = Array.from(document.querySelectorAll('#customDevTcCarousel [data-tc-slide]'));
+  var fracEl = document.getElementById('customDevTcFraction');
+  if (!slides.length) return;
+  var cur = 0;
+  function showSlide(n) {
+    slides[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    if (fracEl) fracEl.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+  setInterval(function () { showSlide(cur + 1); }, 4000);
+})();
+</script>
 
 </Layout>
 
@@ -432,7 +534,7 @@ import Layout from '../../../layouts/Layout.astro';
 
   /* ─── 1. HERO ─── */
   .cd-hero {
-    background: #f0f0f0;
+    background: #fff;
     padding: 80px 40px 80px;
   }
   .cd-hero__inner {
@@ -442,51 +544,82 @@ import Layout from '../../../layouts/Layout.astro';
     align-items: center;
     gap: 60px;
   }
-  .cd-hero__text { flex: 1; }
+  .cd-hero__text { flex: 1.1; }
   .cd-hero__text h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(32px, 4vw, 50px);
+    font-size: clamp(44px, 4vw, 62px);
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 20px;
     line-height: 1.15;
   }
   .cd-hero__text p {
-    font-size: 15px;
+    font-size: 19px;
     color: var(--ink);
     line-height: 1.75;
     margin: 0 0 30px;
   }
-  .cd-hero__image { flex: 1; max-width: 500px; }
+  .cd-hero__text .btn-orange {
+    font-size: 19px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cd-hero__text .btn-orange:hover {
+    background: #fff;
+    color: #000;
+  }
+  .cd-hero__image { flex: 1.3; max-width: 624px; position: relative; left: 85px; }
   .cd-hero__image img {
     width: 100%;
-    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 24px;
     display: block;
+    margin-bottom: -150px;
+    position: relative;
+    top: 40px;
+    z-index: 2;
     box-shadow: 0 10px 40px rgba(0,0,0,0.12);
   }
 
   /* ─── 2. LOGOS ─── */
   .cd-logos {
-    background: var(--navy);
-    padding: 40px 40px;
+    background: #2a2a2a;
+    padding: 0;
   }
   .cd-logos__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  .cd-logos__inner p {
-    color: rgba(255,255,255,0.7);
-    font-size: 14px;
+    max-width: 100%;
     margin: 0;
+    background: #2a2a2a;
+    border-radius: 0;
+    display: flex;
+    overflow: hidden;
   }
-  .cd-logos__inner img {
-    max-width: 800px;
+  .cd-logos .brands-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    min-width: 250px;
+    padding: 36px 36px 36px 86px;
+    border-right: 3px solid #ffffff;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.65;
+  }
+  .cd-logos .brands-logos {
+    flex: 1;
+    padding: 24px 44px 24px 0;
+    margin-left: -700px;
+    display: flex;
+    align-items: center;
+  }
+  .cd-logos .brands-logos img {
     width: 100%;
-    opacity: 0.9;
+    max-height: 120px;
+    object-fit: contain;
   }
 
   /* ─── 3. OUR SERVICES ─── */
@@ -496,7 +629,7 @@ import Layout from '../../../layouts/Layout.astro';
   }
   .cd-services h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(26px, 3vw, 38px);
+    font-size: clamp(36px, 4.5vw, 56px);
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 50px;
@@ -508,8 +641,8 @@ import Layout from '../../../layouts/Layout.astro';
   }
   .service-hr {
     border: none;
-    border-top: 1px solid #e0e0e0;
-    margin: 0 0 20px;
+    border-top: 2px solid #b0b0b0;
+    margin: 0 0 32px;
   }
   .service-icon-row {
     display: flex;
@@ -519,19 +652,19 @@ import Layout from '../../../layouts/Layout.astro';
   }
   .service-icon-row i {
     color: var(--blue);
-    font-size: 22px;
+    font-size: 26px;
     flex-shrink: 0;
     margin-top: 2px;
   }
   .service-title {
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 21px;
     color: var(--ink);
     margin: 0 0 6px;
   }
   .service-desc {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
     line-height: 1.7;
     margin: 0;
@@ -539,23 +672,26 @@ import Layout from '../../../layouts/Layout.astro';
 
   /* ─── 4. CASE STUDY ─── */
   .cd-casestudy {
-    background: #f8f8f8;
-    padding: 60px 40px;
+    background: #fff;
+    padding: 80px 40px;
   }
   .cd-casestudy__card {
     background: #fff;
-    border-radius: 12px;
+    border-radius: 24px;
     display: flex;
     gap: 40px;
+    padding: 74px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   }
   .cd-casestudy__left {
     flex: 1;
-    padding: 40px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+    justify-content: center;
   }
   .case-label {
     font-size: 12px;
@@ -569,12 +705,12 @@ import Layout from '../../../layouts/Layout.astro';
     height: auto;
   }
   .cd-casestudy__left p {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.75;
-    color: var(--ink);
+    color: #000;
     margin: 0;
   }
-  .cd-casestudy__left a { color: var(--blue); }
+  .cd-casestudy__left p a { color: var(--blue); }
   .case-tags {
     display: flex;
     flex-wrap: wrap;
@@ -583,16 +719,17 @@ import Layout from '../../../layouts/Layout.astro';
     margin-top: 8px;
   }
   .tag-btn {
-    background: var(--blue);
-    color: #fff;
-    padding: 6px 16px;
-    border-radius: 4px;
-    font-size: 13px;
+    background: transparent;
+    color: var(--ink);
+    padding: 8px 20px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
   }
-  .tag-btn:hover { background: #004a99; }
+  .tag-btn:hover { background: var(--ink); color: #fff; }
   .tag-btn-arrow {
     color: var(--ink);
     font-size: 14px;
@@ -601,15 +738,24 @@ import Layout from '../../../layouts/Layout.astro';
     margin-left: auto;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    transition: background 0.2s, color 0.2s;
   }
-  .tag-btn-arrow:hover { color: var(--blue); }
-  .cd-casestudy__right { flex: 0 0 340px; }
+  .tag-btn-arrow:hover { background: var(--ink); color: #fff; }
+  .cd-casestudy__right {
+    flex: 0 0 340px;
+    align-self: stretch;
+    margin: -74px -74px -74px 0;
+  }
   .cd-casestudy__right img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 0 24px 24px 0;
   }
 
   /* ─── 5. TABS ─── */
@@ -619,52 +765,57 @@ import Layout from '../../../layouts/Layout.astro';
   }
   .cd-tabs h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(26px, 3vw, 38px);
+    font-size: clamp(36px, 4.5vw, 56px);
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 40px;
   }
   .cd-tabs__wrap {
     display: flex;
-    gap: 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    overflow: hidden;
+    gap: 60px;
   }
   .cd-tabs__nav {
-    flex: 0 0 240px;
-    background: #f8f8f8;
+    flex: 0 0 280px;
     display: flex;
     flex-direction: column;
   }
   .tab-btn {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 18px 20px;
+    border-bottom: 1px solid #000;
+    padding: 24px 24px 24px 0;
     text-align: left;
     font-family: 'Outfit', sans-serif;
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     color: var(--ink);
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
   }
   .tab-btn:last-child { border-bottom: none; }
-  .tab-btn:hover { background: #efefef; }
+  .tab-btn:hover { color: var(--blue); }
   .tab-btn.active {
-    background: var(--blue);
-    color: #fff;
-    font-weight: 600;
+    color: var(--blue);
+    font-weight: 700;
   }
+  .tab-btn .tab-arrow {
+    display: none;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .tab-btn.active .tab-arrow { display: inline-block; }
   .cd-tabs__content {
     flex: 1;
-    padding: 30px 35px;
+    padding: 0;
   }
   .tab-panel { display: none; }
   .tab-panel.active { display: block; }
   .tab-panel p {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.85;
     color: var(--ink);
     margin: 0 0 16px;
@@ -677,9 +828,11 @@ import Layout from '../../../layouts/Layout.astro';
     align-items: center;
     gap: 0;
     overflow: hidden;
+    border-radius: 24px;
+    margin: 0 100px;
   }
-  .cd-cta-banner__img { flex: 0 0 40%; max-height: 300px; overflow: hidden; }
-  .cd-cta-banner__img img { width: 100%; height: 300px; object-fit: cover; display: block; opacity: 0.7; }
+  .cd-cta-banner__img { flex: 0 0 35%; max-height: 220px; overflow: hidden; }
+  .cd-cta-banner__img img { width: 100%; height: 220px; object-fit: cover; object-position: center; display: block; opacity: 0.7; }
   .cd-cta-banner__text {
     flex: 1;
     padding: 40px;
@@ -689,6 +842,14 @@ import Layout from '../../../layouts/Layout.astro';
     line-height: 1.6;
   }
   .cd-cta-banner__btn { padding: 40px; flex-shrink: 0; }
+  .cd-cta-banner__btn .btn-orange {
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .cd-cta-banner__btn .btn-orange:hover {
+    background: #fff;
+    color: #000;
+  }
 
   /* ─── 7. WHY CHOOSE US ─── */
   .cd-why {
@@ -705,151 +866,216 @@ import Layout from '../../../layouts/Layout.astro';
   .cd-why__left { flex: 1; }
   .cd-why__left h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(26px, 3vw, 36px);
+    font-size: clamp(36px, 4.5vw, 56px);
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 24px;
   }
-  .cd-why__left img { width: 100%; border-radius: 8px; }
+  .cd-why__left img {
+    width: 50vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw + 290px);
+    height: 360px;
+    object-fit: cover;
+    border-radius: 24px;
+    display: block;
+  }
   .cd-why__right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 20px;
   }
   .why-item { display: flex; gap: 16px; align-items: flex-start; }
   .why-icon {
-    width: 46px;
-    height: 46px;
-    background: var(--blue);
-    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #fff;
-    font-size: 18px;
+    color: var(--blue);
+    font-size: 24px;
   }
   .why-title {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 19px;
     color: var(--ink);
     margin: 0 0 6px;
   }
-  .why-desc { font-size: 14px; color: #555; line-height: 1.7; margin: 0; }
+  .why-desc { font-size: 16px; color: #555; line-height: 1.7; margin: 0; }
   .btn-outline-arrow {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: transparent;
-    border: 2px solid var(--blue);
-    color: var(--blue);
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
     font-size: 14px;
-    padding: 10px 22px;
-    border-radius: 4px;
+    padding: 10px 24px;
+    border-radius: 999px;
     text-decoration: none;
     margin-top: 10px;
     align-self: flex-end;
     transition: background 0.2s, color 0.2s;
   }
-  .btn-outline-arrow:hover { background: var(--blue); color: #fff; }
+  .btn-outline-arrow:hover { background: var(--ink); color: #fff; }
 
   /* ─── 8. PROCESS ─── */
-  .cd-process {
-    background: var(--navy);
-    padding: 80px 40px 90px;
+  .hp-process-section {
+    background: #fff;
+    padding: 100px 90px;
     position: relative;
+    overflow: hidden;
   }
-  .cd-process__inner {
-    max-width: 1200px;
+  .hp-process-inner {
+    max-width: 1140px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hp-process-heading {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+  .hp-process-heading h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 0 0 16px;
+  }
+  .hp-process-heading p {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.7;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .hp-process-body {
     display: flex;
-    gap: 80px;
+    gap: 60px;
     align-items: flex-start;
   }
-  .cd-process__header {
-    flex: 0 0 320px;
-    position: sticky;
-    top: 100px;
-  }
-  .cd-process__header h2 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(22px, 2.5vw, 32px);
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 20px;
-  }
-  .cd-process__header p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.75;
-    margin: 0 0 30px;
-  }
-  .cd-process__timeline { flex: 1; position: relative; }
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 60px 40px 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 0 16px;
-    margin-bottom: 0;
-  }
-  .tl-label {
-    grid-column: 1;
-    grid-row: 1;
-    font-size: 13px;
-    font-weight: 700;
-    color: rgba(255,255,255,0.5);
-    text-align: right;
-    padding-top: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .tl-line {
-    grid-column: 2;
-    grid-row: 1 / 3;
+
+  /* Timeline steps */
+  .hp-process-steps { flex: 1; position: relative; }
+  .hp-process-line-track {
+    position: absolute;
+    left: 21px;
+    top: 30px;
+    bottom: 30px;
     width: 2px;
-    background: rgba(255,255,255,0.2);
-    margin: 0 auto;
-    min-height: 80px;
+    background: #e0e0e0;
+    z-index: 0;
   }
-  .tl-line.last { min-height: 0; height: 40px; }
-  .tl-icon {
-    grid-column: 2;
-    grid-row: 1;
-    width: 40px;
-    height: 40px;
+  .hp-process-line-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
     background: var(--blue);
+    border-radius: 2px;
+  }
+  .hp-process-step {
+    display: flex;
+    gap: 24px;
+    padding: 0 0 44px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .hp-process-step:last-child { padding-bottom: 0; }
+  .hp-step-dot-wrap { flex-shrink: 0; padding-top: 22px; }
+  .hp-step-dot {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
+    border: 2px solid #e0e0e0;
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: 16px;
-    z-index: 1;
-    margin: 0 auto;
-    position: relative;
+    font-size: 17px;
+    color: #ccc;
+    transition: border-color 0.4s, color 0.4s, background 0.4s;
   }
-  .tl-content {
-    grid-column: 3;
-    grid-row: 1 / 3;
-    padding: 8px 0 40px;
+  .hp-process-step.active .hp-step-dot {
+    border-color: var(--blue);
+    color: var(--blue);
+    background: #fff;
   }
-  .tl-title {
-    display: block;
-    font-family: 'Outfit', sans-serif;
+  .hp-step-content { flex: 1; display: flex; flex-direction: column; }
+  .hp-step-label {
+    font-size: 15px;
     font-weight: 700;
-    font-size: 18px;
-    color: #fff;
+    color: var(--blue);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-left: 2px;
+  }
+  .hp-step-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 22px 26px 24px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    transition: box-shadow 0.4s;
+  }
+  .hp-process-step.active .hp-step-card { box-shadow: 0 6px 28px rgba(1,84,177,0.12); }
+  .hp-step-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 0;
     margin-bottom: 10px;
   }
-  .tl-content p {
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.75;
+  .hp-step-card p {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.7;
     margin: 0;
+  }
+
+  /* Right CTA */
+  .hp-process-right {
+    flex: 0 0 260px;
+    position: sticky;
+    top: 120px;
+  }
+  .hp-process-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transform: translateY(40px);
+  }
+  .hp-process-right-actions .btn-orange {
+    white-space: nowrap;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .hp-process-right-actions .btn-orange:hover {
+    background: #fff;
+    color: #000;
+  }
+  .hp-btn-back-arrow {
+    font-size: 60px;
+    font-weight: 900;
+    color: var(--ink);
+    display: inline-block;
+    line-height: 1;
+    animation: hp-arrow-slide 1.15s ease-in-out infinite;
+  }
+  @keyframes hp-arrow-slide {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(-25px); }
+    100% { transform: translateX(0); }
   }
 
   /* ─── 9. FAQ ─── */
@@ -859,7 +1085,7 @@ import Layout from '../../../layouts/Layout.astro';
   }
   .cd-faq h2 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(26px, 3vw, 36px);
+    font-size: clamp(36px, 4.5vw, 56px);
     font-weight: 700;
     color: var(--ink);
     margin: 0 0 40px;
@@ -878,12 +1104,12 @@ import Layout from '../../../layouts/Layout.astro';
     padding: 20px 0;
     text-align: left;
     font-family: 'Outfit', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: var(--ink);
     cursor: pointer;
   }
-  .faq-q i { color: var(--blue); font-size: 14px; }
+  .faq-q i { color: var(--blue); font-size: 16px; }
   .faq-q[aria-expanded="true"] .icon-closed { display: none; }
   .faq-q[aria-expanded="true"] .icon-open  { display: inline; }
   .faq-q[aria-expanded="false"] .icon-open  { display: none; }
@@ -891,102 +1117,114 @@ import Layout from '../../../layouts/Layout.astro';
   .faq-a {
     display: none;
     padding: 0 0 20px 36px;
-    font-size: 15px;
+    font-size: 17px;
     line-height: 1.75;
-    color: #555;
+    color: #000;
   }
 
-  /* ─── 10. CONTACT ─── */
-  .cd-contact {
-    background: var(--navy);
-    padding: 80px 40px;
-  }
-  .cd-contact__inner {
-    max-width: 1200px;
+  /* ─── 10. CONTACT + TESTIMONIAL ─── */
+  .svc-contact { background-color: #001629; }
+  .svc-contact-inner {
+    display: grid;
+    grid-template-columns: 62% 38%;
+    max-width: 1850px;
     margin: 0 auto;
+    min-height: 600px;
+    align-items: stretch;
+  }
+  .svc-contact-left { padding: 72px 140px 72px 140px; }
+  .svc-contact-left h2 {
+    font-family: 'Outfit', sans-serif !important;
+    color: #ffffff;
+    font-size: clamp(28px, 3.2vw, 46px);
+    margin-bottom: 46px;
+    line-height: 1.2;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+  .contact-form {
     display: flex;
-    gap: 60px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
   }
-  .cd-contact__form { flex: 1; }
-  .cd-contact__form h2 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(22px, 2.5vw, 30px);
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 28px;
+  .contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 42px;
   }
-  .cd-contact__form form { display: flex; flex-direction: column; gap: 14px; }
-  .form-row { display: flex; gap: 14px; }
-  .form-row input { flex: 1; }
-  .cd-contact__form input,
-  .cd-contact__form textarea {
+  .contact-form input,
+  .contact-form textarea {
     width: 100%;
-    padding: 12px 16px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-    background: rgba(255,255,255,0.07);
-    color: #fff;
-    font-family: 'Outfit', sans-serif;
-    font-size: 14px;
-    box-sizing: border-box;
-  }
-  .cd-contact__form input::placeholder,
-  .cd-contact__form textarea::placeholder { color: rgba(255,255,255,0.5); }
-  .cd-contact__form textarea { resize: vertical; }
-  .cd-contact__form .btn-orange { align-self: flex-start; margin-top: 6px; }
-
-  .cd-contact__testimonials { flex: 1; }
-  .testimonial-label {
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
-    margin: 0 0 20px;
-  }
-  .testimonial-slider { position: relative; }
-  .testimonial-card {
-    display: none;
-    background: #fff;
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 16px;
-  }
-  .testimonial-card.active { display: block; }
-  .t-quote { color: var(--blue); font-size: 28px; margin-bottom: 12px; }
-  .testimonial-card p { font-size: 14px; line-height: 1.75; color: var(--ink); margin: 0 0 20px; }
-  .t-footer { display: flex; justify-content: space-between; align-items: flex-end; }
-  .t-name { font-weight: 700; font-size: 15px; color: var(--ink); margin: 0; }
-  .t-role { font-size: 13px; color: #888; margin: 2px 0 0; }
-  .t-link { color: var(--blue); font-size: 13px; font-weight: 600; text-decoration: none; }
-  .t-link:hover { text-decoration: underline; }
-  .t-nav {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .t-prev, .t-next {
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1.5px solid rgba(255,255,255,0.9);
+    border-radius: 0;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: #fff;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #ffffff;
+    transition: border-bottom-color 0.2s;
   }
-  .t-prev:hover, .t-next:hover { background: rgba(255,255,255,0.1); }
-  .t-count { color: rgba(255,255,255,0.6); font-size: 14px; }
-  .testimonial-photo { width: 100%; border-radius: 8px; margin-top: 4px; }
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-bottom-color: rgba(255,255,255,0.9); }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: rgba(255,255,255,0.65); }
+  .contact-form textarea { resize: none; min-height: 40px; }
+  .btn-contact {
+    align-self: flex-start;
+    padding: 15px 44px;
+    background: #ffffff;
+    color: #001629;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+  }
+  .btn-contact:hover { background: #f0f0f0; }
+  .svc-contact-right {
+    background-color: #f0f0f0;
+    border-radius: 25px;
+    margin: 28px 28px 28px 0;
+    padding: 40px 40px 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.14);
+  }
+  .svc-contact-right-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 22px;
+  }
+  .tc-carousel { position: relative; flex: 1; }
+  .tc-slide { display: none; flex-direction: column; padding: 0; background: transparent; border-radius: 0; box-shadow: none; }
+  .tc-slide.active { display: flex; }
+  .tc-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .tc-logo { display: flex; align-items: center; height: 35px; }
+  .tc-logo img { height: 35px; width: auto; object-fit: contain; max-width: 120px; }
+  .tc-text { color: #333; font-size: 16px; line-height: 1.72; margin: 0 0 20px; flex: 1; }
+  .tc-footer { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-top: 14px; border-top: 1px solid #e8e8e8; }
+  .tc-author { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+  .tc-role { display: block; font-weight: 400; font-size: 13px; color: #888; }
+  .tc-link { color: #1a1a1a; text-decoration: none; font-size: 13px; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; gap: 4px; }
+  .tc-fraction-bar { text-align: center; font-size: 20px; color: #000; padding: 14px 0 8px; position: relative; z-index: 2; transform: translateY(-100px); }
+  .contact-right-img { width: 100%; height: 220px; object-fit: cover; object-position: center top; display: block; margin-top: 0; margin-bottom: 0; border-radius: 16px 16px 22px 22px; transform: translateY(-50px); }
+  .svc-arrow { margin-left: 6px; display: inline-block; transition: transform 0.2s; }
+  .tc-link:hover .svc-arrow { transform: translateX(5px); }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     .cd-hero__inner,
     .cd-why__inner,
-    .cd-process__inner,
-    .cd-contact__inner { flex-direction: column; }
+    .hp-process-body { flex-direction: column; gap: 40px; }
+    .hp-process-heading { flex: none; max-width: none; }
+    .hp-process-heading h2, .hp-process-heading p { max-width: none; }
+    .hp-process-right { position: static; }
     .cd-hero__image { display: none; }
     .cd-services__grid { grid-template-columns: 1fr; }
     .cd-casestudy__right { display: none; }
@@ -994,16 +1232,36 @@ import Layout from '../../../layouts/Layout.astro';
     .cd-tabs__nav { flex: none; }
     .cd-cta-banner { flex-direction: column; }
     .cd-cta-banner__img { flex: none; width: 100%; }
+    .svc-contact-inner { grid-template-columns: 1fr; }
+    .svc-contact-left h2 { font-size: 32px; white-space: normal; }
+    .svc-contact-left { padding: 48px 32px; }
   }
 
   @media (max-width: 600px) {
-    .cd-hero, .cd-logos, .cd-services, .cd-casestudy,
-    .cd-tabs, .cd-why, .cd-process, .cd-faq, .cd-contact {
+    .cd-hero, .cd-services, .cd-casestudy,
+    .cd-tabs, .cd-why, .hp-process-section, .cd-faq {
       padding-left: 20px;
       padding-right: 20px;
     }
+    .cd-logos__inner { flex-direction: column; padding: 40px 20px 48px; }
+    .cd-logos .brands-label {
+      min-width: 0; width: 100%; padding: 0 0 28px; border-right: none; border-bottom: none;
+      font-size: 22px; font-weight: 600; line-height: 1.3;
+    }
+    .cd-logos .brands-label br { display: none; }
+    .cd-logos .brands-logos { margin: 0; padding: 0; width: 100%; justify-content: center; }
+    .cd-logos .brands-logos img { width: 100%; max-width: 480px; max-height: none; height: auto; margin: 0 auto; }
     .container { padding: 0 20px; }
     .form-row { flex-direction: column; }
+    .svc-contact { padding-left: 8px !important; padding-right: 8px !important; }
+    .svc-contact-right {
+      margin: 0 0 24px;
+      padding: 28px 22px 24px;
+      border-radius: 20px;
+    }
+    .svc-contact-right-label { font-size: 15px; margin: 0 0 14px; }
+    .tc-text { font-size: 15px; line-height: 1.65; margin: 0 0 16px; }
+    .tc-top { margin-bottom: 10px; }
   }
 </style>
 
@@ -1027,26 +1285,5 @@ import Layout from '../../../layouts/Layout.astro';
       btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
       answer.style.display = isOpen ? 'none' : 'block';
     });
-  });
-
-  // ─── TESTIMONIALS ───
-  const cards = document.querySelectorAll('.testimonial-card');
-  const totalCards = cards.length;
-  let current = 0;
-  const counter = document.getElementById('tCurrent');
-
-  function showCard(idx: number) {
-    cards.forEach(c => c.classList.remove('active'));
-    cards[idx].classList.add('active');
-    if (counter) counter.textContent = String(idx + 1);
-  }
-
-  document.querySelector('.t-next')?.addEventListener('click', () => {
-    current = (current + 1) % totalCards;
-    showCard(current);
-  });
-  document.querySelector('.t-prev')?.addEventListener('click', () => {
-    current = (current - 1 + totalCards) % totalCards;
-    showCard(current);
   });
 </script>

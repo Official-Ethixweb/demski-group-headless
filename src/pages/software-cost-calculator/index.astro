@@ -1014,7 +1014,7 @@ const faqs = [
             if (topBar) topBar.style.cssText = 'display:block!important;';
             wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { if (!el.closest('.nav-dropdown-menu')) el.style.color = '#222222'; });
             var logo = wrap.querySelector('.logo img');
-            if (logo) logo.style.filter = 'none';
+            if (logo) logo.src = '/Logo3-768x137.webp';
           } else {
             /* Hero: fully transparent — hide top bar, transparent header */
             wrap.style.background = 'transparent';
@@ -1023,7 +1023,7 @@ const faqs = [
             if (topBar) topBar.style.cssText = 'display:none!important;';
             wrap.querySelectorAll('header nav a, header button.nav-trigger').forEach(function(el) { if (!el.closest('.nav-dropdown-menu')) el.style.color = '#ffffff'; });
             var logo = wrap.querySelector('.logo img');
-            if (logo) logo.style.filter = 'brightness(0) invert(1)';
+            if (logo) logo.src = '/Logo3-white-outline.png';
           }
         }
 

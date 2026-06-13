@@ -1446,20 +1446,25 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
   .clients-right p { font-size: 16px; text-align: center; }
   .btn-outline-clients { margin-top: 24px; font-size: 15px; transform: none; }
   .testimonial-slider-wrap { margin-top: 0; padding: 0 0 40px; }
-  .tslider-clip { margin: 0 40px; transform: none; overflow: hidden; padding: 20px 0 28px; }
+  .tslider-clip { margin: 0; transform: none; overflow: hidden; padding: 20px 0 28px; }
   .testimonial-slider {
     touch-action: pan-y;
-    overflow-x: hidden;
+    overflow-x: auto;
     overscroll-behavior: contain;
-    scroll-snap-type: none;
-    gap: 14px;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    gap: 20px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   .testimonial-card-new {
-    flex: 0 0 calc(100vw - 80px);
+    flex: 0 0 calc(100% - 32px);
+    width: calc(100% - 32px);
     height: 460px;
     padding: 20px 20px 18px;
     overflow: hidden;
-    box-shadow: 0 14px 28px -10px rgba(0,0,0,0.28), 0 6px 12px rgba(0,0,0,0.12);
+    scroll-snap-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
   .testimonial-card-new .tcard-body {
     font-size: 14px;
@@ -1472,9 +1477,9 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
     margin-bottom: 12px;
   }
   .testimonial-card-new .tcard-footer { flex: 0 0 auto; }
-  .slider-btn { display: flex !important; width: 29px; height: 29px; font-size: 11px; }
-  .slider-btn-prev { left: 4px; }
-  .slider-btn-next { right: 4px; }
+  .slider-btn { display: flex !important; width: 36px; height: 36px; font-size: 13px; }
+  .slider-btn-prev { left: 2px; }
+  .slider-btn-next { right: 2px; }
 
   /* Excellence */
   .excellence-section { padding: 60px 0 0; }
@@ -2190,7 +2195,8 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
 
     // Find next/prev card boundary using exact offsetLeft (avoids gap drift).
     function alignedScrollOf(card) {
-      return card.offsetLeft - slider.offsetLeft;
+      const padL = parseFloat(getComputedStyle(slider).paddingLeft) || 0;
+      return card.offsetLeft - slider.offsetLeft - padL;
     }
 
     function nearestCardIndex() {

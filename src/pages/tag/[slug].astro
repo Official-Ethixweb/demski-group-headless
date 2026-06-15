@@ -2,14 +2,27 @@
 import Layout from '../../layouts/Layout.astro';
 
 const { slug } = Astro.params;
-const tagRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/tags?slug=${slug}`, { signal: AbortSignal.timeout(6000) });
-const tags = tagRes.ok ? await tagRes.json() : [];
-const tag = tags[0];
 
-const postsRes = tag?.id
-  ? await fetch(`https://demskigroup.com/wp-json/wp/v2/posts?_embed&tags=${tag.id}&per_page=10`, { signal: AbortSignal.timeout(6000) })
-  : null;
-const posts = postsRes?.ok ? await postsRes.json() : [];
+let tag = null;
+try {
+  const tagRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/tags?slug=${slug}`, { signal: AbortSignal.timeout(6000) });
+  if (tagRes.ok) {
+    const tags = await tagRes.json();
+    if (Array.isArray(tags)) tag = tags[0] ?? null;
+  }
+} catch (e) { tag = null; }
+
+let posts = [];
+try {
+  if (tag?.id) {
+    const postsRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/posts?_embed&tags=${tag.id}&per_page=10`, { signal: AbortSignal.timeout(6000) });
+    if (postsRes.ok) {
+      const data = await postsRes.json();
+      if (Array.isArray(data)) posts = data;
+    }
+  }
+} catch (e) { posts = []; }
+
 Astro.response.headers.set('Cache-Control', 'public, s-maxage=120, stale-while-revalidate=3600');
 ---
 

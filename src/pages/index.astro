@@ -17,14 +17,20 @@ let testimonials: Array<{logo:string;logoAlt:string;quote:string;author:string;r
 
 try {
   const res = await fetch('https://demskigroup.com/wp-json/wp/v2/posts?_embed&per_page=6', { signal: AbortSignal.timeout(8000) });
-  if (res.ok) posts = await res.json();
+  if (res.ok) {
+    const data = await res.json();
+    if (Array.isArray(data)) posts = data;
+  }
 } catch (e) {
   console.warn('Blog posts fetch failed:', e?.message);
 }
 
 try {
   const resultsRes = await fetch('https://demskigroup.com/wp-json/wp/v2/results?_embed&per_page=6', { signal: AbortSignal.timeout(8000) });
-  if (resultsRes.ok) results = await resultsRes.json();
+  if (resultsRes.ok) {
+    const data = await resultsRes.json();
+    if (Array.isArray(data)) results = data;
+  }
 } catch (e) {
   console.warn('Results fetch failed:', e?.message);
 }

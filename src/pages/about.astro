@@ -1,13 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const postsRes = await fetch('https://demskigroup.com/wp-json/wp/v2/posts?_embed&per_page=6');
-const posts = await postsRes.json();
+let posts = [];
+try {
+  const postsRes = await fetch('https://demskigroup.com/wp-json/wp/v2/posts?_embed&per_page=6', { signal: AbortSignal.timeout(8000) });
+  if (postsRes.ok) {
+    const data = await postsRes.json();
+    if (Array.isArray(data)) posts = data;
+  }
+} catch (e) { posts = []; }
 
 let team = [];
 try {
-  const teamRes = await fetch('https://demskigroup.com/wp-json/wp/v2/team_member?_embed&per_page=20');
-  team = await teamRes.json();
+  const teamRes = await fetch('https://demskigroup.com/wp-json/wp/v2/team_member?_embed&per_page=20', { signal: AbortSignal.timeout(8000) });
+  if (teamRes.ok) {
+    const data = await teamRes.json();
+    if (Array.isArray(data)) team = data;
+  }
 } catch(e) { team = []; }
 ---
 
@@ -1465,6 +1474,7 @@ html { overflow-x: hidden; }
 </section>
 
 <!-- ══ BLOG ══ -->
+{posts.length > 0 && (
 <section class="about-blog-section">
   <div class="about-blog-inner">
     <div class="about-section-header">
@@ -1498,6 +1508,7 @@ html { overflow-x: hidden; }
     <a href="/blog" class="btn-see-all-blog btn-see-all-blog-mobile">See all <span class="btn-arrow-icon"></span></a>
   </div>
 </section>
+)}
 
 <!-- ══ FINAL CTA ══ -->
 <section class="about-cta">

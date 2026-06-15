@@ -7,27 +7,50 @@ const perPage = 10;
 
 // Get category info
 let category = null;
+let categoryLookupFailed = false;
 try {
   const catRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/categories?slug=${slug}`, { signal: AbortSignal.timeout(8000) });
   if (catRes.ok) {
     const cats = await catRes.json();
     if (Array.isArray(cats)) category = cats[0] ?? null;
+    else categoryLookupFailed = true;
+  } else {
+    categoryLookupFailed = true;
   }
-} catch (e) { category = null; }
+} catch (e) { categoryLookupFailed = true; }
 
-if (!category) return Astro.redirect('/blog');
+// Only redirect when the API call succeeded but the category genuinely
+// doesn't exist. If the API itself failed (timeout/network/non-OK/invalid
+// JSON), render a degraded-but-functional page instead of redirecting.
+if (!category && !categoryLookupFailed) return Astro.redirect('/blog');
+
+// Fallback display name derived from the slug, used when the category
+// lookup failed so the page still has a title/breadcrumb to show.
+const fallbackName = slug
+  ? slug.split('-').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')
+  : 'Category';
+const categoryName = category?.name ?? fallbackName;
 
 // Get posts for this category
 let posts = [];
 let totalPages = 1;
-try {
-  const postsRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/posts?_embed&categories=${category.id}&per_page=${perPage}&page=${page}`, { signal: AbortSignal.timeout(8000) });
-  if (postsRes.ok) {
-    const data = await postsRes.json();
-    if (Array.isArray(data)) posts = data;
-    totalPages = Number(postsRes.headers.get('X-WP-TotalPages') || 1);
-  }
-} catch (e) { posts = []; }
+let postsLoadFailed = false;
+if (category?.id) {
+  try {
+    const postsRes = await fetch(`https://demskigroup.com/wp-json/wp/v2/posts?_embed&categories=${category.id}&per_page=${perPage}&page=${page}`, { signal: AbortSignal.timeout(8000) });
+    if (postsRes.ok) {
+      const data = await postsRes.json();
+      if (Array.isArray(data)) posts = data;
+      else postsLoadFailed = true;
+      totalPages = Number(postsRes.headers.get('X-WP-TotalPages') || 1);
+    } else {
+      postsLoadFailed = true;
+    }
+  } catch (e) { postsLoadFailed = true; }
+} else {
+  // Category lookup itself failed - we have no ID to query posts by.
+  postsLoadFailed = categoryLookupFailed;
+}
 
 // Sidebar data
 let allCategories = [];
@@ -58,7 +81,7 @@ try {
 } catch (e) { recentPosts = []; }
 ---
 
-<Layout title={`${category.name} - The Demski Group Blog`} description={`Browse all posts in the ${category.name} category.`}>
+<Layout title={`${categoryName} - The Demski Group Blog`} description={`Browse all posts in the ${categoryName} category.`}>
   <style slot="head">
     .cat-page { font-family: 'Outfit', sans-serif; color: #282828; }
 
@@ -143,13 +166,13 @@ try {
 
     <!-- Hero -->
     <div class="cat-hero">
-      <h1>{category.name}</h1>
+      <h1>{categoryName}</h1>
       <div class="cat-breadcrumb">
         <a href="/">Home</a>
         <span>›</span>
         <a href="/blog">Blog</a>
         <span>›</span>
-        <span>{category.name}</span>
+        <span>{categoryName}</span>
       </div>
     </div>
 
@@ -207,7 +230,11 @@ try {
           </>
         ) : (
           <div class="no-posts">
-            <p>No posts found in this category.</p>
+            {postsLoadFailed ? (
+              <p>We're having trouble loading posts right now. Please check back shortly.</p>
+            ) : (
+              <p>No posts found in this category.</p>
+            )}
             <a href="/blog">← Back to Blog</a>
           </div>
         )}

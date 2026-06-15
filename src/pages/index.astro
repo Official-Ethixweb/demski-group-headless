@@ -35,6 +35,24 @@ try {
   console.warn('Results fetch failed:', e?.message);
 }
 
+// Static fallback used when the live WordPress API is unavailable, so the
+// "Real Results" slider never renders empty. Mirrors a few real entries
+// from the Results listing page (src/pages/results/index.astro).
+const FALLBACK_RESULTS = [
+  { slug: 'making-property-listings-and-home-buying-simpler-with-a-well-organized-online-platform', title: 'Making Property Listings and Home Buying Simpler with a Well-Organized Online Platform', date: 'May 27, 2026', img: 'https://demskigrdev.wpenginepowered.com/wp-content/uploads/2026/05/young-woman-calculates-finances-at-home-office-2026-03-17-09-03-36-utc-1024x683.jpg' },
+  { slug: 'automating-aircraft-appraisal-with-a-smart-web-platform', title: 'Automating Aircraft Appraisal with a Smart Web Platform', date: 'May 23, 2026', img: 'https://demskigrdev.wpenginepowered.com/wp-content/uploads/2026/05/aircraft-mechanic-inspecting-engine-with-tablet-de-2026-03-26-08-38-07-utc-1024x683.jpg' },
+  { slug: 'combining-campaigns-products-and-communities-in-one-platform', title: 'Combining Campaigns, Products, and Communities in One Platform', date: 'May 17, 2026', img: 'https://demskigrdev.wpenginepowered.com/wp-content/uploads/2026/05/crowdsourcing-concept-on-a-laptop-on-a-desk-2026-03-18-11-48-41-utc-1024x681.jpg' },
+  { slug: 'managing-the-complexities-of-vehicle-repossession-with-a-mobile-first-application', title: 'Managing the Complexities of Vehicle Repossession with a Mobile-First Application', date: 'May 10, 2026', img: 'https://demskigrdev.wpenginepowered.com/wp-content/uploads/2026/05/man-on-phone-with-car-on-tow-truck-2026-03-25-09-09-37-utc-1024x683.jpg' },
+];
+if (!results.length) {
+  results = FALLBACK_RESULTS.map(r => ({
+    slug: r.slug,
+    title: { rendered: r.title },
+    date: r.date,
+    _embedded: { 'wp:featuredmedia': [{ source_url: r.img }] },
+  }));
+}
+
 const WP_REVIEW_URLS = [
   'https://demskigroup.com/wp-json/wp/v2/reviews?_embed&per_page=100',
   'https://demskigrdev.wpenginepowered.com/wp-json/wp/v2/reviews?_embed&per_page=100',
@@ -1043,6 +1061,24 @@ html, body { overflow-x: hidden; }
   position: relative;
   margin-top: 36px;
 }
+/* Fallback shown when no posts/results are available (e.g. WP API down) */
+.section-fallback {
+  margin-top: 36px;
+  padding: 48px 40px;
+  border-radius: 20px;
+  background: #faf9f5;
+  text-align: center;
+}
+.section-fallback p {
+  font-size: 18px;
+  color: #555;
+  margin: 0 0 20px;
+  font-family: 'Outfit', sans-serif;
+}
+.section-fallback .btn-see-all {
+  margin: 0 auto;
+  align-self: center;
+}
 .cards-slider {
   display: flex;
   gap: 20px;
@@ -1719,7 +1755,7 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
 
 <!-- ── S2: BRANDS ── -->
 <div class="brands-wrap">
-  <div class="brands-label"><span class="brands-text">Companies that trust<br/>our <a href="https://demskigroup.com/our-clients/">experienced team</a>.</span></div>
+  <div class="brands-label"><span class="brands-text">Companies that trust<br/>our <a href="/our-clients/">experienced team</a>.</span></div>
   <div class="brands-logo-img">
     <img src="/brandlogos.webp" alt="Companies: HP, Riot Games, Allstate, Bank of America, Herbalife, Rinnai" width="800" height="170" loading="lazy" />
   </div>
@@ -1791,7 +1827,7 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
     </div>
   </div>
   <div class="tech-see-all">
-    <a href="https://demskigroup.com/technologies/" class="btn-outline-dark">See all capabilities <span class="btn-arrow-icon"></span></a>
+    <a href="/technologies/" class="btn-outline-dark">See all capabilities <span class="btn-arrow-icon"></span></a>
   </div>
 
 </section>
@@ -1810,7 +1846,7 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
     <div class="clients-right">
       <h2>See the Businesses<br class="mob-br" /> That Rely<br class="desk-br" /> on Our<br class="mob-br" /> Services</h2>
       <p>Over 12 years and hundreds of projects later, we have a lot to talk about.</p>
-      <a href="https://demskigroup.com/our-clients/" class="btn-outline-clients">
+      <a href="/our-clients/" class="btn-outline-clients">
         See our clients <span class="btn-arrow-icon"></span>
       </a>
     </div>
@@ -2469,28 +2505,35 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
       <a href="/blog" class="btn-see-all">See all <span class="arrow-circle"></span></a>
     </div>
 
-    <div class="cards-slider-wrap">
-      <button class="cards-nav cards-nav-prev" id="blog-prev" aria-label="Previous blog post">←</button>
-      <div class="cards-slider" id="blog-slider">
-        {posts.map((post: any) => {
-          const img = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-          const date = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-          return (
-            <a class="post-card" href={`/blog/${post.slug}`}>
-              {img && <img src={img} alt={post.title.rendered} loading="lazy" width="600" height="450" />}
-              <div class="post-card-overlay">
-                <div class="post-card-title">{post.title.rendered}</div>
-                <div class="post-card-bottom">
-                  <span class="post-card-date">{date}</span>
-                  <span class="post-card-read">Read More <span class="svc-arrow"></span></span>
+    {posts.length > 0 ? (
+      <div class="cards-slider-wrap">
+        <button class="cards-nav cards-nav-prev" id="blog-prev" aria-label="Previous blog post">←</button>
+        <div class="cards-slider" id="blog-slider">
+          {posts.map((post: any) => {
+            const img = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+            const date = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            return (
+              <a class="post-card" href={`/blog/${post.slug}`}>
+                {img && <img src={img} alt={post.title.rendered} loading="lazy" width="600" height="450" />}
+                <div class="post-card-overlay">
+                  <div class="post-card-title">{post.title.rendered}</div>
+                  <div class="post-card-bottom">
+                    <span class="post-card-date">{date}</span>
+                    <span class="post-card-read">Read More <span class="svc-arrow"></span></span>
+                  </div>
                 </div>
-              </div>
-            </a>
-          );
-        })}
+              </a>
+            );
+          })}
+        </div>
+        <button class="cards-nav cards-nav-next" id="blog-next" aria-label="Next blog post">→</button>
       </div>
-      <button class="cards-nav cards-nav-next" id="blog-next" aria-label="Next blog post">→</button>
-    </div>
+    ) : (
+      <div class="section-fallback">
+        <p>Our latest articles are being updated. Visit the blog for our full library of insights.</p>
+        <a href="/blog" class="btn-see-all">Visit the Blog <span class="arrow-circle"></span></a>
+      </div>
+    )}
   </div>
 </section>
 
@@ -2503,7 +2546,7 @@ footer { background: #ffffff; color: #282828; padding: 0; margin-top: 0 !importa
         <h2>Real Results, Real Projects</h2>
         <p style="color:#0A0000;">See how we produced real-world returns for our clients.</p>
       </div>
-      <a href="https://demskigroup.com/results/" class="btn-see-all">See all <span class="arrow-circle"></span></a>
+      <a href="/results/" class="btn-see-all">See all <span class="arrow-circle"></span></a>
     </div>
 
     <div class="cards-slider-wrap">

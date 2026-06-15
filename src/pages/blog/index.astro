@@ -134,6 +134,9 @@ try {
       {search && posts.length === 0 && (
         <div class="no-results">No posts found matching "{search}".</div>
       )}
+      {!search && posts.length === 0 && (
+        <div class="no-results">We're having trouble loading posts right now. Please check back shortly.</div>
+      )}
       {posts.map((post: any) => {
         const img = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
         const date = new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });

@@ -34,7 +34,8 @@ import Layout from '../../layouts/Layout.astro';
     content: '';
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(90deg, #005cb9 38%, rgba(0,92,185,0.55) 65%, rgba(0,92,185,0.15) 100%);
+    background-image: linear-gradient(96deg, #FFFFFC 43%, #0023686B 85%);
+    opacity: 0.99;
     z-index: 1;
   }
   .tech-hero-left {
@@ -74,15 +75,16 @@ import Layout from '../../layouts/Layout.astro';
     align-items: center;
     background: #f09300;
     color: #fff;
+    border: 1px solid #0A0000;
     padding: 14px 28px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
     width: fit-content;
-    transition: background 0.2s;
+    transition: background 0.2s, color 0.2s;
   }
-  .tech-hero-btn:hover { background: #d98200; }
+  .tech-hero-btn:hover { background: #fff; color: #0A0000; }
 
   /* ── BRAND LOGOS ── */
   .tech-brands-wrap {
@@ -97,16 +99,18 @@ import Layout from '../../layouts/Layout.astro';
     display: flex;
     gap: 0;
   }
-  .tech-brands-section { background: #fff; padding: 0 80px 70px; }
+  .tech-brands-section { background: #fff; padding: 0 160px 70px; }
   .tech-brands-label {
     font-size: 26px;
     color: #282828;
-    min-width: 320px;
+    flex: 1;
     line-height: 1.7;
     padding-right: 40px;
     margin-left: 40px;
     border-right: 3px solid #111;
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     align-content: center;
   }
@@ -118,38 +122,42 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   /* ── PLATFORMS ── */
-  .tech-platforms { padding: 70px 80px; background: #fff; }
+  .tech-platforms { padding: 70px 160px; background: #fff; }
   .tech-platforms h2 { font-size: 36px; font-weight: 700; color: #0A0000; margin: 0 0 40px; max-width: 600px; line-height: 1.25; }
   .platform-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px 24px;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px 24px;
   }
   .platform-item {
+    grid-column: span 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 26px 32px;
+    padding: 34px 44px;
     border: 1px solid #e5e5e5;
-    border-radius: 100px;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
     transition: border-color 0.2s;
   }
+  .platform-item.platform-wide { grid-column: span 3; }
   .platform-item:hover { border-color: #0A0000; }
-  .platform-item h3 { font-size: 22px; font-weight: 700; color: #0A0000; margin: 0; }
+  .platform-item h3 { font-size: 32px; font-weight: 700; color: #0A0000; margin: 0; }
   .platform-item a {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    font-size: 15px;
+    font-size: 17px;
+    font-weight: 600;
     color: #555;
     text-decoration: none;
     transition: color 0.2s;
     white-space: nowrap;
   }
-  .platform-item a:hover { color: #f09300; }
+  .platform-item a:hover { color: #003087; }
 
   /* ── TECH LOGOS ── */
-  .tech-logos-section { padding: 70px 80px; background: #faf9f5; }
+  .tech-logos-section { padding: 70px 160px; background: #faf9f5; }
   .tech-logos-section h2 { font-size: 36px; font-weight: 700; color: #0A0000; margin: 0 0 40px; }
   .tech-logos-grid {
     display: grid;
@@ -171,7 +179,7 @@ import Layout from '../../layouts/Layout.astro';
   /* ── CODE THE FUTURE ── */
   .tech-code-future {
     background: #f0f0f0;
-    padding: 90px 80px;
+    padding: 90px 160px;
     position: relative;
   }
   .tech-code-future-top {
@@ -280,11 +288,12 @@ import Layout from '../../layouts/Layout.astro';
     gap: 16px; margin-bottom: 16px;
   }
   .biopac-card {
-    background: #0a1628; border-radius: 16px; padding: 32px;
+    background: #0a1628; border-radius: 18px; padding: 32px;
     display: flex; flex-direction: column; justify-content: space-between;
     min-height: 300px; text-decoration: none;
     transition: transform 0.25s, box-shadow 0.25s;
     grid-row: span 2;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
   }
   .biopac-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
   .biopac-logo img {
@@ -296,11 +305,12 @@ import Layout from '../../layouts/Layout.astro';
   .biopac-link { font-family:'Outfit',sans-serif; font-size:16px; font-weight:700; color:#fff; display:inline-flex; align-items:center; gap:6px; }
   .proj-four { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .client-card {
-    background: #fff; border: 1px solid #ebebeb; border-radius: 14px;
+    background: #fff; border: 1px solid #ebebeb; border-radius: 16px;
     padding: 24px 18px 18px; display: flex; flex-direction: column;
     justify-content: space-between; align-items: center;
     text-decoration: none; transition: box-shadow 0.25s, transform 0.25s;
     min-height: 140px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.14);
   }
   .client-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-2px); }
   .client-card-img {
@@ -331,16 +341,16 @@ import Layout from '../../layouts/Layout.astro';
   /* ── EXCELLENCE ── */
   .excellence-section {
     background: #000000;
-    padding: 80px 94px 0;
+    padding: 80px 94px 50px;
     overflow: visible;
   }
   .excellence-card {
-    max-width: 1300px;
+    max-width: 1632px;
     margin: 0 auto;
     background: #000000;
     border-radius: 25px;
     overflow: visible;
-    padding: 80px 70px 60px;
+    padding: 80px 24px 60px 8px;
     display: grid;
     grid-template-columns: 51% 49%;
     gap: 0;
@@ -353,12 +363,12 @@ import Layout from '../../layouts/Layout.astro';
     justify-content: flex-start;
     gap: 22px;
     padding-right: 60px;
-    padding-left: 2%;
+    padding-left: 0;
     padding-top: 2%;
     border-right: 2px solid #ffffff;
   }
   .excellence-left h2 {
-    font-size: 52px;
+    font-size: 56px;
     font-weight: 700;
     color: #FFFFFF;
     line-height: 1.18;
@@ -389,10 +399,10 @@ import Layout from '../../layouts/Layout.astro';
     align-items: center;
     justify-content: center;
     gap: 0;
-    padding-left: 60px;
+    padding-left: 0;
     transform: translateY(-80px);
   }
-  .badge-rotator { position: relative; width: 280px; height: 280px; overflow: hidden; }
+  .badge-rotator { position: relative; width: 380px; height: 380px; overflow: hidden; }
   .badge-slide {
     position: absolute;
     inset: 0;
@@ -406,7 +416,7 @@ import Layout from '../../layouts/Layout.astro';
   }
   .badge-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
   .badge-slide.leaving { opacity: 0; transform: translateX(-100%); }
-  .badge-slide img { max-width: 280px; max-height: 280px; width: auto; height: auto; object-fit: contain; }
+  .badge-slide img { max-width: 380px; max-height: 380px; width: auto; height: auto; object-fit: contain; }
   .cissp-badge {
     background: white;
     border-radius: 22px;
@@ -428,13 +438,13 @@ import Layout from '../../layouts/Layout.astro';
   }
   .rating-col { flex: 1; text-align: center; padding: 0 40px; }
   .rating-col-label { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 18px; }
-  .rating-col-stars { color: #F09300; font-size: 38px; letter-spacing: 6px; }
+  .rating-col-stars { color: #F09300; font-size: 38px; letter-spacing: 6px; font-family: Arial, sans-serif; }
 
   /* ── POS CTA ── */
   .svc-pos { background: transparent; padding: 0 60px 90px; position: relative; z-index: 99; }
   .svc-pos-inner {
     max-width: 1200px;
-    margin: -100px auto 0;
+    margin: -30px auto 0;
     background: #fff;
     border-radius: 20px;
     display: flex;
@@ -457,14 +467,15 @@ import Layout from '../../layouts/Layout.astro';
     justify-content: center;
     background: #F09300;
     color: #fff;
+    border: 1px solid #0A0000;
     font-size: 20px;
     font-weight: 600;
     padding: 16px 36px;
     border-radius: 10px;
     text-decoration: none;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
   }
-  .btn-orange:hover { background: #d98200; }
+  .btn-orange:hover { background: #fff; color: #0A0000; }
 
   /* ── PROVEN STRATEGIES (svc-methods pattern) ── */
   .svc-methods {
@@ -493,7 +504,7 @@ import Layout from '../../layouts/Layout.astro';
   }
   .svc-methods-left p {
     font-size: 17px;
-    color: #444;
+    color: #000;
     line-height: 1.65;
     margin: 0;
   }
@@ -735,6 +746,7 @@ import Layout from '../../layouts/Layout.astro';
     .tech-brands-label { border-right: none; border-bottom: 1px solid #ddd; min-width: unset; margin-left: 0; padding-right: 0; padding-bottom: 20px; margin-bottom: 16px; width: 100%; text-align: left; }
     .tech-brands-logo-img { padding-left: 0; }
     .platform-grid { grid-template-columns: 1fr 1fr; }
+    .platform-item, .platform-item.platform-wide { grid-column: span 1; }
     .tech-logos-grid { grid-template-columns: repeat(3, 1fr); }
     .services-grid { grid-template-columns: 1fr 1fr; }
     .svc-projects-header { flex-direction: column; gap: 16px; }
@@ -744,7 +756,7 @@ import Layout from '../../layouts/Layout.astro';
     .excellence-left { border-right: none; border-bottom: 1px solid #333; padding-right: 0; padding-bottom: 40px; }
     .excellence-right { padding-left: 0; transform: none; }
     .excellence-left h2 { font-size: 32px; }
-    .svc-pos-inner { grid-template-columns: 1fr; flex-direction: column; align-items: stretch; }
+    .svc-pos-inner { grid-template-columns: 1fr; flex-direction: column; align-items: stretch; margin-top: 30px; }
     .svc-pos-img { width: 100%; min-width: 0; height: 220px; }
     .svc-pos-btn { padding: 0 48px 32px; }
   }
@@ -765,7 +777,7 @@ import Layout from '../../layouts/Layout.astro';
     .svc-projects { padding: 40px 16px; }
     .svc-projects-inner { padding: 24px 16px; }
     .proj-main-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-    .proj-four { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .proj-four { grid-template-columns: minmax(0, 1fr); gap: 12px; }
     .svc-methods { padding: 60px 24px; }
     .svc-methods-left h2 { font-size: 30px; }
     .svc-methods-grid { grid-template-columns: 1fr; padding: 0; gap: 24px; }
@@ -773,6 +785,8 @@ import Layout from '../../layouts/Layout.astro';
     .svc-pos { padding: 0 16px 40px; }
     .tech-brands-wrap { margin-top: -80px; padding: 24px 18px; }
     .platform-grid { grid-template-columns: 1fr; }
+    .platform-item, .platform-item.platform-wide { grid-column: span 1; padding: 26px 28px; }
+    .platform-item h3 { font-size: 24px; }
     .tech-logos-grid { grid-template-columns: repeat(2, 1fr); }
     .services-grid { grid-template-columns: 1fr; }
     .svc-projects-header h2 { font-size: 32px; }
@@ -829,15 +843,14 @@ import Layout from '../../layouts/Layout.astro';
         <h3>Hybrid</h3>
         <a href="/technologies/hybrid/">Learn more →</a>
       </div>
-      <div class="platform-item">
+      <div class="platform-item platform-wide">
         <h3>DBMS</h3>
         <a href="/technologies/dbms/">Learn more →</a>
       </div>
-      <div class="platform-item">
+      <div class="platform-item platform-wide">
         <h3>Cloud</h3>
         <a href="/technologies/cloud/">Learn more →</a>
       </div>
-      <div class="platform-item" style="visibility:hidden;"></div>
     </div>
   </section>
 
@@ -926,24 +939,28 @@ import Layout from '../../layouts/Layout.astro';
             <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/07/PropertyGauge.png" alt="PropertyGauge" loading="lazy" /></div>
             <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
           </a>
-          <a class="client-card" href="/our-clients/mister-quik/">
-            <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/07/mrquick.png" alt="Mister Quik" loading="lazy" /></div>
+          <a class="client-card" href="/our-clients/pnc-bank/">
+            <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/company-logo-4.png" alt="PNC Bank" loading="lazy" /></div>
             <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
           </a>
-          <a class="client-card" href="/our-clients/jackson-hewitt/">
-            <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/jacksonhewitt-1.png" alt="Jackson Hewitt" loading="lazy" /></div>
+          <a class="client-card" href="/our-clients/mister-quik/">
+            <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/07/mrquick.png" alt="Mister Quik" loading="lazy" /></div>
             <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
           </a>
         </div>
       </div>
 
       <div class="proj-main-grid">
-        <a class="client-card" href="/our-clients/pnc-bank/">
-          <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/company-logo-4.png" alt="PNC Bank" loading="lazy" /></div>
+        <a class="client-card" href="/our-clients/jackson-hewitt/">
+          <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/jacksonhewitt-1.png" alt="Jackson Hewitt" loading="lazy" /></div>
           <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
         </a>
         <a class="client-card" href="/our-clients/seen-dating/">
           <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/SEENDating-1.png" alt="SEEN Dating" loading="lazy" /></div>
+          <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
+        </a>
+        <a class="client-card" href="/our-clients/willo/">
+          <div class="client-card-img"><img src="https://demskigroup.com/wp-content/uploads/2024/06/Willo.png" alt="Willo" loading="lazy" /></div>
           <span class="client-card-link">Read full case study <span class="svc-arrow"></span></span>
         </a>
         <a class="client-card" href="/our-clients/robomaster/">
@@ -967,13 +984,13 @@ import Layout from '../../layouts/Layout.astro';
       <div class="excellence-right">
         <div class="badge-rotator" id="tech-badge-rotator">
           <div class="badge-slide active">
-            <img src="/clutchcowhite.webp" alt="Clutch Top Software Developers 2022" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
+            <img src="/clutchcowhite.webp" alt="Clutch Top Software Developers 2022" width="280" height="280" loading="eager" />
           </div>
           <div class="badge-slide">
-            <img src="/clutch2.webp" alt="Clutch Top App Development 2023" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
+            <img src="/clutch2.webp" alt="Clutch Top App Development 2023" width="280" height="280" loading="lazy" />
           </div>
           <div class="badge-slide">
-            <img src="/clutch3.webp" alt="Clutch Top Software Developers 2023" width="280" height="280" loading="lazy" style="filter: contrast(4) brightness(1.1);" />
+            <img src="/clutch3.webp" alt="Clutch Top Software Developers 2023" width="280" height="280" loading="lazy" />
           </div>
           <div class="badge-slide">
             <img src="/cisppwhite.webp" alt="CISSP Certified" width="200" height="200" loading="lazy" />

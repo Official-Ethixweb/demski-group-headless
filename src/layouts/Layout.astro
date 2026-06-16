@@ -674,13 +674,13 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
     #bot-launcher::before {
       content: ''; position: absolute; inset: -3px; border-radius: 50%;
       background: linear-gradient(135deg, #0154B1, #4facfe, #0154B1);
-      z-index: -1; animation: ring-spin 4s linear infinite;
+      animation: ring-spin 4s linear infinite;
     }
     @keyframes ring-spin { to { transform: rotate(360deg); } }
     #bot-launcher img {
       width: 92px; height: 92px; border-radius: 50%; object-fit: cover;
       border: 3px solid #fff; box-shadow: 0 6px 24px rgba(1,84,177,0.28);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease; position: relative; z-index: 1;
     }
     #bot-launcher:hover img { transform: scale(1.06); }
     .online-dot {

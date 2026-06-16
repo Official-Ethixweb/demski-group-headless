@@ -670,6 +670,15 @@ export function extractCaseStudyHtml(html: string): string {
   // and they're purely decorative wave/curve dividers between sections.
   body = body.replace(/<div[^>]*\belementor-shape\b[^>]*>[\s\S]*?<\/div>/gi, '');
 
+  // Strip canvas+script animated connector widgets (e.g. the purple dashed
+  // animated line on the Willo page). These are Elementor custom HTML widgets
+  // that draw decorative lines on a <canvas> via JS — they have no content
+  // value and render incorrectly outside Elementor's layout context.
+  body = body.replace(/<canvas[^>]*class="[^"]*dottedLineCanvas[^"]*"[^>]*>[\s\S]*?<\/canvas>/gi, '');
+  body = body.replace(/<canvas[^>]*class="[^"]*dottedLineCanvas[^"]*"[^>]*\/>/gi, '');
+  // Also strip the accompanying <script> blocks that drive them.
+  body = body.replace(/<script[\s\S]*?dottedLineCanvas[\s\S]*?<\/script>/gi, '');
+
   // Elementor's "nested accordion" widget only marks its first item <details>
   // as open; the rest collapse their content via the native <details> "open"
   // attribute, which CSS cannot override. Force every accordion item open so

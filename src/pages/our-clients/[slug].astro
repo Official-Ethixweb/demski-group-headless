@@ -246,6 +246,16 @@ const hasLiveContent = client.content.trim().length > 0;
     .cs-content table th { background: #f7f7f7; font-weight: 700; }
     .cs-content hr { border: none; border-top: 1px solid #ececec; margin: 36px 0; }
     .cs-content .elementor-divider { margin: 36px 0; }
+    .cs-content .elementor-divider-separator {
+      border-top-color: #ececec !important;
+      border-top-style: solid !important;
+      border-top-width: 1px !important;
+      background-color: #ececec !important;
+    }
+    /* hide any Elementor divider that appears before the first heading
+       (Willo hero area purple dashed line) */
+    .cs-content > .elementor-element:first-child .elementor-divider,
+    .cs-content > .e-con:first-child .elementor-divider { display: none; }
     .cs-content .elementor-icon,
     .cs-content i[class*="elementor"],
     .cs-content i[aria-hidden="true"] { display: none; }

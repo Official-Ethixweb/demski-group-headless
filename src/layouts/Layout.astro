@@ -635,7 +635,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       <div id="bot-messages" class="chat-body chat-body--hidden" style="background:transparent!important;overflow:hidden auto!important;">
         <div class="bot-msg-wrap" style="display:flex;align-items:flex-end;gap:8px;max-width:88%;">
           <img src="/72e79b86-c143-495c-b6bb-c10553e75cd3.png" class="msg-avatar" alt="" style="width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;border-radius:50%!important;object-fit:cover!important;flex-shrink:0!important;border:2px solid #fff!important;display:block!important;" />
-          <div class="bot-msg" style="background:rgba(255,255,255,0.88);padding:10px 14px;border-radius:4px 18px 18px 18px;font-size:13.5px;color:#1e2024;line-height:1.65;box-shadow:0 2px 8px rgba(0,0,0,0.06);flex:1;">Hi there! 👋 What brings you here today?</div>
+          <div class="bot-msg" style="background:rgba(255,255,255,0.88);padding:10px 14px;border-radius:4px 18px 18px 18px;font-size:13.5px;color:#1e2024;line-height:1.65;box-shadow:0 2px 8px rgba(0,0,0,0.06);flex:1;">Hello! What kind of project do you need help bringing to life? &#x1F44B;</div>
         </div>
         <div id="step1-btns" class="quick-btns grid-btns">
           <button onclick="handleStep1('New startup or app idea')">New startup or app idea</button>
@@ -647,14 +647,14 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
 
       <!-- Input -->
       <div class="chat-input" id="chat-input-bar" style="display:none;">
-        <input type="text" id="bot-input" placeholder="Ask a question…" />
+        <input type="text" id="bot-input" placeholder="Type your answer..." autocomplete="off" />
         <button onclick="handleInput()" aria-label="Send">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><line x1="12" y1="19" x2="12" y2="5" style="stroke:#fff;"/><polyline points="5 12 12 5 19 12" style="stroke:#fff;"/></svg>
         </button>
       </div>
 
       <!-- CTA -->
-      <a href="https://calendly.com/shreya-ethixweb/30min" target="_blank" class="sticky-schedule-btn" id="chat-cta-bar" style="display:none;">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3loQplPyCXe28FPP0trIgOCmhJqwKCXka1x3uCkblaAFtklpetKpkyi6glNBGxVR8jpOQenySG" target="_blank" class="sticky-schedule-btn" id="chat-cta-bar" style="display:none;">
         Schedule a Free Consultation
       </a>
     </div>
@@ -1063,13 +1063,27 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
     const IDLE_BTNS_ID   = "idleBtns";
 
     const intentFollowUp = {
-      "New startup or app idea":   "Love it! Tell me more. What kind of app are you thinking about?",
+      "New startup or app idea":   "Love it! Tell me more — what kind of app or product are you thinking about?",
       "Software for my business":  "Great! What problem are you trying to solve in your business?",
       "Digital marketing help":    "Nice! What are you hoping to improve: traffic, leads, or sales?",
-      "Just exploring":            "That's totally fine! Are you researching for a future project, or just browsing ideas?"
+      "Just exploring":            "That's totally fine! Can you tell me a bit about what you have in mind?"
     };
 
     emailjs.init("nedYqWwwPWVZZVX0_");
+
+    function playChime() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator(); const gain = ctx.createGain();
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(660, ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.3);
+        osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.3);
+      } catch(e) {}
+    }
 
     function getParams() {
       const p = {};
@@ -1086,7 +1100,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       utm_source: finalParams.utm_source||"", utm_campaign: finalParams.utm_campaign||"",
       utm_medium: finalParams.utm_medium||"", utm_term: finalParams.utm_term||"",
       utm_content: finalParams.utm_content||"", gclid: finalParams.gclid||"",
-      intent:"", intent_detail:"", timeline:"", budget:"", name:"", phone:"", email:"", cta_choice:""
+      intent:"", intent_detail:"", project_description:"", budget:"", name:"", phone:"", email:"", cta_choice:""
     };
 
     window.addEventListener("load", () => {
@@ -1132,9 +1146,10 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       document.getElementById("welcome-screen").style.display = "none";
       const msgs = document.getElementById("bot-messages");
       msgs.classList.remove("chat-body--hidden");
-      document.getElementById("chat-input-bar").style.display = "none";
+      document.getElementById("chat-input-bar").style.display = "flex";
       document.getElementById("chat-cta-bar").style.display = "block";
       resetIdleTimer();
+      setTimeout(() => { document.getElementById("bot-input").focus(); }, 100);
     };
 
     window.toggleBot = function() {
@@ -1223,14 +1238,14 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
     function hideTyping() { const t=document.getElementById("cb-typing"); if(t) t.remove(); }
     function botReply(msg, cb, delay) {
       showTyping();
-      setTimeout(() => { hideTyping(); addBotMessage(msg); if(cb) cb(); }, delay||1200);
+      setTimeout(() => { hideTyping(); addBotMessage(msg); playChime(); if(cb) cb(); }, delay||1200);
     }
 
     function resumeStep() {
       awaitingIdleResponse = false; resetIdleTimer();
       if(step===1) { botReply("No problem! What type of solution are you looking for?", () => showIntentOptions(leadData.intent)); return; }
-      if(step===2) { botReply("When would you like to go live with the project?", () => { const div=document.createElement("div"); div.className="quick-btns grid-btns"; div.id="timelineBtns"; ["ASAP (ready to start now)","1–3 months","3–6 months","6+ months","Not sure yet"].forEach(t=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>handleTimeline(t);div.appendChild(b);}); const back=makeBackBtn("Back",()=>{document.getElementById("timelineBtns")?.remove();leadData.timeline="";step=1;botReply("What type of solution are you looking for?",()=>showIntentOptions(leadData.intent));}); div.appendChild(back); botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight; }); return; }
-      if(step===3) { botReply("Do you have a budget range in mind?", () => { const div=document.createElement("div"); div.className="budget-btns grid-btns"; div.id="budgetBtns"; ["Under $10k","$10k – $25k","$25k – $50k","$50k+","Not sure yet"].forEach(b=>{const btn=document.createElement("button");btn.textContent=b;btn.onclick=()=>handleBudget(b);div.appendChild(btn);}); const back=makeBackBtn("Back",()=>{document.getElementById("budgetBtns")?.remove();leadData.budget="";step=2;showTimelineStep();}); div.appendChild(back); botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight; }); return; }
+      if(step===2) { showProjectDescStep(); return; }
+      if(step===3) { showBudgetStep(); return; }
       if(step===4) { document.getElementById("chat-input-bar").style.display="flex"; botReply("What's your name?"); return; }
       if(step===5) { document.getElementById("chat-input-bar").style.display="flex"; botReply("What's the best phone number to reach you?"); return; }
       if(step===6) { document.getElementById("chat-input-bar").style.display="flex"; botReply("What's the best email to reach you?"); return; }
@@ -1270,14 +1285,14 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
         b.onclick = () => {
           document.getElementById("intentOptBtns")?.remove();
           addUserMessage(o); leadData.intent_detail = o;
-          botReply("Great choice! Let's figure out the best way to help.", () => showTimelineStep());
+          step = 2; showProjectDescStep();
         };
         div.appendChild(b);
       });
       const back = makeBackBtn("Back", () => {
         document.getElementById("intentOptBtns")?.remove();
         leadData.intent = ""; step = 0;
-        botReply("No problem! What brings you here today?", () => {
+        botReply("No problem! What kind of project do you need help bringing to life?", () => {
           const s1 = document.createElement("div"); s1.className="quick-btns grid-btns"; s1.id="step1-btns";
           ["New startup or app idea","Software for my business","Digital marketing help","Just exploring"].forEach(v => {
             const b=document.createElement("button"); b.textContent=v; b.onclick=()=>window.handleStep1(v); s1.appendChild(b);
@@ -1293,33 +1308,22 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       expandUI();
       const btns = document.getElementById("step1-btns"); if(btns) btns.remove();
       addUserMessage(val); leadData.intent=val; step=1; resetIdleTimer();
-      botReply(intentFollowUp[val]||"Tell me more about what you're looking for!", () => showIntentOptions(val));
+      botReply(intentFollowUp[val]||"Can you tell me a bit about it or if you already have a design in mind?", () => showIntentOptions(val));
     };
 
-    function showTimelineStep() {
-      step=2; resetIdleTimer();
-      botReply("When would you like to go live with the project?", () => {
-        const div = document.createElement("div"); div.className="quick-btns grid-btns"; div.id="timelineBtns";
-        ["ASAP (ready to start now)","1–3 months","3–6 months","6+ months","Not sure yet"].forEach(t => {
-          const b=document.createElement("button"); b.textContent=t; b.onclick=()=>handleTimeline(t); div.appendChild(b);
-        });
-        const back = makeBackBtn("Back", () => {
-          document.getElementById("timelineBtns")?.remove();
-          leadData.timeline=""; step=1;
-          botReply("Sure! What type of solution are you looking for?", () => showIntentOptions(leadData.intent));
-        });
-        div.appendChild(back);
-        botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight;
+    function showProjectDescStep() {
+      step = 2; resetIdleTimer();
+      botReply("Can you tell me a bit about your project? Feel free to share as much or as little as you'd like. Any details help!", () => {
+        const inp = document.getElementById("chat-input-bar");
+        inp.style.display = "flex";
+        document.getElementById("bot-input").placeholder = "Describe your project...";
+        setTimeout(() => { document.getElementById("bot-input").focus(); }, 50);
       });
-    }
-
-    function handleTimeline(val) {
-      const btns=document.getElementById("timelineBtns"); if(btns) btns.remove();
-      addUserMessage(val); leadData.timeline=val; showBudgetStep();
     }
 
     function showBudgetStep() {
       step=3; resetIdleTimer();
+      document.getElementById("bot-input").placeholder = "Type your answer...";
       botReply("Do you have a budget range in mind for this project?", () => {
         const div=document.createElement("div"); div.className="budget-btns grid-btns"; div.id="budgetBtns";
         ["Under $10k","$10k – $25k","$25k – $50k","$50k+","Not sure yet"].forEach(b => {
@@ -1327,7 +1331,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
         });
         const back = makeBackBtn("Back", () => {
           document.getElementById("budgetBtns")?.remove();
-          leadData.budget=""; step=2; showTimelineStep();
+          leadData.budget=""; step=2; showProjectDescStep();
         });
         div.appendChild(back);
         botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight;
@@ -1343,7 +1347,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       step=4; resetIdleTimer();
       document.getElementById("chat-input-bar").style.display = "flex";
       document.getElementById("bot-input").focus();
-      botReply("Thanks, this helps a lot! Let me grab your details so a team member can reach out.<br><br>What's your name?");
+      botReply("Thanks, this helps a lot! Let me grab your details so our team can reach out.<br><br>What's your name?");
     }
 
     function showFinalCTA() {
@@ -1351,7 +1355,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       botReply("Awesome! Based on what you've shared, the best next step is a quick call or Google Meet to go over your project!", () => {
         const div=document.createElement("div"); div.className="cta-btns"; div.id="ctaBtns";
         const book=document.createElement("button"); book.className="cta-btn-primary"; book.textContent="Book a Google Meet";
-        book.onclick=()=>{ handleCTA("Book a Google Meet"); window.open("https://calendly.com/shreya-ethixweb/30min","_blank"); };
+        book.onclick=()=>{ handleCTA("Book a Google Meet"); window.open("https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3loQplPyCXe28FPP0trIgOCmhJqwKCXka1x3uCkblaAFtklpetKpkyi6glNBGxVR8jpOQenySG","_blank"); };
         const email=document.createElement("button"); email.className="cta-btn-secondary"; email.textContent="Send me info by email";
         email.onclick=()=>handleCTA("Send me info by email");
         div.appendChild(book); div.appendChild(email); botMessages.appendChild(div);
@@ -1371,7 +1375,7 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
     }
 
     function submitLead() {
-      const params = { intent:leadData.intent, intent_detail:leadData.intent_detail, timeline:leadData.timeline, budget:leadData.budget, name:leadData.name, phone:leadData.phone, email:leadData.email, cta_choice:leadData.cta_choice, page:leadData.page, page_name:leadData.page_name, utm_source:leadData.utm_source, utm_campaign:leadData.utm_campaign, utm_medium:leadData.utm_medium, utm_term:leadData.utm_term, utm_content:leadData.utm_content, gclid:leadData.gclid };
+      const params = { intent:leadData.intent, intent_detail:leadData.intent_detail, project_description:leadData.project_description, budget:leadData.budget, name:leadData.name, phone:leadData.phone, email:leadData.email, cta_choice:leadData.cta_choice, page:leadData.page, page_name:leadData.page_name, utm_source:leadData.utm_source, utm_campaign:leadData.utm_campaign, utm_medium:leadData.utm_medium, utm_term:leadData.utm_term, utm_content:leadData.utm_content, gclid:leadData.gclid };
       emailjs.send("service_f4tf0yn","template_c6hi8ir", params).catch(()=>{});
       emailjs.send("service_f4tf0yn", USER_CONFIRM_TEMPLATE, { user_name:leadData.name, user_email:leadData.email, cta_choice:leadData.cta_choice }).catch(()=>{});
     }
@@ -1383,14 +1387,33 @@ const { title = 'Demski Group', description = '', pageClass = '' } = Astro.props
       const val = botInput.value.trim(); if(!val) return;
       if(awaitingIdleResponse) { removeIdleReminder(); addUserMessage(val); botInput.value=""; resumeStep(); return; }
       addUserMessage(val); botInput.value=""; resetIdleTimer();
-      if(step===0) { botReply("Please use the buttons above to get started!"); return; }
-      if(step===1) { document.getElementById("intentOptBtns")?.remove(); botReply("No problem! What type of solution are you looking for?", () => showIntentOptions(leadData.intent)); return; }
-      if(step===2) { document.getElementById("timelineBtns")?.remove(); botReply("When would you like to go live with the project?", () => { const div=document.createElement("div"); div.className="quick-btns grid-btns"; div.id="timelineBtns"; ["ASAP (ready to start now)","1–3 months","3–6 months","6+ months","Not sure yet"].forEach(t=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>handleTimeline(t);div.appendChild(b);}); const back=makeBackBtn("Back",()=>{document.getElementById("timelineBtns")?.remove();leadData.timeline="";step=1;botReply("What type of solution are you looking for?",()=>showIntentOptions(leadData.intent));}); div.appendChild(back); botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight; }); return; }
-      if(step===3) { document.getElementById("budgetBtns")?.remove(); botReply("Do you have a budget range in mind?", () => { const div=document.createElement("div"); div.className="budget-btns grid-btns"; div.id="budgetBtns"; ["Under $10k","$10k – $25k","$25k – $50k","$50k+","Not sure yet"].forEach(b=>{const btn=document.createElement("button");btn.textContent=b;btn.onclick=()=>handleBudget(b);div.appendChild(btn);}); const back=makeBackBtn("Back",()=>{document.getElementById("budgetBtns")?.remove();leadData.budget="";step=2;showTimelineStep();}); div.appendChild(back); botMessages.appendChild(div); botMessages.scrollTop=botMessages.scrollHeight; }); return; }
+      if(step===0) {
+        const lower = val.toLowerCase();
+        let intentGuess = null;
+        if(/startup|app idea|new product|mvp|launch/.test(lower)) intentGuess = "New startup or app idea";
+        else if(/business|company|software|workflow|automate/.test(lower)) intentGuess = "Software for my business";
+        else if(/market|seo|ads|traffic|social|leads/.test(lower)) intentGuess = "Digital marketing help";
+        if(intentGuess) { window.handleStep1(intentGuess); return; }
+        botReply("Thanks for reaching out! To point you in the right direction, what kind of project do you need help with?", () => {
+          const s1=document.createElement("div"); s1.className="quick-btns grid-btns"; s1.id="step1-btns";
+          ["New startup or app idea","Software for my business","Digital marketing help","Just exploring"].forEach(v=>{
+            const b=document.createElement("button"); b.textContent=v; b.onclick=()=>window.handleStep1(v); s1.appendChild(b);
+          });
+          botMessages.appendChild(s1); botMessages.scrollTop=botMessages.scrollHeight;
+        });
+        return;
+      }
+      if(step===1) { document.getElementById("intentOptBtns")?.remove(); botReply("Got it! What type of solution are you looking for?", () => showIntentOptions(leadData.intent)); return; }
+      if(step===2) {
+        leadData.project_description = val;
+        document.getElementById("bot-input").placeholder = "Type your answer...";
+        botReply("That's really helpful, thank you!", () => showBudgetStep()); return;
+      }
+      if(step===3) { showBudgetStep(); return; }
       if((step===4||step===5||step===6)&&isOffTopic(val)) {
         botReply("Great question! Our team will cover all that on the call. For now: "+(step===4?"What's your name?":step===5?"What's your phone number?":"What's your email address?")); return;
       }
-      if(step===4) { if(val.length<2){botReply("Could you enter your full name please?");return;} leadData.name=val; step=5; botReply("Nice to meet you, "+val.split(" ")[0]+"! What's the best phone number to reach you?"); return; }
+      if(step===4) { if(val.length<2||/^\d+$/.test(val)){botReply("Could you enter your full name please?");return;} leadData.name=val; step=5; botReply("Nice to meet you, "+val+"! What's the best phone number to reach you?"); return; }
       if(step===5) { const d=val.replace(/\D/g,""); if(d.length<7){botReply("That doesn't look like a valid phone number. Could you double-check?");return;} leadData.phone=val; step=6; botReply("Got it! And what's the best email address to reach you?"); return; }
       if(step===6) { if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){botReply("That doesn't look right. Could you double-check your email address?");return;} leadData.email=val; showFinalCTA(); return; }
     };

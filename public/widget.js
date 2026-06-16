@@ -503,7 +503,7 @@
       var s1 = document.getElementById('cb-step1'); if (s1) s1.remove();
       addUserMsg(val); lead.intent = val; step = 1; resetIdleTimer();
       var followUp = {
-        'New startup or app idea':  'Love it! Tell me more — what kind of app or product are you thinking about?',
+        'New startup or app idea':  'Love it! Tell me more, what kind of app or product are you thinking about?',
         'Software for my business': 'Great! What problem are you trying to solve in your business?',
         'Digital marketing help':   'Nice! What are you hoping to improve: traffic, leads, or sales?',
         'Just exploring':           "That's totally fine! Can you tell me a bit about what you have in mind?"
@@ -605,7 +605,7 @@
       var sendBtn = document.querySelector('#cb-input-bar button');
       if (sendBtn) sendBtn.disabled = true;
       botReply(choice === 'Book a Google Meet'
-        ? "Great! We're opening the calendar now. Pick a time that works for you — a confirmation will also be sent to " + lead.email + '!'
+        ? "Great! We're opening the calendar now. Pick a time that works for you. A confirmation will also be sent to " + lead.email + '!'
         : 'Perfect! We\'ll send everything over to ' + lead.email + ' shortly. Talk soon! &#x1F603;');
       submitLead();
     }
@@ -663,7 +663,7 @@
       if (step === 2) {
         lead.project_description = val;
         inputEl.placeholder = 'Type your answer...';
-        botReply("That's really helpful, thank you! One more thing —", function () { showBudgetStep(); }); return;
+        botReply("That's really helpful, thank you! One more thing...", function () { showBudgetStep(); }); return;
       }
 
       if (step === 3) { showBudgetStep(); return; }

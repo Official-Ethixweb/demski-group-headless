@@ -61,9 +61,13 @@ html { overflow-x: hidden; }
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
+  grid-template-rows: auto auto;
   gap: 70px;
   align-items: start;
 }
+.cu-hero-inner .cu-hero-title { grid-column: 1; grid-row: 1; }
+.cu-hero-inner .cu-offices { grid-column: 1; grid-row: 2; }
+.cu-hero-inner .cu-form-col { grid-column: 2; grid-row: 1 / span 2; }
 .cu-hero h1 {
   font-family: 'Outfit', sans-serif;
   font-size: 56px;
@@ -182,8 +186,12 @@ html { overflow-x: hidden; }
 /* ══ MOBILE ══ */
 @media (max-width: 1100px) {
   .cu-hero { padding: 56px 32px; }
-  .cu-hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .cu-hero h1 { font-size: 38px; margin-bottom: 32px; }
+  .cu-hero-inner { grid-template-columns: 1fr; grid-template-rows: none; gap: 32px; }
+  .cu-hero-inner .cu-hero-title,
+  .cu-hero-inner .cu-offices,
+  .cu-hero-inner .cu-form-col { grid-column: auto; grid-row: auto; }
+  .cu-hero h1 { font-size: 38px; margin-bottom: 0; text-align: center; }
+  .cu-offices { text-align: center; margin-bottom: 0; }
 }
 @media (max-width: 600px) {
   .cu-hero { padding: 44px 20px; }
@@ -191,28 +199,16 @@ html { overflow-x: hidden; }
   .cu-form-submit { align-self: stretch; text-align: center; }
   .cu-trust { padding: 44px 20px 40px; }
   .cu-trust-stars { gap: 50px; margin-bottom: 36px; }
+  .cu-trust-rating-stars { order: 2; }
+  .cu-trust-rating-label { order: 1; }
 }
 </style>
 
 <section class="cu-hero">
   <div class="cu-hero-inner">
-    <div>
-      <h1>Schedule a Free Consultation With One of Our Experts</h1>
+    <h1 class="cu-hero-title">Schedule a Free Consultation With One of Our Experts</h1>
 
-      <div class="cu-offices">
-        {offices.map(o => (
-          <p class="cu-office">
-            {o.name && <span class="cu-office-name">{o.name}<br /></span>}
-            {o.address}<br />
-            {o.cityState}<br />
-            {o.phone}
-          </p>
-        ))}
-        <p class="cu-office">contact@demskigroup.com</p>
-      </div>
-    </div>
-
-    <div>
+    <div class="cu-form-col">
       <form class="cu-form" id="cu-form" action="/contact-us/" method="get" novalidate>
         <div class="cu-form-row">
           <input type="text" name="name" placeholder="Name" />
@@ -224,6 +220,18 @@ html { overflow-x: hidden; }
         <textarea name="message" placeholder="Describe your project"></textarea>
         <button type="submit" class="cu-form-submit">Start Your Project</button>
       </form>
+    </div>
+
+    <div class="cu-offices">
+      {offices.map(o => (
+        <p class="cu-office">
+          {o.name && <span class="cu-office-name">{o.name}<br /></span>}
+          {o.address}<br />
+          {o.cityState}<br />
+          {o.phone}
+        </p>
+      ))}
+      <p class="cu-office">contact@demskigroup.com</p>
     </div>
   </div>
   <p class="cu-disclaimer">*By providing your phone number, you agree to receive text messages related to your inquiry. Message &amp; data rates may apply. Reply STOP to opt out.</p>
@@ -556,13 +564,16 @@ html { overflow-x: hidden; }
 
 @media (max-width: 900px) {
   .clients-top { flex-direction: column; }
-  .clients-left { min-height: 300px; flex: none; margin-top: 0; }
+  .clients-left { display: none; }
   .clients-right { padding: 40px 24px; background: #fff; }
   .clients-right h2 { font-size: 30px; }
   .testimonial-slider-wrap { margin-top: 0; }
   .testimonial-slider { padding: 20px 20px; }
-  .testimonial-card-new { flex: 0 0 calc(100% - 4px); width: calc(100% - 4px); }
-  .slider-btn { display: none; }
+  .testimonial-card-new { flex: 0 0 100%; width: 100%; }
+  .tslider-clip { margin: 0 32px; }
+  .slider-btn { display: flex; width: 36px; height: 36px; font-size: 14px; }
+  .slider-btn-prev { left: 0; }
+  .slider-btn-next { right: 0; }
 }
 </style>
 

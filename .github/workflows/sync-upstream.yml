@@ -1,0 +1,25 @@
+name: Sync to thedemskigroup/demski-group-headless
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Fast-forward push only (no --force): if thedemskigroup's main ever
+      # has commits that aren't in this repo, this fails loudly instead of
+      # silently overwriting them. Fix any divergence manually, then re-run.
+      - name: Push to thedemskigroup/demski-group-headless
+        env:
+          UPSTREAM_SYNC_TOKEN: ${{ secrets.UPSTREAM_SYNC_TOKEN }}
+        run: |
+          git remote add upstream "https://x-access-token:${UPSTREAM_SYNC_TOKEN}@github.com/thedemskigroup/demski-group-headless.git"
+          git push upstream main:main

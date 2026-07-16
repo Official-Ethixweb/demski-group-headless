@@ -237,19 +237,17 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-r
       margin: 0; flex-shrink: 0; width: 230px;
     }
     .cs-trust-divider { width: 1px; height: 140px; background: rgba(255,255,255,0.25); flex-shrink: 0; }
-    /* /public/logoswhite-white.webp is a single composite of all 6 trust
-       logos (HPE/Riot Games/Allstate top row, Bank of America/Herbalife/
-       Rinnai bottom row), pure white on a transparent background — no color
-       filter needed, unlike the individual logo files used elsewhere on the
-       site. This is the same asset used for the equivalent "Companies that
-       trust our team" band on 21 other pages (about, our-clients, and the
-       service/technology templates): the crisp brandlogos-dark.webp source
-       composited onto a padded canvas that exactly reproduces the original
-       1076×385 WordPress master's proportions (2.795:1) at 2x resolution
-       (2152×770), so it drops in without shifting any of that hand-tuned
-       per-page layout CSS. Sized by height with width:auto so it scales at
-       its native ~2.795:1 aspect ratio. */
-    .cs-trust-logos { height: 170px; width: auto; object-fit: contain; flex-shrink: 0; }
+    /* /public/brandlogos-transparent.webp is a single composite of all 6
+       trust logos (HPE/Riot Games/Allstate top row, Bank of America/Herbalife/
+       Rinnai bottom row), pure white on a genuinely transparent background so
+       they blend directly onto this near-black (#0a0a0a) band with no visible
+       card behind them. (The logoswhite-white.webp asset used on the lighter
+       brand bands elsewhere bakes in a #282828 grey card, which read as an
+       out-of-place box on this dark strip.) Height is tuned to 134px so the
+       logos render at the same ~133px cap-height they did before the swap —
+       this asset has almost no internal padding, unlike the previous one —
+       keeping the strip's layout unchanged. */
+    .cs-trust-logos { height: 134px; width: auto; object-fit: contain; flex-shrink: 0; }
 
     /* ── Body layout ── */
     .cs-body-wrap {
@@ -1641,7 +1639,7 @@ Astro.response.headers.set('Cache-Control', 'public, s-maxage=300, stale-while-r
           <div class="cs-trust-divider"></div>
           <img
             class="cs-trust-logos"
-            src="/logoswhite-white.webp"
+            src="/brandlogos-transparent.webp"
             alt="Hewlett Packard Enterprise, Riot Games, Allstate, Bank of America, Herbalife Nutrition, Rinnai"
             loading="lazy" decoding="async"
           />

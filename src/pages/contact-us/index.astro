@@ -719,6 +719,27 @@ html { overflow-x: hidden; }
     }).then(function (res) {
       return res.json().catch(function () { return {}; }).then(function (data) {
         if (!res.ok || !data.ok) throw new Error('send-lead ' + res.status);
+        // Conversion tracking (Cosmoforge): mirrors the old Elementor-form
+        // dataLayer event exactly ({event, inputs, formName}) so the existing
+        // GTM-W476LNT triggers fire unchanged. Success-only, once per
+        // submission (the form DOM is replaced below), never blocks the UX.
+        try {
+          var tracking = (window.__dgTracking && window.__dgTracking()) || {};
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'formSubmission',
+            formName: 'Contact Us',
+            inputs: {
+              name: name, email: email, phone: phone, company: company,
+              website: website, message: message,
+              gclid: tracking.gclid || '', gbraid: tracking.gbraid || '',
+              utm_campaign: tracking.utm_campaign || '', utm_medium: tracking.utm_medium || '',
+              utm_source: tracking.utm_source || '', utm_content: tracking.utm_content || '',
+              utm_term: tracking.utm_term || '',
+              fbc: tracking.fbc || '', fbp: tracking.fbp || '', ga: tracking.ga || ''
+            }
+          });
+        } catch (e) { /* tracking must never break the form */ }
         form.innerHTML = SUCCESS_HTML;
       });
     }).catch(function () {

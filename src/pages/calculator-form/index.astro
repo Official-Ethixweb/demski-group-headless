@@ -628,6 +628,32 @@ const priorities = [
         page: location.pathname,
         page_name: document.title
       })
+    }).then(function (res) {
+      // Conversion tracking (Cosmoforge): same {event, inputs, formName}
+      // shape as the old Elementor forms so GTM-W476LNT triggers fire
+      // unchanged. Success-only (lead actually accepted), fires at most once
+      // (submitForm runs once per quiz completion), never affects the UI.
+      return res.json().catch(function () { return {}; }).then(function (resp) {
+        if (!res.ok || !resp.ok) return;
+        try {
+          var tracking = (window.__dgTracking && window.__dgTracking()) || {};
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'formSubmission',
+            formName: 'Software Cost Calculator',
+            inputs: {
+              name: data.name, email: data.email, phone: data.phone,
+              company: data.company, message: data.description,
+              quiz_answers: summary,
+              gclid: tracking.gclid || '', gbraid: tracking.gbraid || '',
+              utm_campaign: tracking.utm_campaign || '', utm_medium: tracking.utm_medium || '',
+              utm_source: tracking.utm_source || '', utm_content: tracking.utm_content || '',
+              utm_term: tracking.utm_term || '',
+              fbc: tracking.fbc || '', fbp: tracking.fbp || '', ga: tracking.ga || ''
+            }
+          });
+        } catch (e) { /* tracking must never break the flow */ }
+      });
     }).catch(function () {});
 
     document.getElementById('cfContactForm').style.display = 'none';

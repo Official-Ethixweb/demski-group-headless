@@ -229,6 +229,9 @@
       // Fold the "Website" field into project_notes so nothing is lost — the
       // shared /api/send-lead lead schema has no dedicated website field.
       const projectNotes = [website ? 'Website: ' + website : '', message].filter(Boolean).join('\n\n');
+      // Attribution fields ride along in the lead payload so the server can
+      // forward the full set to the Zapier webhook. Missing values are ''.
+      const trk = (window.__dgTracking && window.__dgTracking()) || {};
       const payload = {
         name: name,
         email: email,
@@ -237,7 +240,12 @@
         project_notes: projectNotes,
         cta_choice: 'Contact Us',
         page: location.pathname,
-        page_name: document.title
+        page_name: document.title,
+        gclid: trk.gclid || '', gbraid: trk.gbraid || '',
+        utm_campaign: trk.utm_campaign || '', utm_medium: trk.utm_medium || '',
+        utm_source: trk.utm_source || '', utm_content: trk.utm_content || '',
+        utm_term: trk.utm_term || '',
+        fbc: trk.fbc || '', fbp: trk.fbp || '', ga: trk.ga || ''
       };
       fetch(leadEndpoint, {
         method: 'POST',

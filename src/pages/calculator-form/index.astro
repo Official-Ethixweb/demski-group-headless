@@ -618,16 +618,26 @@ const priorities = [
     fetch(leadEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        company: data.company,
-        project_notes: projectNotes,
-        cta_choice: 'Software Cost Calculator',
-        page: location.pathname,
-        page_name: document.title
-      })
+      body: JSON.stringify((function () {
+        // Attribution fields ride along in the lead payload so the server
+        // can forward the full set to the Zapier webhook. Missing = ''.
+        var trk = (window.__dgTracking && window.__dgTracking()) || {};
+        return {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          company: data.company,
+          project_notes: projectNotes,
+          cta_choice: 'Software Cost Calculator',
+          page: location.pathname,
+          page_name: document.title,
+          gclid: trk.gclid || '', gbraid: trk.gbraid || '',
+          utm_campaign: trk.utm_campaign || '', utm_medium: trk.utm_medium || '',
+          utm_source: trk.utm_source || '', utm_content: trk.utm_content || '',
+          utm_term: trk.utm_term || '',
+          fbc: trk.fbc || '', fbp: trk.fbp || '', ga: trk.ga || ''
+        };
+      })())
     }).then(function (res) {
       // Conversion tracking (Cosmoforge): same {event, inputs, formName}
       // shape as the old Elementor forms so GTM-W476LNT triggers fire

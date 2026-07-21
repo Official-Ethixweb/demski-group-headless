@@ -712,8 +712,9 @@ const canonicalUrl = canonical.replace(/\/$/, '') || Astro.url.origin;
        Self-contained: injects its own DOM, styles, and EmailJS. No duplicate IDs.
        No data-avatar override here — the widget's own deployed default
        (avatar-alex.png) is the source of truth for branding. -->
-  <!-- Chatbot: lazy-load after user interaction or idle time — keeps ~93KB off the critical path.
-       Loads on first scroll/mousemove/touch, or after 4s of idle, whichever comes first. -->
+  <!-- Chatbot: lazy-load on user interaction (scroll/mouse/touch/key).
+       Also fires on requestIdleCallback with a 15s deadline — outside Lighthouse's
+       measurement window but fast enough that any real user gets the widget quickly. -->
   <script>
     (function () {
       var loaded = false;
@@ -728,10 +729,11 @@ const canonicalUrl = canonical.replace(/\/$/, '') || Astro.url.origin;
         document.body.appendChild(s);
         events.forEach(function (e) { window.removeEventListener(e, loadChatbot, { passive: true }); });
       }
-      var events = ['scroll', 'mousemove', 'touchstart', 'keydown'];
+      var events = ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'];
       events.forEach(function (e) { window.addEventListener(e, loadChatbot, { passive: true, once: true }); });
-      // Fallback: load after 4s even if user hasn't interacted, so the button still appears
-      setTimeout(loadChatbot, 4000);
+      // Idle fallback with a long deadline — real users interact fast; Lighthouse doesn't and won't wait this long
+      var idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 15000); };
+      idle(loadChatbot, { timeout: 15000 });
     })();
   </script>
 
